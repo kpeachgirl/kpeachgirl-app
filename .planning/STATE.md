@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 03-06-PLAN.md
-last_updated: "2026-03-09T23:36:20.614Z"
-last_activity: 2026-03-09 — Completed 03-02 (Homepage with hero, search, filters, model grid)
+stopped_at: Completed 04-01-PLAN.md
+last_updated: "2026-03-09T23:55:30.403Z"
+last_activity: 2026-03-09 — Completed 04-01 (Admin login + auth guard)
 progress:
   total_phases: 5
   completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
-  percent: 50
+  total_plans: 19
+  completed_plans: 11
+  percent: 58
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** Photographers and casting directors can instantly browse and discover verified editorial models from LA/OC — browsing is always free, fast, and beautiful.
-**Current focus:** Phase 3 — Public Pages
+**Current focus:** Phase 4 — Admin CMS
 
 ## Current Position
 
-Phase: 3 of 5 (Public Pages)
-Plan: 2 of 6 in current phase (COMPLETE)
-Status: Executing phase 3
-Last activity: 2026-03-09 — Completed 03-02 (Homepage with hero, search, filters, model grid)
+Phase: 4 of 5 (Admin CMS)
+Plan: 1 of 9 in current phase (COMPLETE)
+Status: Executing phase 4
+Last activity: 2026-03-09 — Completed 04-01 (Admin login + auth guard)
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 58%
 
 ## Performance Metrics
 
@@ -58,6 +58,7 @@ Progress: [█████░░░░░] 50%
 | Phase 03 P05 | 2min | 1 tasks | 2 files |
 | Phase 03 P02 | 3min | 2 tasks | 3 files |
 | Phase 03 P06 | 2min | 1 tasks | 1 files |
+| Phase 04 P01 | 2min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -92,6 +93,8 @@ Recent decisions affecting current work:
 - [03-02]: Static Supabase client (lib/supabase/static.ts) for ISR pages — cookie-based server client forces dynamic rendering
 - [03-02]: Hero section inside HomepageClient (not separate server component) — search input tightly coupled to client state
 - [Phase 03]: Unsplash hostname added without pathname restriction for seed data flexibility
+- [04-01]: Route group pattern (dashboard) for admin auth — login page outside group stays public, avoids redirect loop
+- [04-01]: Belt + suspenders auth: middleware checks authentication, layout checks is_admin claim
 
 ### Pending Todos
 
@@ -104,6 +107,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T23:32:48.330Z
-Stopped at: Completed 03-06-PLAN.md
+Last session: 2026-03-09T23:54:46Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None

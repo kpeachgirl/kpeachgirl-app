@@ -58,9 +58,9 @@
 
 ### Admin CMS
 
-- [ ] **ADM-01**: Admin login page (/admin/login) authenticates via Supabase Auth signInWithPassword
-- [ ] **ADM-02**: Admin routes (/admin/*) protected by middleware; unauthenticated users redirected to /admin/login
-- [ ] **ADM-03**: Admin uses getUser() (not getSession()) for auth verification; JWT is_admin claim checked
+- [x] **ADM-01**: Admin login page (/admin/login) authenticates via Supabase Auth signInWithPassword
+- [x] **ADM-02**: Admin routes (/admin/*) protected by middleware; unauthenticated users redirected to /admin/login
+- [x] **ADM-03**: Admin uses getUser() (not getSession()) for auth verification; JWT is_admin claim checked
 - [ ] **ADM-04**: Admin dashboard has 5-tab navigation: Models, Groups, Submissions, Profile Fields, Areas; EN/Korean language toggle
 - [ ] **ADM-05**: Models tab lists all profiles; admin can create, edit, delete models
 - [ ] **ADM-06**: Model editor slide-out panel: all profile fields (name, region, bio, experience, attributes, types, compensation, verified, vacation)
@@ -77,7 +77,7 @@
 - [ ] **ADM-17**: Profile Fields tab — Category Sections: add/edit/remove profile sections (Vitals, Look, Work) with dynamic fields
 - [ ] **ADM-18**: Areas tab: add/remove geographic areas used for filtering
 - [ ] **ADM-19**: All admin saves call Supabase DB mutations then trigger on-demand ISR revalidation via /api/revalidate
-- [ ] **ADM-20**: Admin logout clears session
+- [x] **ADM-20**: Admin logout clears session
 
 ### API Routes
 
