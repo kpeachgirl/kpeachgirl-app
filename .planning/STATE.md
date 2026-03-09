@@ -53,6 +53,8 @@ Progress: [█████░░░░░] 50%
 
 *Updated after each plan completion*
 | Phase 03 P01 | 7min | 2 tasks | 15 files |
+| Phase 03 P03 | 2min | 2 tasks | 2 files |
+| Phase 03 P04 | 2min | 2 tasks | 2 files |
 | Phase 03 P05 | 2min | 1 tasks | 2 files |
 
 ## Accumulated Context
@@ -80,6 +82,8 @@ Recent decisions affecting current work:
 - [03-01]: useTranslation is a plain function (not React hook) for server component compatibility
 - [03-01]: ModelCard/GroupCard use next/link for navigation (not onClick) for proper SSR routing
 - [03-01]: Age gate uses sessionStorage client-side check (not middleware redirect) — simpler, resolves Phase 3 blocker
+- [03-04]: Badge auto-calculates DUO/TRIO/GROUP from member count unless badge_label override set
+- [03-04]: next/image with fill+sizes used for group and member images for optimization
 - [Phase 03]: File upload stores path (not public URL) since submissions bucket may be private
 
 ### Pending Todos
