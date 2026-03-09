@@ -26,9 +26,9 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 ## Current Position
 
 Phase: 3 of 5 (Public Pages)
-Plan: 1 of 6 in current phase (COMPLETE)
+Plan: 2 of 6 in current phase (COMPLETE)
 Status: Executing phase 3
-Last activity: 2026-03-09 — Completed 03-01 (Shared libraries + 10 UI components)
+Last activity: 2026-03-09 — Completed 03-02 (Homepage with hero, search, filters, model grid)
 
 Progress: [█████░░░░░] 50%
 
@@ -56,6 +56,7 @@ Progress: [█████░░░░░] 50%
 | Phase 03 P03 | 2min | 2 tasks | 2 files |
 | Phase 03 P04 | 2min | 2 tasks | 2 files |
 | Phase 03 P05 | 2min | 1 tasks | 2 files |
+| Phase 03 P02 | 3min | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -87,6 +88,8 @@ Recent decisions affecting current work:
 - [03-04]: Badge auto-calculates DUO/TRIO/GROUP from member count unless badge_label override set
 - [03-04]: next/image with fill+sizes used for group and member images for optimization
 - [Phase 03]: File upload stores path (not public URL) since submissions bucket may be private
+- [03-02]: Static Supabase client (lib/supabase/static.ts) for ISR pages — cookie-based server client forces dynamic rendering
+- [03-02]: Hero section inside HomepageClient (not separate server component) — search input tightly coupled to client state
 
 ### Pending Todos
 
@@ -99,6 +102,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09T23:29:10.246Z
-Stopped at: Completed 03-05-PLAN.md
+Last session: 2026-03-09T23:29:25Z
+Stopped at: Completed 03-02-PLAN.md
 Resume file: None
