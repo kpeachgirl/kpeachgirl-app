@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Cormorant Garamond and Manrope fonts render on any page without layout shift
   4. TypeScript strict mode is active and `Profile`, `Group`, `Submission`, `SiteConfig`, `GalleryImage` types are importable from lib/types.ts
   5. The useTranslation hook returns correct strings for both English and Korean keys
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
 - [x] 01-01: Next.js 14 scaffolding — create-next-app, tailwind.config.ts with design tokens, globals.css
@@ -46,13 +46,12 @@ Plans:
   3. The admin user can log in via Supabase Auth and their JWT contains the is_admin claim in app_metadata
   4. All 4 storage buckets exist; a public image URL resolves in the browser, the submissions bucket returns 403 to anon reads
   5. 12 seed model profiles and all default site_config rows are present in the database
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: SQL migrations — all 6 tables, RLS policies, storage buckets, storage policies
-- [ ] 02-02: Auth setup — admin user creation, Custom Access Token Hook, JWT app_metadata claim
-- [ ] 02-03: Supabase client files — lib/supabase/client.ts, server.ts, middleware.ts; root middleware.ts
-- [ ] 02-04: Seed data — 12 model profiles from prototype, gallery images, default site_config rows
+- [ ] 02-01-PLAN.md — SQL migrations: 6 tables, RLS policies, storage buckets, storage policies, auth hook function
+- [ ] 02-02-PLAN.md — Supabase client files (client.ts, server.ts, middleware.ts), root middleware, admin user setup
+- [ ] 02-03-PLAN.md — Seed data: 12 model profiles, gallery images, 6 site_config rows
 
 ### Phase 3: Public Pages
 **Goal**: Any photographer or casting director can browse the full model directory, view individual model and group profiles, and submit a membership inquiry — all pages load fast via ISR and look identical to the prototype
@@ -118,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 1/2 | In progress | - |
-| 2. Supabase Setup | 0/4 | Not started | - |
+| 2. Supabase Setup | 0/3 | Not started | - |
 | 3. Public Pages | 0/6 | Not started | - |
 | 4. Admin CMS | 0/8 | Not started | - |
 | 5. Deployment & Launch | 0/1 | Not started | - |
