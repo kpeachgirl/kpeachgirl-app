@@ -17,19 +17,19 @@
 
 ### Database
 
-- [ ] **DB-01**: Supabase migration creates profiles table with all columns (id, name, slug, region, parent_region, bio, types[], compensation[], verified, vacation, experience, profile_image, profile_image_crop, cover_image, cover_image_crop, attributes jsonb, sort_order, timestamps)
-- [ ] **DB-02**: Supabase migration creates gallery_images table with foreign key to profiles
-- [ ] **DB-03**: Supabase migration creates groups table with member_ids uuid[]
-- [ ] **DB-04**: Supabase migration creates group_gallery_images table with foreign key to groups
-- [ ] **DB-05**: Supabase migration creates submissions table (id, form_data jsonb, status, id_photo_url, created_at)
-- [ ] **DB-06**: Supabase migration creates site_config table (id text PRIMARY KEY, value jsonb, updated_at)
-- [ ] **DB-07**: RLS enabled on all tables; profiles/gallery/groups have public SELECT, admin-only INSERT/UPDATE/DELETE
-- [ ] **DB-08**: submissions table allows anon INSERT, admin full access
-- [ ] **DB-09**: site_config allows public SELECT, admin UPDATE only
-- [ ] **DB-10**: Supabase Storage buckets created: profile-images (public), cover-images (public), gallery-images (public), submissions (private admin-only)
-- [ ] **DB-11**: Storage RLS policies set correctly on storage.objects for each bucket
+- [x] **DB-01**: Supabase migration creates profiles table with all columns (id, name, slug, region, parent_region, bio, types[], compensation[], verified, vacation, experience, profile_image, profile_image_crop, cover_image, cover_image_crop, attributes jsonb, sort_order, timestamps)
+- [x] **DB-02**: Supabase migration creates gallery_images table with foreign key to profiles
+- [x] **DB-03**: Supabase migration creates groups table with member_ids uuid[]
+- [x] **DB-04**: Supabase migration creates group_gallery_images table with foreign key to groups
+- [x] **DB-05**: Supabase migration creates submissions table (id, form_data jsonb, status, id_photo_url, created_at)
+- [x] **DB-06**: Supabase migration creates site_config table (id text PRIMARY KEY, value jsonb, updated_at)
+- [x] **DB-07**: RLS enabled on all tables; profiles/gallery/groups have public SELECT, admin-only INSERT/UPDATE/DELETE
+- [x] **DB-08**: submissions table allows anon INSERT, admin full access
+- [x] **DB-09**: site_config allows public SELECT, admin UPDATE only
+- [x] **DB-10**: Supabase Storage buckets created: profile-images (public), cover-images (public), gallery-images (public), submissions (private admin-only)
+- [x] **DB-11**: Storage RLS policies set correctly on storage.objects for each bucket
 - [ ] **DB-12**: Admin user (admin@kpeachgirl.com) created in Supabase Auth
-- [ ] **DB-13**: Custom Access Token Hook injects is_admin: true into JWT for admin user; RLS uses (auth.jwt() ->> 'is_admin')::boolean
+- [x] **DB-13**: Custom Access Token Hook injects is_admin: true into JWT for admin user; RLS uses (auth.jwt() ->> 'is_admin')::boolean
 - [ ] **DB-14**: lib/supabase/client.ts (browser), lib/supabase/server.ts (server components), lib/supabase/middleware.ts created using @supabase/ssr
 - [ ] **DB-15**: 12 seed model profiles seeded from prototype data with all attributes, gallery images (Unsplash URLs), and slugs
 - [ ] **DB-16**: Default site_config rows seeded (areas, categories, card_settings, pill_groups, hero, form_config)

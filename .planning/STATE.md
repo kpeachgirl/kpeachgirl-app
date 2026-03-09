@@ -1,3 +1,19 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: executing
+stopped_at: Completed 02-01-PLAN.md — Supabase SQL migrations (6 tables, RLS, storage, auth hook)
+last_updated: "2026-03-09T22:31:00.386Z"
+last_activity: 2026-03-09 — Completed 02-01 (Supabase SQL migrations)
+progress:
+  total_phases: 5
+  completed_phases: 1
+  total_plans: 4
+  completed_plans: 2
+  percent: 50
+---
+
 # Project State
 
 ## Project Reference
@@ -5,33 +21,34 @@
 See: .planning/PROJECT.md (updated 2026-03-09)
 
 **Core value:** Photographers and casting directors can instantly browse and discover verified editorial models from LA/OC — browsing is always free, fast, and beautiful.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — Supabase Setup
 
 ## Current Position
 
-Phase: 1 of 5 (Foundation)
+Phase: 2 of 5 (Supabase Setup)
 Plan: 1 of 2 in current phase
 Status: In progress
-Last activity: 2026-03-09 — Completed 01-01 (Next.js scaffold + design system foundation)
+Last activity: 2026-03-09 — Completed 02-01 (Supabase SQL migrations)
 
-Progress: [█░░░░░░░░░] 10%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
+- Total plans completed: 2
 - Average duration: 3 min
-- Total execution time: 0.05 hours
+- Total execution time: 0.08 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 1 | 3 min | 3 min |
+| 02-supabase-setup | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3 min)
-- Trend: Baseline established
+- Last 5 plans: 01-01 (3 min), 02-01 (2 min)
+- Trend: Consistent fast execution
 
 *Updated after each plan completion*
 
@@ -50,6 +67,8 @@ Recent decisions affecting current work:
 - [01-01]: next.config.mjs used instead of .ts — Next.js 14.2.35 does not support TypeScript config extension
 - [01-01]: CSS variable bridge pattern established: :root vars → tailwind.config.ts via var(--token-name)
 - [01-01]: Responsive breakpoints via semantic CSS classes (.model-grid etc.) not Tailwind utilities
+- [02-01]: submissions allows both anon and authenticated INSERT for form flexibility
+- [02-01]: updated_at auto-trigger on profiles, groups, site_config via plpgsql function
 
 ### Pending Todos
 
@@ -63,5 +82,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Completed 01-01-PLAN.md — Next.js 14.2.35 scaffold + Tailwind design system + fonts
+Stopped at: Completed 02-01-PLAN.md — Supabase SQL migrations (6 tables, RLS, storage, auth hook)
 Resume file: None
