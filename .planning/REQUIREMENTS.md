@@ -31,8 +31,8 @@
 - [x] **DB-12**: Admin user (admin@kpeachgirl.com) created in Supabase Auth
 - [x] **DB-13**: Custom Access Token Hook injects is_admin: true into JWT for admin user; RLS uses (auth.jwt() ->> 'is_admin')::boolean
 - [x] **DB-14**: lib/supabase/client.ts (browser), lib/supabase/server.ts (server components), lib/supabase/middleware.ts created using @supabase/ssr
-- [ ] **DB-15**: 12 seed model profiles seeded from prototype data with all attributes, gallery images (Unsplash URLs), and slugs
-- [ ] **DB-16**: Default site_config rows seeded (areas, categories, card_settings, pill_groups, hero, form_config)
+- [x] **DB-15**: 12 seed model profiles seeded from prototype data with all attributes, gallery images (Unsplash URLs), and slugs
+- [x] **DB-16**: Default site_config rows seeded (areas, categories, card_settings, pill_groups, hero, form_config)
 
 ### Public Pages
 

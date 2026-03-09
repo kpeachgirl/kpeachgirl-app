@@ -13,7 +13,7 @@ Translate the complete 1,828-line React prototype into a production Next.js 14 +
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Foundation** - Next.js 14 static shell with design tokens, fonts, types, constants, and i18n
-- [ ] **Phase 2: Supabase Setup** - Live schema, RLS, storage buckets, admin auth, and seed data
+- [x] **Phase 2: Supabase Setup** - Live schema, RLS, storage buckets, admin auth, and seed data (completed 2026-03-09)
 - [ ] **Phase 3: Public Pages** - Full visitor-facing experience deployed to Vercel with ISR confirmed
 - [ ] **Phase 4: Admin CMS** - Complete admin dashboard with all CRUD editors, image uploads, and API routes
 - [ ] **Phase 5: Deployment & Launch** - Production environment variables, clean build, and live Vercel URL
@@ -117,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 1/2 | In progress | - |
-| 2. Supabase Setup | 2/3 | In Progress|  |
+| 2. Supabase Setup | 3/3 | Complete   | 2026-03-09 |
 | 3. Public Pages | 0/6 | Not started | - |
 | 4. Admin CMS | 0/8 | Not started | - |
 | 5. Deployment & Launch | 0/1 | Not started | - |
