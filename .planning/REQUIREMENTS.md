@@ -44,9 +44,9 @@
 - [x] **PUB-06**: Homepage model card grid (4-col desktop, 2-col tablet/mobile) with profile image, name, region, badge pills
 - [x] **PUB-07**: Model cards show verified badge and away/vacation badge per card_settings config
 - [x] **PUB-08**: Group cards displayed below individual model grid with DUO/TRIO/GROUP badge
-- [ ] **PUB-09**: Model profile page (/model/[slug]) with ISR 60s; hero split (cover + profile photo), bio, measurements/stats, category sections, shoot types and compensation pills
-- [ ] **PUB-10**: Model profile page gallery section with lightbox modal (click to enlarge, prev/next navigation)
-- [ ] **PUB-11**: Model profile page shows "Also Available As" group links if model is in any groups
+- [x] **PUB-09**: Model profile page (/model/[slug]) with ISR 60s; hero split (cover + profile photo), bio, measurements/stats, category sections, shoot types and compensation pills
+- [x] **PUB-10**: Model profile page gallery section with lightbox modal (click to enlarge, prev/next navigation)
+- [x] **PUB-11**: Model profile page shows "Also Available As" group links if model is in any groups
 - [x] **PUB-12**: Group profile page (/group/[slug]) with ISR 60s; group image, badge, bio, members grid, combined gallery
 - [x] **PUB-13**: Group profile page shows individual member cards linking to their profiles
 - [x] **PUB-14**: Membership form page (/membership) CSR; renders dynamic fields from site_config form_config

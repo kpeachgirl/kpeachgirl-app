@@ -82,6 +82,8 @@ Recent decisions affecting current work:
 - [03-01]: useTranslation is a plain function (not React hook) for server component compatibility
 - [03-01]: ModelCard/GroupCard use next/link for navigation (not onClick) for proper SSR routing
 - [03-01]: Age gate uses sessionStorage client-side check (not middleware redirect) — simpler, resolves Phase 3 blocker
+- [03-03]: Native img tags for cover/gallery to support prototype crop system (CSS transform)
+- [03-03]: Contact button is placeholder -- will wire to /api/contact in admin phase
 - [03-04]: Badge auto-calculates DUO/TRIO/GROUP from member count unless badge_label override set
 - [03-04]: next/image with fill+sizes used for group and member images for optimization
 - [Phase 03]: File upload stores path (not public URL) since submissions bucket may be private
