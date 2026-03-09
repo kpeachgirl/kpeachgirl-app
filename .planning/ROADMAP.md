@@ -83,17 +83,18 @@ Plans:
   3. Admin can review a new submission, advance its status to approved, and convert it to a live profile
   4. Admin can edit the hero banner image and title in Profile Fields tab; the homepage reflects the change after ISR revalidation
   5. The contact form API route sends an email and the revalidation API route refreshes affected pages when called with the correct secret
-**Plans**: TBD
+**Plans**: 9 plans
 
 Plans:
-- [ ] 04-01: Auth layer — /admin/login page, middleware auth guard, admin layout with getUser() check, logout
-- [ ] 04-02: Admin shell — 5-tab navigation, EN/Korean toggle, AdminDashboard Client Component structure
-- [ ] 04-03: Models tab — profile list, slide-out editor with all fields, create/edit/delete
-- [ ] 04-04: Image management — PhotoEditor (focal point + zoom), client-direct signed URL upload to Supabase Storage, gallery reorder
-- [ ] 04-05: Groups tab — group list, group editor with member selection and gallery upload
-- [ ] 04-06: Submissions tab — submission list, status workflow, convert-to-profile action
-- [ ] 04-07: Profile Fields tab — hero editor, card display config, tag groups editor, form field editor, category sections editor
-- [ ] 04-08: Areas tab, API routes (/api/contact Resend, /api/revalidate), ISR trigger wiring on all admin saves
+- [ ] 04-01-PLAN.md — Auth layer: /admin/login page, middleware auth guard, admin layout with getUser() check, logout
+- [ ] 04-02-PLAN.md — Admin shell: 5-tab navigation, EN/Korean toggle, AdminDashboard client component
+- [ ] 04-03-PLAN.md — Models tab: profile list with stats/filters, slide-out editor with all fields, CRUD
+- [ ] 04-04-PLAN.md — Image infrastructure: PhotoEditor (focal point + zoom), upload helpers, revalidation utility
+- [ ] 04-05-PLAN.md — Model image wiring: photo uploads into ModelEditor, gallery management, ISR on save
+- [ ] 04-06-PLAN.md — Groups tab: group list, inline editor with member selection and gallery
+- [ ] 04-07-PLAN.md — Submissions tab: status workflow, convert-to-profile action
+- [ ] 04-08-PLAN.md — Profile Fields tab: hero, card display, tag groups, form editor, category sections
+- [ ] 04-09-PLAN.md — Areas tab, API routes (/api/contact Resend, /api/revalidate ISR)
 
 ### Phase 5: Deployment & Launch
 **Goal**: The production Vercel deployment is live with all environment variables set, a clean TypeScript build, and every public route accessible at the production URL
@@ -119,5 +120,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Foundation | 1/2 | In progress | - |
 | 2. Supabase Setup | 3/3 | Complete   | 2026-03-09 |
 | 3. Public Pages | 5/6 | In Progress|  |
-| 4. Admin CMS | 0/8 | Not started | - |
+| 4. Admin CMS | 0/9 | Not started | - |
 | 5. Deployment & Launch | 0/1 | Not started | - |
