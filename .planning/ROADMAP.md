@@ -117,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 1/2 | In progress | - |
-| 2. Supabase Setup | 1/3 | In Progress|  |
+| 2. Supabase Setup | 2/3 | In Progress|  |
 | 3. Public Pages | 0/6 | Not started | - |
 | 4. Admin CMS | 0/8 | Not started | - |
 | 5. Deployment & Launch | 0/1 | Not started | - |

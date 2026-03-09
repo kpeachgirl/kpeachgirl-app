@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Completed 02-01-PLAN.md — Supabase SQL migrations (6 tables, RLS, storage, auth hook)
-last_updated: "2026-03-09T22:31:00.386Z"
-last_activity: 2026-03-09 — Completed 02-01 (Supabase SQL migrations)
+status: completed
+stopped_at: Completed 02-02-PLAN.md — Phase 2 complete
+last_updated: "2026-03-09T22:50:18.113Z"
+last_activity: 2026-03-09 — Completed 02-02 (Supabase client setup + admin auth)
 progress:
   total_phases: 5
   completed_phases: 1
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -25,32 +25,33 @@ See: .planning/PROJECT.md (updated 2026-03-09)
 
 ## Current Position
 
-Phase: 2 of 5 (Supabase Setup)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-03-09 — Completed 02-01 (Supabase SQL migrations)
+Phase: 2 of 5 (Supabase Setup) -- COMPLETE
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-03-09 — Completed 02-02 (Supabase client setup + admin auth)
 
-Progress: [█████░░░░░] 50%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
+- Total plans completed: 3
 - Average duration: 3 min
-- Total execution time: 0.08 hours
+- Total execution time: 0.15 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 1 | 3 min | 3 min |
-| 02-supabase-setup | 1 | 2 min | 2 min |
+| 02-supabase-setup | 2 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (3 min), 02-01 (2 min)
+- Last 5 plans: 01-01 (3 min), 02-01 (2 min), 02-02 (4 min)
 - Trend: Consistent fast execution
 
 *Updated after each plan completion*
+| Phase 02 P02 | 4min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -69,6 +70,9 @@ Recent decisions affecting current work:
 - [01-01]: Responsive breakpoints via semantic CSS classes (.model-grid etc.) not Tailwind utilities
 - [02-01]: submissions allows both anon and authenticated INSERT for form flexibility
 - [02-01]: updated_at auto-trigger on profiles, groups, site_config via plpgsql function
+- [02-02]: @supabase/ssr used exclusively for App Router cookie management (not deprecated auth-helpers)
+- [02-02]: REVOKE migration added for defense-in-depth on custom_access_token_hook
+- [02-02]: Custom Access Token Hook enabled for is_admin JWT claim injection from app_metadata
 
 ### Pending Todos
 
@@ -81,6 +85,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09
-Stopped at: Completed 02-01-PLAN.md — Supabase SQL migrations (6 tables, RLS, storage, auth hook)
+Last session: 2026-03-09T22:50:18.110Z
+Stopped at: Completed 02-02-PLAN.md — Phase 2 complete
 Resume file: None

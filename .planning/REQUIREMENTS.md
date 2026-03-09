@@ -28,9 +28,9 @@
 - [x] **DB-09**: site_config allows public SELECT, admin UPDATE only
 - [x] **DB-10**: Supabase Storage buckets created: profile-images (public), cover-images (public), gallery-images (public), submissions (private admin-only)
 - [x] **DB-11**: Storage RLS policies set correctly on storage.objects for each bucket
-- [ ] **DB-12**: Admin user (admin@kpeachgirl.com) created in Supabase Auth
+- [x] **DB-12**: Admin user (admin@kpeachgirl.com) created in Supabase Auth
 - [x] **DB-13**: Custom Access Token Hook injects is_admin: true into JWT for admin user; RLS uses (auth.jwt() ->> 'is_admin')::boolean
-- [ ] **DB-14**: lib/supabase/client.ts (browser), lib/supabase/server.ts (server components), lib/supabase/middleware.ts created using @supabase/ssr
+- [x] **DB-14**: lib/supabase/client.ts (browser), lib/supabase/server.ts (server components), lib/supabase/middleware.ts created using @supabase/ssr
 - [ ] **DB-15**: 12 seed model profiles seeded from prototype data with all attributes, gallery images (Unsplash URLs), and slugs
 - [ ] **DB-16**: Default site_config rows seeded (areas, categories, card_settings, pill_groups, hero, form_config)
 
