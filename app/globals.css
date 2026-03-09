@@ -2,26 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --cream:       #0e0d0c;
+  --warm:        #161514;
+  --sand:        #2a2622;
+  --charcoal:    #f0ebe5;
+  --ink:         #e0d8ce;
+  --muted:       #8a8078;
+  --rose:        #d4758a;
+  --rose-soft:   rgba(212, 117, 138, 0.12);
+  --rose-mid:    rgba(212, 117, 138, 0.2);
+  --peach:       #e0a08c;
+  --sage:        #8fad8f;
+  --card-bg:     #181716;
+  --input-bg:    #1e1d1b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--cream); color: var(--charcoal); }
+html { color-scheme: dark; }
+
+/* ─── Grain Texture ──────────────────────────────────────────── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Animations ─────────────────────────────────────────────── */
+.card-img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+.model-card:hover .card-img { transform: scale(1.06); }
+.model-card:hover .card-name { letter-spacing: 0.04em; }
+
+.slide-in { animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.fade-up { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes fadeUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+
+.gallery-item { break-inside: avoid; margin-bottom: 10px; cursor: pointer; overflow: hidden; }
+.gallery-item img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: block; width: 100%; }
+.gallery-item:hover img { transform: scale(1.03); }
+
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--rose) !important; }
+::selection { background: var(--rose-mid); }
+
+/* ─── Layout Classes & Responsive Breakpoints ───────────────── */
+
+/* Desktop (>1024px) */
+.model-grid      { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.profile-hero    { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; }
+.profile-stats   { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+.profile-gallery { columns: 3; column-gap: 10px; }
+.admin-slide     { position: fixed; top: 0; right: 0; bottom: 0; width: 500px; }
+.hero-title      { font-size: 72px; }
+.hero-search     { width: 360px; }
+.profile-name    { font-size: 64px; }
+.admin-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+
+/* Tablet (640px–1024px) */
+@media (max-width: 1024px) {
+  .model-grid      { grid-template-columns: repeat(2, 1fr); }
+  .profile-hero    { grid-template-columns: 1fr; min-height: auto; }
+  .profile-stats   { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .profile-gallery { columns: 2; }
+  .admin-slide     { width: 420px; }
+  .hero-title      { font-size: 56px; }
+  .profile-name    { font-size: 48px; }
+  .admin-fields-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile (<640px) */
+@media (max-width: 640px) {
+  .model-grid      { grid-template-columns: repeat(2, 1fr); gap: 1px; }
+  .profile-hero    { grid-template-columns: 1fr; }
+  .profile-stats   { grid-template-columns: 1fr; gap: 24px; }
+  .profile-gallery { columns: 2; column-gap: 6px; }
+  .admin-slide     { width: 100%; left: 0; }
+  .admin-save-bar  { width: 100%; left: 0; }
+  .admin-fields-grid { grid-template-columns: 1fr; }
+  .hero-title      { font-size: 36px; }
+  .profile-name    { font-size: 36px; }
+  .filter-scroll   { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
