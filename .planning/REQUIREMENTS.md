@@ -7,10 +7,10 @@
 
 ### Foundation
 
-- [ ] **FOUND-01**: Next.js 14.2.x project created with TypeScript strict mode and App Router
-- [ ] **FOUND-02**: Tailwind CSS v3 configured with all design tokens (dark luxury theme: --cream, --rose, --sage, etc.)
-- [ ] **FOUND-03**: Cormorant Garamond (serif) and Manrope (sans) loaded via next/font/google
-- [ ] **FOUND-04**: globals.css includes CSS variables, grain texture, animations, and responsive breakpoints
+- [x] **FOUND-01**: Next.js 14.2.x project created with TypeScript strict mode and App Router
+- [x] **FOUND-02**: Tailwind CSS v3 configured with all design tokens (dark luxury theme: --cream, --rose, --sage, etc.)
+- [x] **FOUND-03**: Cormorant Garamond (serif) and Manrope (sans) loaded via next/font/google
+- [x] **FOUND-04**: globals.css includes CSS variables, grain texture, animations, and responsive breakpoints
 - [ ] **FOUND-05**: lib/types.ts defines TypeScript interfaces for Profile, Group, Submission, SiteConfig, GalleryImage
 - [ ] **FOUND-06**: lib/constants.ts exports default site_config values (card_settings, pill_groups, categories, hero, form_config, areas)
 - [ ] **FOUND-07**: lib/i18n.ts exports 70+ translation keys in English and Korean with useTranslation hook
@@ -122,7 +122,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUND-01–07 | Phase 1: Foundation | Pending |
+| FOUND-01–04 | Phase 1: Foundation | Complete (01-01) |
+| FOUND-05–07 | Phase 1: Foundation | Pending (01-02) |
 | DB-01–16 | Phase 2: Supabase Setup | Pending |
 | PUB-01–19 | Phase 3: Public Pages | Pending |
 | ADM-01–20 | Phase 4: Admin CMS | Pending |

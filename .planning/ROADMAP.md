@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: TBD
 
 Plans:
-- [ ] 01-01: Next.js 14 scaffolding — create-next-app, tailwind.config.ts with design tokens, globals.css
+- [x] 01-01: Next.js 14 scaffolding — create-next-app, tailwind.config.ts with design tokens, globals.css
 - [ ] 01-02: Shared library — lib/types.ts, lib/constants.ts, lib/i18n.ts, lib/utils.ts (cn helper)
 
 ### Phase 2: Supabase Setup
@@ -117,7 +117,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Not started | - |
+| 1. Foundation | 1/2 | In progress | - |
 | 2. Supabase Setup | 0/4 | Not started | - |
 | 3. Public Pages | 0/6 | Not started | - |
 | 4. Admin CMS | 0/8 | Not started | - |
