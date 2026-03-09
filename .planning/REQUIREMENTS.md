@@ -54,7 +54,7 @@
 - [x] **PUB-16**: Membership form file upload (ID photo) uploads directly to Supabase Storage submissions bucket
 - [x] **PUB-17**: Membership form submission saves to submissions table with status 'new'; shows success message
 - [x] **PUB-18**: Each model/group profile page has SEO metadata (title, description, og:image from profile_image)
-- [ ] **PUB-19**: next/image configured with Supabase Storage hostname in remotePatterns
+- [x] **PUB-19**: next/image configured with Supabase Storage hostname in remotePatterns
 
 ### Admin CMS
 
