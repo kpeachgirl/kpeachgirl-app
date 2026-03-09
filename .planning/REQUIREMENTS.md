@@ -49,10 +49,10 @@
 - [ ] **PUB-11**: Model profile page shows "Also Available As" group links if model is in any groups
 - [ ] **PUB-12**: Group profile page (/group/[slug]) with ISR 60s; group image, badge, bio, members grid, combined gallery
 - [ ] **PUB-13**: Group profile page shows individual member cards linking to their profiles
-- [ ] **PUB-14**: Membership form page (/membership) CSR; renders dynamic fields from site_config form_config
-- [ ] **PUB-15**: Membership form supports all field types: text, email, textarea, area_select, exp_select, type_pills (multi-select), file_upload
-- [ ] **PUB-16**: Membership form file upload (ID photo) uploads directly to Supabase Storage submissions bucket
-- [ ] **PUB-17**: Membership form submission saves to submissions table with status 'new'; shows success message
+- [x] **PUB-14**: Membership form page (/membership) CSR; renders dynamic fields from site_config form_config
+- [x] **PUB-15**: Membership form supports all field types: text, email, textarea, area_select, exp_select, type_pills (multi-select), file_upload
+- [x] **PUB-16**: Membership form file upload (ID photo) uploads directly to Supabase Storage submissions bucket
+- [x] **PUB-17**: Membership form submission saves to submissions table with status 'new'; shows success message
 - [ ] **PUB-18**: Each model/group profile page has SEO metadata (title, description, og:image from profile_image)
 - [ ] **PUB-19**: next/image configured with Supabase Storage hostname in remotePatterns
 
