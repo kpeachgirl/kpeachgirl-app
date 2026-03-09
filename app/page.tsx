@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createStaticClient } from '@/lib/supabase/static';
 import { parseSiteConfig } from '@/lib/utils';
 import {
   DEFAULT_HERO,
@@ -30,7 +30,7 @@ export default async function HomePage() {
   let pillGroups: PillGroup[] = DEFAULT_PILL_GROUPS;
 
   try {
-    const supabase = createClient();
+    const supabase = createStaticClient();
 
     const [profilesRes, groupsRes, configRes] = await Promise.all([
       supabase
