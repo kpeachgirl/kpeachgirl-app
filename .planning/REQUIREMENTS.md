@@ -61,7 +61,7 @@
 - [x] **ADM-01**: Admin login page (/admin/login) authenticates via Supabase Auth signInWithPassword
 - [x] **ADM-02**: Admin routes (/admin/*) protected by middleware; unauthenticated users redirected to /admin/login
 - [x] **ADM-03**: Admin uses getUser() (not getSession()) for auth verification; JWT is_admin claim checked
-- [ ] **ADM-04**: Admin dashboard has 5-tab navigation: Models, Groups, Submissions, Profile Fields, Areas; EN/Korean language toggle
+- [x] **ADM-04**: Admin dashboard has 5-tab navigation: Models, Groups, Submissions, Profile Fields, Areas; EN/Korean language toggle
 - [ ] **ADM-05**: Models tab lists all profiles; admin can create, edit, delete models
 - [ ] **ADM-06**: Model editor slide-out panel: all profile fields (name, region, bio, experience, attributes, types, compensation, verified, vacation)
 - [ ] **ADM-07**: Model editor uploads profile photo, cover photo to Supabase Storage (client-direct signed URL); PhotoEditor with focal point + zoom crop
