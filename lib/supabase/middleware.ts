@@ -26,7 +26,16 @@ export async function updateSession(request: NextRequest) {
   )
 
   // Refresh the session -- important for Server Components
-  await supabase.auth.getUser()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Protect /admin routes (except /admin/login) at the middleware level
+  const pathname = request.nextUrl.pathname
+  if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
+    if (!user) {
+      const loginUrl = new URL('/admin/login', request.url)
+      return NextResponse.redirect(loginUrl)
+    }
+  }
 
   return supabaseResponse
 }
