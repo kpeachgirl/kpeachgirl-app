@@ -63,15 +63,15 @@ Plans:
   3. Clicking a model card opens the full profile page with bio, measurements, gallery lightbox with prev/next navigation, and shoot type pills
   4. The membership form at /membership renders all dynamic fields from site_config, accepts a file upload, and shows a success message after submission
   5. Each model and group profile page has correct og:title, og:description, and og:image metadata visible in page source
-**Plans**: TBD
+**Plans**: 6 plans
 
 Plans:
-- [ ] 03-01: Shared components — AgeGate, ModelCard, GroupCard, PhotoCropDisplay
-- [ ] 03-02: Homepage — hero banner, search, area filter, verified toggle, model grid, group cards
-- [ ] 03-03: Model profile page — /model/[slug] with ISR 60s, hero split, bio, categories, pills, gallery lightbox, group links, SEO metadata
-- [ ] 03-04: Group profile page — /group/[slug] with ISR 60s, members grid, combined gallery, SEO metadata
-- [ ] 03-05: Membership form — /membership CSR, dynamic fields, file upload to submissions bucket, success state
-- [ ] 03-06: next.config.ts remotePatterns for Supabase Storage; Vercel deploy and ISR smoke test
+- [ ] 03-01-PLAN.md — Shared lib files (types, constants, i18n, utils) and reusable UI components
+- [ ] 03-02-PLAN.md — Homepage with hero banner, search, area filters, verified toggle, model grid, group cards
+- [ ] 03-03-PLAN.md — Model profile page /model/[slug] with ISR, hero split, stats, gallery lightbox, group links, SEO
+- [ ] 03-04-PLAN.md — Group profile page /group/[slug] with ISR, members grid, combined gallery, SEO
+- [ ] 03-05-PLAN.md — Membership form /membership with dynamic fields, file upload, submission
+- [ ] 03-06-PLAN.md — next.config remotePatterns for Unsplash and full build verification
 
 ### Phase 4: Admin CMS
 **Goal**: The admin can log in and fully manage all site content — create, edit, and delete models and groups; advance submission statuses; configure site appearance and form fields; upload and crop all images — with every save triggering on-demand ISR revalidation of the public site
