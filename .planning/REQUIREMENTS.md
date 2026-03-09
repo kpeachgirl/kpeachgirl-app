@@ -36,14 +36,14 @@
 
 ### Public Pages
 
-- [ ] **PUB-01**: Age gate overlay shown on first visit; user must confirm 18+ to access site; persists in sessionStorage
+- [x] **PUB-01**: Age gate overlay shown on first visit; user must confirm 18+ to access site; persists in sessionStorage
 - [ ] **PUB-02**: Homepage (/) is SSG with ISR fallback; renders hero banner from site_config (image, title, subtitle, accent word)
 - [ ] **PUB-03**: Homepage search filters models by name or area (client-side)
 - [ ] **PUB-04**: Homepage area filter chips (All / LA / West LA / Mid-Wilshire / OC) from site_config areas
 - [ ] **PUB-05**: Homepage verified-only toggle filter
-- [ ] **PUB-06**: Homepage model card grid (4-col desktop, 2-col tablet/mobile) with profile image, name, region, badge pills
-- [ ] **PUB-07**: Model cards show verified badge and away/vacation badge per card_settings config
-- [ ] **PUB-08**: Group cards displayed below individual model grid with DUO/TRIO/GROUP badge
+- [x] **PUB-06**: Homepage model card grid (4-col desktop, 2-col tablet/mobile) with profile image, name, region, badge pills
+- [x] **PUB-07**: Model cards show verified badge and away/vacation badge per card_settings config
+- [x] **PUB-08**: Group cards displayed below individual model grid with DUO/TRIO/GROUP badge
 - [ ] **PUB-09**: Model profile page (/model/[slug]) with ISR 60s; hero split (cover + profile photo), bio, measurements/stats, category sections, shoot types and compensation pills
 - [ ] **PUB-10**: Model profile page gallery section with lightbox modal (click to enlarge, prev/next navigation)
 - [ ] **PUB-11**: Model profile page shows "Also Available As" group links if model is in any groups
