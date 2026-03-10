@@ -66,8 +66,8 @@
 - [x] **ADM-06**: Model editor slide-out panel: all profile fields (name, region, bio, experience, attributes, types, compensation, verified, vacation)
 - [x] **ADM-07**: Model editor uploads profile photo, cover photo to Supabase Storage (client-direct signed URL); PhotoEditor with focal point + zoom crop
 - [x] **ADM-08**: Model editor manages gallery images: upload multiple, reorder, delete; images go to gallery-images bucket
-- [ ] **ADM-09**: Groups tab lists all groups; admin can create, edit, delete groups
-- [ ] **ADM-10**: Group editor: name, bio, badge_label, image upload, member selection from existing profiles, gallery upload
+- [x] **ADM-09**: Groups tab lists all groups; admin can create, edit, delete groups
+- [x] **ADM-10**: Group editor: name, bio, badge_label, image upload, member selection from existing profiles, gallery upload
 - [ ] **ADM-11**: Submissions tab lists all membership form submissions with status (new/reviewed/approved/dismissed/converted)
 - [ ] **ADM-12**: Submissions status workflow: admin can advance status; can convert approved submission to live profile
 - [ ] **ADM-13**: Profile Fields tab — Hero section: upload banner image with crop, edit title lines, accent word, subtitle, search placeholder

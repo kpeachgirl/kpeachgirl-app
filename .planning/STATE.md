@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-09-PLAN.md
-last_updated: "2026-03-10T00:06:43.231Z"
+stopped_at: Completed 04-05-PLAN.md
+last_updated: "2026-03-10T00:07:43.626Z"
 last_activity: 2026-03-09 — Completed 04-02 (Admin dashboard shell)
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 15
+  completed_plans: 17
   percent: 63
 ---
 
@@ -63,6 +63,8 @@ Progress: [██████░░░░] 63%
 | Phase 04 P04 | 1min | 2 tasks | 2 files |
 | Phase 04 P03 | 3min | 2 tasks | 3 files |
 | Phase 04 P09 | 2min | 2 tasks | 5 files |
+| Phase 04 P06 | 3min | 1 tasks | 3 files |
+| Phase 04 P05 | 3min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -105,6 +107,8 @@ Recent decisions affecting current work:
 - [Phase 04]: editingModel uses undefined/null/Profile triple state for closed/new/editing
 - [Phase 04]: Category field values stored in attributes jsonb; top-level fields mapped separately in ModelEditor
 - [Phase 04]: Revalidation secret optional for same-origin admin calls; validated only when header present
+- [Phase 04]: GroupEditor uses inline expand/collapse pattern (not slide-out) matching prototype
+- [Phase 04]: Gallery images require model save first (needs profile_id); ISR revalidation fires on all mutations including group pages
 
 ### Pending Todos
 
@@ -117,6 +121,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T00:06:43.228Z
-Stopped at: Completed 04-09-PLAN.md
+Last session: 2026-03-10T00:07:43.623Z
+Stopped at: Completed 04-05-PLAN.md
 Resume file: None
