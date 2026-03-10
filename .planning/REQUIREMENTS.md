@@ -70,11 +70,11 @@
 - [x] **ADM-10**: Group editor: name, bio, badge_label, image upload, member selection from existing profiles, gallery upload
 - [x] **ADM-11**: Submissions tab lists all membership form submissions with status (new/reviewed/approved/dismissed/converted)
 - [x] **ADM-12**: Submissions status workflow: admin can advance status; can convert approved submission to live profile
-- [ ] **ADM-13**: Profile Fields tab — Hero section: upload banner image with crop, edit title lines, accent word, subtitle, search placeholder
-- [ ] **ADM-14**: Profile Fields tab — Card Display: configure subtitle fields, badge visibility/labels, overlay color/opacity
-- [ ] **ADM-15**: Profile Fields tab — Tag Groups: create/edit/delete pill groups (types, compensation) with colors and options
-- [ ] **ADM-16**: Profile Fields tab — Membership Form Editor: customize field labels, required, width, field type
-- [ ] **ADM-17**: Profile Fields tab — Category Sections: add/edit/remove profile sections (Vitals, Look, Work) with dynamic fields
+- [x] **ADM-13**: Profile Fields tab — Hero section: upload banner image with crop, edit title lines, accent word, subtitle, search placeholder
+- [x] **ADM-14**: Profile Fields tab — Card Display: configure subtitle fields, badge visibility/labels, overlay color/opacity
+- [x] **ADM-15**: Profile Fields tab — Tag Groups: create/edit/delete pill groups (types, compensation) with colors and options
+- [x] **ADM-16**: Profile Fields tab — Membership Form Editor: customize field labels, required, width, field type
+- [x] **ADM-17**: Profile Fields tab — Category Sections: add/edit/remove profile sections (Vitals, Look, Work) with dynamic fields
 - [x] **ADM-18**: Areas tab: add/remove geographic areas used for filtering
 - [x] **ADM-19**: All admin saves call Supabase DB mutations then trigger on-demand ISR revalidation via /api/revalidate
 - [x] **ADM-20**: Admin logout clears session
