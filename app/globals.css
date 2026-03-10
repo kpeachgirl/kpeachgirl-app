@@ -102,6 +102,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .profile-hero    { grid-template-columns: 1fr; min-height: auto; }
   .profile-stats   { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .profile-gallery { columns: 2; }
+  .member-details-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .admin-slide     { width: 420px; }
   .admin-save-bar  { width: 420px; }
   .admin-stats     { grid-template-columns: repeat(2, 1fr); }
@@ -123,6 +124,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .profile-hero    { grid-template-columns: 1fr; }
   .profile-stats   { grid-template-columns: 1fr; gap: 24px; }
   .profile-gallery { columns: 2; column-gap: 6px; }
+  .member-details-grid { grid-template-columns: 1fr !important; }
   .admin-stats     { grid-template-columns: repeat(2, 1fr); }
   .admin-table-row { grid-template-columns: 36px 1fr 60px; }
   .admin-slide     { width: 100%; left: 0; }

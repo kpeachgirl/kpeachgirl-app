@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Group, Profile, GroupGalleryImage, CategorySection, PillGroup } from '@/lib/types';
 import ProfilePills from '@/components/ProfilePills';
-import CategoryStats from '@/components/CategoryStats';
 import Lightbox from '@/components/Lightbox';
 
 interface GroupProfileClientProps {
@@ -43,11 +42,6 @@ export default function GroupProfileClient({
       pillData[pg.dataKey] = val as string[];
     }
   }
-
-  /* Check if group has any attribute data for categories */
-  const hasAttributes = categories.some((cat) =>
-    cat.fields.some((f) => group.attributes?.[f.key])
-  );
 
   /* Gallery image URLs */
   const galleryUrls = gallery.map((img) => img.url);
@@ -144,13 +138,100 @@ export default function GroupProfileClient({
         </div>
       </div>
 
-      {/* Category stats */}
-      {hasAttributes && (
-        <div className="grid-pad max-w-[1100px] mx-auto">
-          <CategoryStats
-            categories={categories}
-            attributes={group.attributes || {}}
-          />
+      {/* Member Details */}
+      {members.length > 0 && (
+        <div className="grid-pad max-w-[1200px] mx-auto">
+          <div className="font-serif text-[13px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
+            Member Details
+          </div>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: `repeat(${members.length}, 1fr)`,
+              gap: 24,
+            }}
+            className="member-details-grid"
+          >
+            {members.map((m) => (
+              <div key={m.id}>
+                {/* Member header */}
+                <Link
+                  href={`/model/${m.slug}`}
+                  className="flex items-center gap-3 mb-5 no-underline group"
+                >
+                  <div className="relative w-12 h-12 overflow-hidden flex-shrink-0">
+                    {m.profile_image ? (
+                      <Image
+                        src={m.profile_image}
+                        alt={m.name}
+                        fill
+                        sizes="48px"
+                        className="object-cover"
+                        style={
+                          m.profile_image_crop
+                            ? {
+                                objectPosition: `${m.profile_image_crop.x}% ${m.profile_image_crop.y}%`,
+                                transform: `scale(${(m.profile_image_crop.zoom || 100) / 100})`,
+                                transformOrigin: `${m.profile_image_crop.x}% ${m.profile_image_crop.y}%`,
+                              }
+                            : undefined
+                        }
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-sand" />
+                    )}
+                  </div>
+                  <div>
+                    <div className="font-sans text-sm font-bold text-charcoal group-hover:text-rose transition-colors">
+                      {m.name}
+                    </div>
+                    <div className="font-sans text-[10px] text-muted tracking-wide uppercase">
+                      {m.region} {m.verified && '· Verified'}
+                    </div>
+                  </div>
+                </Link>
+
+                {/* Stats */}
+                {categories.map((cat) => (
+                  <div key={cat.id} className="mb-4">
+                    <div className="font-serif text-[11px] font-semibold tracking-[0.14em] text-rose/60 uppercase mb-2 pb-1.5 border-b border-sand">
+                      {cat.title}
+                    </div>
+                    {cat.fields.map((f) => {
+                      let value: string | undefined;
+                      if (f.key === 'exp') {
+                        value = m.experience || undefined;
+                      } else if (f.key === 'region') {
+                        value = m.region || undefined;
+                      } else {
+                        value = m.attributes?.[f.key];
+                      }
+                      return (
+                        <div
+                          key={f.key}
+                          className="flex justify-between py-[7px] border-b border-white/[0.06]"
+                        >
+                          <span className="font-sans text-[11px] font-medium text-muted tracking-[0.03em]">
+                            {f.label}
+                          </span>
+                          <span className="font-sans text-xs font-bold text-charcoal">
+                            {value || '\u2014'}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+
+                {/* Bio excerpt */}
+                {m.bio && (
+                  <p className="font-sans text-xs text-muted leading-relaxed mt-2 line-clamp-3">
+                    {m.bio}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
