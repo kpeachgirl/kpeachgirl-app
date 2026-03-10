@@ -68,8 +68,8 @@
 - [x] **ADM-08**: Model editor manages gallery images: upload multiple, reorder, delete; images go to gallery-images bucket
 - [x] **ADM-09**: Groups tab lists all groups; admin can create, edit, delete groups
 - [x] **ADM-10**: Group editor: name, bio, badge_label, image upload, member selection from existing profiles, gallery upload
-- [ ] **ADM-11**: Submissions tab lists all membership form submissions with status (new/reviewed/approved/dismissed/converted)
-- [ ] **ADM-12**: Submissions status workflow: admin can advance status; can convert approved submission to live profile
+- [x] **ADM-11**: Submissions tab lists all membership form submissions with status (new/reviewed/approved/dismissed/converted)
+- [x] **ADM-12**: Submissions status workflow: admin can advance status; can convert approved submission to live profile
 - [ ] **ADM-13**: Profile Fields tab — Hero section: upload banner image with crop, edit title lines, accent word, subtitle, search placeholder
 - [ ] **ADM-14**: Profile Fields tab — Card Display: configure subtitle fields, badge visibility/labels, overlay color/opacity
 - [ ] **ADM-15**: Profile Fields tab — Tag Groups: create/edit/delete pill groups (types, compensation) with colors and options
