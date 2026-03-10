@@ -9,8 +9,9 @@ import ModelEditor from './ModelEditor'
 import GroupsTab from './GroupsTab'
 import AreasTab from './AreasTab'
 import SubmissionsTab from './SubmissionsTab'
+import ProfileFieldsTab from './ProfileFieldsTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
-import type { Profile, CategorySection, PillGroup, FormConfig } from '@/lib/types'
+import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings } from '@/lib/types'
 
 type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
 
@@ -28,6 +29,10 @@ export default function AdminDashboard() {
   const [pillGroups, setPillGroups] = useState<PillGroup[]>([])
   const [areas, setAreas] = useState<string[]>([])
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null)
+
+  // Hero and card settings for ProfileFieldsTab
+  const [heroConfig, setHeroConfig] = useState<HeroConfig>({ img: '', imgCrop: null, subtitle: '', titleLine1: '', titleLine2: '', titleAccent: '', searchPlaceholder: '' })
+  const [cardSettings, setCardSettings] = useState<CardSettings>({ subtitleFields: ['region', 'types'], showVerifiedBadge: true, showAwayBadge: true, verifiedLabel: 'Verified', awayLabel: 'Away', overlayColor: '#1a1a1a', overlayOpacity: 70 })
 
   // Profiles list for GroupsTab member selection
   const [allProfiles, setAllProfiles] = useState<Profile[]>([])
@@ -72,7 +77,7 @@ export default function AdminDashboard() {
     supabase
       .from('site_config')
       .select('id, value')
-      .in('id', ['categories', 'pill_groups', 'areas', 'form_config'])
+      .in('id', ['categories', 'pill_groups', 'areas', 'form_config', 'hero', 'card_settings'])
       .then(({ data }) => {
         if (data) {
           for (const row of data) {
@@ -80,6 +85,8 @@ export default function AdminDashboard() {
             if (row.id === 'pill_groups') setPillGroups(row.value as PillGroup[])
             if (row.id === 'areas') setAreas(row.value as string[])
             if (row.id === 'form_config') setFormConfig(row.value as FormConfig)
+            if (row.id === 'hero') setHeroConfig(row.value as HeroConfig)
+            if (row.id === 'card_settings') setCardSettings(row.value as CardSettings)
           }
         }
       })
@@ -111,6 +118,21 @@ export default function AdminDashboard() {
       .from('site_config')
       .update({ value: newAreas })
       .eq('id', 'areas')
+    triggerRevalidation(['/'])
+  }, [])
+
+  const handleConfigUpdate = useCallback(async (configId: string, value: any) => {
+    const supabase = createClient()
+    await supabase
+      .from('site_config')
+      .update({ value, updated_at: new Date().toISOString() })
+      .eq('id', configId)
+    // Update local state
+    if (configId === 'hero') setHeroConfig(value as HeroConfig)
+    if (configId === 'card_settings') setCardSettings(value as CardSettings)
+    if (configId === 'pill_groups') setPillGroups(value as PillGroup[])
+    if (configId === 'form_config') setFormConfig(value as FormConfig)
+    if (configId === 'categories') setCategories(value as CategorySection[])
     triggerRevalidation(['/'])
   }, [])
 
@@ -181,28 +203,17 @@ export default function AdminDashboard() {
           <AreasTab lang={lang} areas={areas} onUpdate={handleAreasUpdate} />
         )}
 
-        {/* Other tabs - placeholders */}
-        {activeTab === 'categories' && (
-          <div
-            style={{
-              color: 'var(--charcoal)',
-              fontFamily: 'var(--font-sans)',
-            }}
-          >
-            <h2
-              style={{
-                fontSize: 22,
-                fontWeight: 600,
-                marginBottom: 8,
-                fontFamily: 'var(--font-serif)',
-              }}
-            >
-              {tabLabels[activeTab]}
-            </h2>
-            <p style={{ color: 'var(--muted)', fontSize: 14 }}>
-              {t.catDesc}
-            </p>
-          </div>
+        {/* Profile Fields tab */}
+        {activeTab === 'categories' && formConfig && (
+          <ProfileFieldsTab
+            lang={lang}
+            heroConfig={heroConfig}
+            cardSettings={cardSettings}
+            pillGroups={pillGroups}
+            formConfig={formConfig}
+            categories={categories}
+            onConfigUpdate={handleConfigUpdate}
+          />
         )}
       </div>
 
