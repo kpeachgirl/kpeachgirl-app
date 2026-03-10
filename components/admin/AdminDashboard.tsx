@@ -6,9 +6,11 @@ import { useTranslation } from '@/lib/i18n'
 import AdminNav from './AdminNav'
 import ModelsTab from './ModelsTab'
 import ModelEditor from './ModelEditor'
+import GroupsTab from './GroupsTab'
 import AreasTab from './AreasTab'
+import SubmissionsTab from './SubmissionsTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
-import type { Profile, CategorySection, PillGroup } from '@/lib/types'
+import type { Profile, CategorySection, PillGroup, FormConfig } from '@/lib/types'
 
 type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
 
@@ -25,11 +27,24 @@ export default function AdminDashboard() {
   const [categories, setCategories] = useState<CategorySection[]>([])
   const [pillGroups, setPillGroups] = useState<PillGroup[]>([])
   const [areas, setAreas] = useState<string[]>([])
+  const [formConfig, setFormConfig] = useState<FormConfig | null>(null)
+
+  // Profiles list for GroupsTab member selection
+  const [allProfiles, setAllProfiles] = useState<Profile[]>([])
 
   // Key to force ModelsTab refresh
   const [modelsKey, setModelsKey] = useState(0)
 
   const t = useTranslation(lang)
+
+  const refreshSubmissionCount = useCallback(async () => {
+    const supabase = createClient()
+    const { count } = await supabase
+      .from('submissions')
+      .select('id', { count: 'exact', head: true })
+      .eq('status', 'new')
+    setNewSubmissionCount(count ?? 0)
+  }, [])
 
   useEffect(() => {
     const supabase = createClient()
@@ -42,29 +57,33 @@ export default function AdminDashboard() {
     })
 
     // Fetch new submission count
+    refreshSubmissionCount()
+
+    // Fetch all profiles for group member selection
     supabase
-      .from('submissions')
-      .select('id', { count: 'exact', head: true })
-      .eq('status', 'new')
-      .then(({ count }) => {
-        setNewSubmissionCount(count ?? 0)
+      .from('profiles')
+      .select('*')
+      .order('name', { ascending: true })
+      .then(({ data }) => {
+        if (data) setAllProfiles(data as Profile[])
       })
 
-    // Fetch site_config for editor
+    // Fetch site_config for editor (include form_config)
     supabase
       .from('site_config')
       .select('id, value')
-      .in('id', ['categories', 'pill_groups', 'areas'])
+      .in('id', ['categories', 'pill_groups', 'areas', 'form_config'])
       .then(({ data }) => {
         if (data) {
           for (const row of data) {
             if (row.id === 'categories') setCategories(row.value as CategorySection[])
             if (row.id === 'pill_groups') setPillGroups(row.value as PillGroup[])
             if (row.id === 'areas') setAreas(row.value as string[])
+            if (row.id === 'form_config') setFormConfig(row.value as FormConfig)
           }
         }
       })
-  }, [])
+  }, [refreshSubmissionCount])
 
   const handleEditModel = useCallback((model: Profile | null) => {
     setEditingModel(model)
@@ -94,6 +113,11 @@ export default function AdminDashboard() {
       .eq('id', 'areas')
     triggerRevalidation(['/'])
   }, [])
+
+  const handleSubmissionConverted = useCallback(() => {
+    setModelsKey(k => k + 1)
+    refreshSubmissionCount()
+  }, [refreshSubmissionCount])
 
   const tabLabels: Record<TabId, string> = {
     models: t.tabModels,
@@ -132,13 +156,33 @@ export default function AdminDashboard() {
           />
         )}
 
+        {/* Groups tab */}
+        {activeTab === 'groups' && (
+          <GroupsTab
+            lang={lang}
+            profiles={allProfiles}
+            pillGroups={pillGroups}
+            categories={categories}
+          />
+        )}
+
+        {/* Submissions tab */}
+        {activeTab === 'submissions' && (
+          <SubmissionsTab
+            lang={lang}
+            formConfig={formConfig}
+            areas={areas}
+            onConverted={handleSubmissionConverted}
+          />
+        )}
+
         {/* Areas tab */}
         {activeTab === 'areas' && (
           <AreasTab lang={lang} areas={areas} onUpdate={handleAreasUpdate} />
         )}
 
         {/* Other tabs - placeholders */}
-        {activeTab !== 'models' && activeTab !== 'areas' && (
+        {activeTab === 'categories' && (
           <div
             style={{
               color: 'var(--charcoal)',
@@ -156,9 +200,7 @@ export default function AdminDashboard() {
               {tabLabels[activeTab]}
             </h2>
             <p style={{ color: 'var(--muted)', fontSize: 14 }}>
-              {activeTab === 'groups' && t.grpDesc}
-              {activeTab === 'submissions' && t.subDesc}
-              {activeTab === 'categories' && t.catDesc}
+              {t.catDesc}
             </p>
           </div>
         )}
