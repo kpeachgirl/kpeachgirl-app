@@ -105,10 +105,10 @@ Plans:
   2. All 6 environment variables (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, ADMIN_EMAIL, REVALIDATION_SECRET) are set in Vercel production
   3. `next build` completes with zero TypeScript errors and zero build failures
   4. The production URL serves the homepage, a model profile page, and the admin login page without errors
-**Plans**: TBD
+**Plans**: 1 plan
 
 Plans:
-- [ ] 05-01: Vercel project setup, environment variables, production deployment, smoke test all routes
+- [ ] 05-01-PLAN.md — Clean production build, Vercel project setup with env vars, deploy and smoke test all routes
 
 ## Progress
 
