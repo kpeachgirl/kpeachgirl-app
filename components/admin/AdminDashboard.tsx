@@ -6,6 +6,8 @@ import { useTranslation } from '@/lib/i18n'
 import AdminNav from './AdminNav'
 import ModelsTab from './ModelsTab'
 import ModelEditor from './ModelEditor'
+import AreasTab from './AreasTab'
+import { triggerRevalidation } from '@/lib/supabase/admin'
 import type { Profile, CategorySection, PillGroup } from '@/lib/types'
 
 type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
@@ -83,6 +85,16 @@ export default function AdminDashboard() {
     setEditingModel(undefined)
   }, [])
 
+  const handleAreasUpdate = useCallback(async (newAreas: string[]) => {
+    const supabase = createClient()
+    setAreas(newAreas)
+    await supabase
+      .from('site_config')
+      .update({ value: newAreas })
+      .eq('id', 'areas')
+    triggerRevalidation(['/'])
+  }, [])
+
   const tabLabels: Record<TabId, string> = {
     models: t.tabModels,
     groups: t.tabGroups,
@@ -120,8 +132,13 @@ export default function AdminDashboard() {
           />
         )}
 
+        {/* Areas tab */}
+        {activeTab === 'areas' && (
+          <AreasTab lang={lang} areas={areas} onUpdate={handleAreasUpdate} />
+        )}
+
         {/* Other tabs - placeholders */}
-        {activeTab !== 'models' && (
+        {activeTab !== 'models' && activeTab !== 'areas' && (
           <div
             style={{
               color: 'var(--charcoal)',
@@ -142,7 +159,6 @@ export default function AdminDashboard() {
               {activeTab === 'groups' && t.grpDesc}
               {activeTab === 'submissions' && t.subDesc}
               {activeTab === 'categories' && t.catDesc}
-              {activeTab === 'areas' && t.areasDesc}
             </p>
           </div>
         )}
