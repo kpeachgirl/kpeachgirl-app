@@ -75,14 +75,14 @@
 - [ ] **ADM-15**: Profile Fields tab — Tag Groups: create/edit/delete pill groups (types, compensation) with colors and options
 - [ ] **ADM-16**: Profile Fields tab — Membership Form Editor: customize field labels, required, width, field type
 - [ ] **ADM-17**: Profile Fields tab — Category Sections: add/edit/remove profile sections (Vitals, Look, Work) with dynamic fields
-- [ ] **ADM-18**: Areas tab: add/remove geographic areas used for filtering
-- [ ] **ADM-19**: All admin saves call Supabase DB mutations then trigger on-demand ISR revalidation via /api/revalidate
+- [x] **ADM-18**: Areas tab: add/remove geographic areas used for filtering
+- [x] **ADM-19**: All admin saves call Supabase DB mutations then trigger on-demand ISR revalidation via /api/revalidate
 - [x] **ADM-20**: Admin logout clears session
 
 ### API Routes
 
-- [ ] **API-01**: /api/contact POST route receives contact form data, sends email via Resend to admin
-- [ ] **API-02**: /api/revalidate POST route validates REVALIDATION_SECRET header, calls revalidatePath for affected model/group pages
+- [x] **API-01**: /api/contact POST route receives contact form data, sends email via Resend to admin
+- [x] **API-02**: /api/revalidate POST route validates REVALIDATION_SECRET header, calls revalidatePath for affected model/group pages
 
 ### Deployment
 
