@@ -64,8 +64,8 @@
 - [x] **ADM-04**: Admin dashboard has 5-tab navigation: Models, Groups, Submissions, Profile Fields, Areas; EN/Korean language toggle
 - [ ] **ADM-05**: Models tab lists all profiles; admin can create, edit, delete models
 - [ ] **ADM-06**: Model editor slide-out panel: all profile fields (name, region, bio, experience, attributes, types, compensation, verified, vacation)
-- [ ] **ADM-07**: Model editor uploads profile photo, cover photo to Supabase Storage (client-direct signed URL); PhotoEditor with focal point + zoom crop
-- [ ] **ADM-08**: Model editor manages gallery images: upload multiple, reorder, delete; images go to gallery-images bucket
+- [x] **ADM-07**: Model editor uploads profile photo, cover photo to Supabase Storage (client-direct signed URL); PhotoEditor with focal point + zoom crop
+- [x] **ADM-08**: Model editor manages gallery images: upload multiple, reorder, delete; images go to gallery-images bucket
 - [ ] **ADM-09**: Groups tab lists all groups; admin can create, edit, delete groups
 - [ ] **ADM-10**: Group editor: name, bio, badge_label, image upload, member selection from existing profiles, gallery upload
 - [ ] **ADM-11**: Submissions tab lists all membership form submissions with status (new/reviewed/approved/dismissed/converted)

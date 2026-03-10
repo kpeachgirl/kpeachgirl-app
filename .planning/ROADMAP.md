@@ -120,5 +120,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Foundation | 1/2 | In progress | - |
 | 2. Supabase Setup | 3/3 | Complete   | 2026-03-09 |
 | 3. Public Pages | 5/6 | In Progress|  |
-| 4. Admin CMS | 2/9 | In Progress|  |
+| 4. Admin CMS | 3/9 | In Progress|  |
 | 5. Deployment & Launch | 0/1 | Not started | - |
