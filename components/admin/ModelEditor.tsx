@@ -142,6 +142,7 @@ export default function ModelEditor({
   const [form, setForm] = useState<FormState>(() => initForm(model))
   const [saved, setSaved] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [saveError, setSaveError] = useState<string | null>(null)
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([])
   const [editingPhoto, setEditingPhoto] = useState<EditingPhoto>(null)
   const [uploading, setUploading] = useState<string | null>(null)
@@ -283,10 +284,18 @@ export default function ModelEditor({
   // --- Save handler ---
   const handleSave = async () => {
     if (saving) return
+    setSaveError(null)
+
+    if (!form.name?.trim()) {
+      setSaveError('Name is required')
+      return
+    }
+
     setSaving(true)
 
     const slug = form.name
       .toLowerCase()
+      .trim()
       .replace(/\s+/g, '-')
       .replace(/[^a-z0-9-]/g, '')
 
@@ -323,6 +332,20 @@ export default function ModelEditor({
     const supabase = createClient()
 
     try {
+      // Check slug uniqueness
+      const { data: existing } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('slug', slug)
+        .neq('id', model?.id || '')
+        .maybeSingle()
+
+      if (existing) {
+        setSaveError(`A model with the URL "${slug}" already exists`)
+        setSaving(false)
+        return
+      }
+
       if (model?.id) {
         // Update existing
         const { data, error } = await supabase
@@ -362,8 +385,9 @@ export default function ModelEditor({
           onSave(data as Profile)
         }
       }
-    } catch (err) {
+    } catch (err: any) {
       console.error('Save failed:', err)
+      setSaveError(err?.message || 'Save failed')
     } finally {
       setSaving(false)
     }
@@ -866,6 +890,23 @@ export default function ModelEditor({
             </div>
           )}
         </div>
+
+        {/* Error message */}
+        {saveError && (
+          <div
+            style={{
+              margin: '0 24px 12px',
+              padding: '8px 12px',
+              background: 'rgba(212, 117, 138, 0.12)',
+              border: '1px solid rgba(212, 117, 138, 0.3)',
+              color: 'var(--rose)',
+              fontSize: 12,
+              fontFamily: 'var(--font-sans)',
+            }}
+          >
+            {saveError}
+          </div>
+        )}
 
         {/* Sticky footer */}
         <div

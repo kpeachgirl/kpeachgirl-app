@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { createStaticClient } from '@/lib/supabase/static';
 import type { Group, GroupGalleryImage, Profile, CategorySection, PillGroup } from '@/lib/types';
 import AgeGate from '@/components/AgeGate';
 import GroupProfileClient from '@/components/GroupProfileClient';
@@ -11,7 +11,7 @@ export const revalidate = 60;
 /* ─── Static Params ─── */
 export async function generateStaticParams() {
   try {
-    const supabase = createClient();
+    const supabase = createStaticClient();
     const { data } = await supabase.from('groups').select('slug');
     return (data || [])
       .filter((g): g is { slug: string } => g.slug !== null)
@@ -27,7 +27,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const supabase = createClient();
+  const supabase = createStaticClient();
   const { data: group } = await supabase
     .from('groups')
     .select('name, bio, image')
@@ -59,7 +59,7 @@ export default async function GroupProfilePage({
 }: {
   params: { slug: string };
 }) {
-  const supabase = createClient();
+  const supabase = createStaticClient();
 
   /* Fetch group */
   const { data: group } = await supabase

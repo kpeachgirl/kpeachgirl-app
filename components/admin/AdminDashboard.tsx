@@ -11,6 +11,7 @@ import AreasTab from './AreasTab'
 import SubmissionsTab from './SubmissionsTab'
 import ProfileFieldsTab from './ProfileFieldsTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
+import { DEFAULT_FORM_CONFIG } from '@/lib/constants'
 import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings } from '@/lib/types'
 
 type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
@@ -204,13 +205,13 @@ export default function AdminDashboard() {
         )}
 
         {/* Profile Fields tab */}
-        {activeTab === 'categories' && formConfig && (
+        {activeTab === 'categories' && (
           <ProfileFieldsTab
             lang={lang}
             heroConfig={heroConfig}
             cardSettings={cardSettings}
             pillGroups={pillGroups}
-            formConfig={formConfig}
+            formConfig={formConfig || DEFAULT_FORM_CONFIG}
             categories={categories}
             onConfigUpdate={handleConfigUpdate}
           />

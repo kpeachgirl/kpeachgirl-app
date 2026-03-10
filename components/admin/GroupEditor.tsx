@@ -175,7 +175,7 @@ export default function GroupEditor({
 
   const handleDelete = async () => {
     if (!group.id) return
-    if (!confirm('Delete this group? This cannot be undone.')) return
+    if (!confirm(t.deleteConfirm)) return
     try {
       const supabase = createClient()
       const { error } = await supabase.from('groups').delete().eq('id', group.id)

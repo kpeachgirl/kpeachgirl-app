@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import type { Metadata } from 'next';
-import { createClient } from '@/lib/supabase/server';
+import { createStaticClient } from '@/lib/supabase/static';
 import { parseSiteConfig } from '@/lib/utils';
 import type { Profile, GalleryImage, Group, CategorySection, PillGroup } from '@/lib/types';
 import AgeGate from '@/components/AgeGate';
@@ -11,7 +12,7 @@ export const revalidate = 60;
 /* ─── Static Params (ISR pre-render all profile slugs) ─── */
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   try {
-    const supabase = createClient();
+    const supabase = createStaticClient();
     const { data } = await supabase
       .from('profiles')
       .select('slug')
@@ -28,7 +29,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
-  const supabase = createClient();
+  const supabase = createStaticClient();
   const { data: profile } = await supabase
     .from('profiles')
     .select('name, bio, profile_image')
@@ -62,7 +63,7 @@ export default async function ModelProfilePage({
 }: {
   params: { slug: string };
 }) {
-  const supabase = createClient();
+  const supabase = createStaticClient();
 
   // Fetch profile by slug
   const { data: profile } = await supabase
@@ -111,12 +112,12 @@ export default async function ModelProfilePage({
           borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
         }}
       >
-        <a
+        <Link
           href="/"
           className="font-sans text-xs font-semibold tracking-[0.1em] text-muted uppercase no-underline hover:text-charcoal transition-colors"
         >
           &larr; Back
-        </a>
+        </Link>
         <div className="font-serif text-[22px] font-normal tracking-[-0.01em] text-charcoal">
           K<span className="text-rose">peach</span>girl
         </div>

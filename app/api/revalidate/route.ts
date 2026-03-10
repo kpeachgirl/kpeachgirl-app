@@ -3,9 +3,13 @@ import { revalidatePath } from 'next/cache'
 
 export async function POST(request: NextRequest) {
   try {
-    // If x-revalidation-secret header is present, validate it
+    // Allow internal calls (same origin) or validate secret for external calls
     const secret = request.headers.get('x-revalidation-secret')
-    if (secret && secret !== process.env.REVALIDATION_SECRET) {
+    const referer = request.headers.get('referer') || ''
+    const host = request.headers.get('host') || ''
+    const isInternal = referer.includes(host)
+
+    if (!isInternal && (!secret || secret !== process.env.REVALIDATION_SECRET)) {
       return NextResponse.json(
         { error: 'Invalid secret' },
         { status: 401 }

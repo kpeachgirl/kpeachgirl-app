@@ -63,9 +63,20 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
     const region = fd.region || areas[0] || 'LA'
     const parentRegion = region.toLowerCase().includes('oc') ? 'OC' : 'LA'
 
+    // Generate unique slug (append number if duplicate)
+    let slug = generateSlug(fd.name)
+    const { data: existing } = await supabase
+      .from('profiles')
+      .select('id')
+      .eq('slug', slug)
+      .maybeSingle()
+    if (existing) {
+      slug = `${slug}-${Date.now().toString(36).slice(-4)}`
+    }
+
     const { error } = await supabase.from('profiles').insert({
       name: fd.name,
-      slug: generateSlug(fd.name),
+      slug,
       region,
       parent_region: parentRegion,
       bio: fd.bio || '',

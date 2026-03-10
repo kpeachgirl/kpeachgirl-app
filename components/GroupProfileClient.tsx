@@ -120,6 +120,8 @@ export default function GroupProfileClient({
                         m.profile_image_crop
                           ? {
                               objectPosition: `${m.profile_image_crop.x}% ${m.profile_image_crop.y}%`,
+                              transform: `scale(${(m.profile_image_crop.zoom || 100) / 100})`,
+                              transformOrigin: `${m.profile_image_crop.x}% ${m.profile_image_crop.y}%`,
                             }
                           : undefined
                       }
