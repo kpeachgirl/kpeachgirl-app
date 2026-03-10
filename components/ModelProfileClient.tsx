@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import Link from 'next/link';
 import type { Profile, GalleryImage, Group, CategorySection, PillGroup } from '@/lib/types';
 import { cropStyle } from '@/lib/utils';
@@ -32,10 +32,6 @@ export default function ModelProfileClient({
   pillGroups,
 }: ModelProfileClientProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [showContact, setShowContact] = useState(false);
-  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
-  const [contactStatus, setContactStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const contactRef = useRef<HTMLDivElement>(null);
 
   const handleNavigate = useCallback((index: number) => {
     setLightboxIndex(index);
@@ -44,8 +40,6 @@ export default function ModelProfileClient({
   const handleClose = useCallback(() => {
     setLightboxIndex(null);
   }, []);
-
-  const firstName = profile.name.split(' ')[0];
 
   // Build pill data from profile
   const pillData: Record<string, string[]> = {
@@ -171,90 +165,6 @@ export default function ModelProfileClient({
             <ProfilePills pillGroups={pillGroups} data={pillData} />
           </div>
 
-          {/* Contact button */}
-          {!profile.vacation && (
-            <button
-              onClick={() => { setShowContact(true); setContactStatus('idle'); }}
-              className="font-sans self-start transition-colors duration-300 hover:!bg-[var(--rose)]"
-              style={{
-                padding: '14px 36px',
-                background: 'var(--charcoal)',
-                color: 'var(--cream)',
-                border: 'none',
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-              }}
-            >
-              Contact {firstName}
-            </button>
-          )}
-
-          {/* Contact modal */}
-          {showContact && (
-            <div
-              style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 1500, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}
-              onClick={(e) => { if (e.target === e.currentTarget) setShowContact(false); }}
-            >
-              <div ref={contactRef} style={{ background: 'var(--warm)', border: '1px solid var(--sand)', borderRadius: 12, padding: 28, width: '100%', maxWidth: 440, fontFamily: 'var(--font-sans)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-                  <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)', margin: 0 }}>
-                    Contact {firstName}
-                  </h3>
-                  <button onClick={() => setShowContact(false)} style={{ background: 'none', border: 'none', color: 'var(--muted)', fontSize: 18, cursor: 'pointer' }}>x</button>
-                </div>
-                {contactStatus === 'sent' ? (
-                  <div style={{ textAlign: 'center', padding: '20px 0' }}>
-                    <div style={{ color: 'var(--sage)', fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Message Sent!</div>
-                    <p style={{ color: 'var(--muted)', fontSize: 13 }}>We&apos;ll forward your message to {firstName}.</p>
-                    <button onClick={() => setShowContact(false)} style={{ marginTop: 16, padding: '10px 24px', background: 'var(--charcoal)', color: 'var(--cream)', border: 'none', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', cursor: 'pointer' }}>Close</button>
-                  </div>
-                ) : (
-                  <>
-                    <div style={{ marginBottom: 12 }}>
-                      <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 4 }}>Your Name</label>
-                      <input value={contactForm.name} onChange={e => setContactForm(p => ({ ...p, name: e.target.value }))} style={{ width: '100%', padding: '8px 12px', background: 'var(--input-bg)', border: '1px solid var(--sand)', color: 'var(--charcoal)', fontSize: 13 }} />
-                    </div>
-                    <div style={{ marginBottom: 12 }}>
-                      <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 4 }}>Your Email</label>
-                      <input type="email" value={contactForm.email} onChange={e => setContactForm(p => ({ ...p, email: e.target.value }))} style={{ width: '100%', padding: '8px 12px', background: 'var(--input-bg)', border: '1px solid var(--sand)', color: 'var(--charcoal)', fontSize: 13 }} />
-                    </div>
-                    <div style={{ marginBottom: 16 }}>
-                      <label style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 4 }}>Message</label>
-                      <textarea value={contactForm.message} onChange={e => setContactForm(p => ({ ...p, message: e.target.value }))} rows={4} style={{ width: '100%', padding: '8px 12px', background: 'var(--input-bg)', border: '1px solid var(--sand)', color: 'var(--charcoal)', fontSize: 13, resize: 'vertical' }} />
-                    </div>
-                    {contactStatus === 'error' && (
-                      <div style={{ color: 'var(--rose)', fontSize: 12, marginBottom: 10 }}>Failed to send. Please try again.</div>
-                    )}
-                    <button
-                      disabled={contactStatus === 'sending' || !contactForm.name || !contactForm.email || !contactForm.message}
-                      onClick={async () => {
-                        setContactStatus('sending');
-                        try {
-                          const res = await fetch('/api/contact', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ ...contactForm, modelName: profile.name }),
-                          });
-                          if (!res.ok) throw new Error();
-                          setContactStatus('sent');
-                          setContactForm({ name: '', email: '', message: '' });
-                        } catch { setContactStatus('error'); }
-                      }}
-                      style={{
-                        width: '100%', padding: '12px 0', background: contactStatus === 'sending' ? 'var(--sand)' : 'var(--charcoal)', color: 'var(--cream)', border: 'none', fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                        cursor: contactStatus === 'sending' ? 'wait' : 'pointer', opacity: (!contactForm.name || !contactForm.email || !contactForm.message) ? 0.4 : 1,
-                      }}
-                    >
-                      {contactStatus === 'sending' ? 'Sending...' : 'Send Message'}
-                    </button>
-                  </>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
