@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
+import { triggerRevalidation } from '@/lib/supabase/admin'
 import { useTranslation } from '@/lib/i18n'
 import type { Profile } from '@/lib/types'
 
@@ -51,6 +52,10 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
     setModels(prev => prev.map(m => m.id === id ? { ...m, [field]: newVal } : m))
     const supabase = createClient()
     await supabase.from('profiles').update({ [field]: newVal }).eq('id', id)
+    // Trigger ISR revalidation for affected pages
+    if (model.slug) {
+      triggerRevalidation(['/', `/model/${model.slug}`])
+    }
   }
 
   const filtered = models.filter(m => {
