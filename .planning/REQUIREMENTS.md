@@ -86,7 +86,7 @@
 
 ### Deployment
 
-- [ ] **DEP-01**: Vercel project created/linked for kpeachgirl-app repository
+- [x] **DEP-01**: Vercel project created/linked for kpeachgirl-app repository
 - [ ] **DEP-02**: All environment variables set in Vercel: NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY, ADMIN_EMAIL, REVALIDATION_SECRET
 - [ ] **DEP-03**: Production build succeeds (next build) with no TypeScript errors
 - [ ] **DEP-04**: Deployed to Vercel production URL; homepage, model profiles, admin login all accessible
