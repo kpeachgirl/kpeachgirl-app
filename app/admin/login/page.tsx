@@ -102,16 +102,12 @@ export default function AdminLoginPage() {
 
         {/* Logo */}
         <div className="text-center mb-10">
-          <h1
-            className="text-3xl tracking-widest uppercase mb-2"
-            style={{
-              fontFamily: 'var(--font-serif)',
-              color: 'var(--charcoal)',
-              letterSpacing: '0.2em',
-            }}
-          >
-            K<span style={{ color: 'var(--rose)' }}>peach</span>girl
-          </h1>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/profile-images/branding/logo.png`}
+            alt="Kpeachgirl"
+            style={{ height: 36, width: 'auto', margin: '0 auto 8px', display: 'block' }}
+          />
           <p
             className="text-sm tracking-wider uppercase"
             style={{
