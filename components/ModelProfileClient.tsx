@@ -60,12 +60,21 @@ export default function ModelProfileClient({
       '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" fill="#2a2622"/></svg>'
     );
 
+  // Build all viewable images: profile image first, then gallery
+  const allImages: string[] = [];
+  if (profile.profile_image) allImages.push(profile.profile_image);
+  if (profile.cover_image && profile.cover_image !== profile.profile_image) allImages.push(profile.cover_image);
+  gallery.forEach((img) => allImages.push(img.url));
+
   return (
     <div className="grain" style={{ minHeight: '100vh', background: 'var(--cream)' }}>
       {/* ─── Hero Split Section ─── */}
       <div className="fade-up profile-hero" style={{ paddingTop: 72 }}>
         {/* Cover image */}
-        <div style={{ position: 'relative', overflow: 'hidden', minHeight: 350 }}>
+        <div
+          style={{ position: 'relative', overflow: 'hidden', minHeight: 350, cursor: 'zoom-in' }}
+          onClick={() => setLightboxIndex(0)}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={profile.cover_image || profile.profile_image || placeholderCover}
@@ -185,11 +194,14 @@ export default function ModelProfileClient({
             Portfolio
           </div>
           <div className="profile-gallery">
-            {gallery.map((img, i) => (
+            {gallery.map((img, i) => {
+              // Offset index by number of hero images added before gallery
+              const heroCount = allImages.length - gallery.length;
+              return (
               <div
                 key={img.id}
                 className="gallery-item"
-                onClick={() => setLightboxIndex(i)}
+                onClick={() => setLightboxIndex(i + heroCount)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -206,7 +218,8 @@ export default function ModelProfileClient({
                   style={img.crop ? cropStyle(img.crop) : { objectFit: 'cover' }}
                 />
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -262,7 +275,7 @@ export default function ModelProfileClient({
       {/* ─── Lightbox ─── */}
       {lightboxIndex !== null && (
         <Lightbox
-          images={gallery.map((img) => img.url)}
+          images={allImages}
           currentIndex={lightboxIndex}
           onClose={handleClose}
           onNavigate={handleNavigate}

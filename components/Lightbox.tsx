@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useRef } from 'react';
 
 interface LightboxProps {
   images: string[];
@@ -10,6 +10,8 @@ interface LightboxProps {
 }
 
 export default function Lightbox({ images, currentIndex, onClose, onNavigate }: LightboxProps) {
+  const touchStartX = useRef<number | null>(null);
+
   const handlePrev = useCallback(() => {
     onNavigate(Math.max(0, currentIndex - 1));
   }, [currentIndex, onNavigate]);
@@ -26,7 +28,6 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
     };
     window.addEventListener('keydown', handleKey);
 
-    // Prevent body scroll
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
@@ -36,9 +37,25 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
     };
   }, [onClose, handlePrev, handleNext]);
 
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handlePrev();
+      else handleNext();
+    }
+    touchStartX.current = null;
+  };
+
   return (
     <div
       onClick={onClose}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       className="fixed inset-0 z-[2000] flex items-center justify-center cursor-zoom-out"
       style={{
         background: 'rgba(0, 0, 0, 0.96)',
