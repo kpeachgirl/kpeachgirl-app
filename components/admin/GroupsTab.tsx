@@ -99,7 +99,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
   if (loading) {
     return (
       <div style={{ color: 'var(--muted)', fontFamily: 'var(--font-sans)', padding: 40, textAlign: 'center' }}>
-        Loading groups...
+        {t.loadingGroups}
       </div>
     )
   }
@@ -107,8 +107,8 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
   return (
     <div>
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-        <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <h2
             className="serif"
             style={{
@@ -231,7 +231,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                         </span>
                       </div>
                       <div style={{ fontSize: 11, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>
-                        {(g.member_ids || []).length} members
+                        {(g.member_ids || []).length} {t.membersCount}
                       </div>
                     </div>
                     <button

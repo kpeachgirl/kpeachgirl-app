@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { useTranslation } from '@/lib/i18n'
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState('')
@@ -11,16 +12,21 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [lang, setLang] = useState<'en' | 'ko'>('en')
   const router = useRouter()
   const supabase = createClient()
+  const t = useTranslation(lang)
 
   useEffect(() => {
     setMounted(true)
+    // Restore language preference
+    const saved = localStorage.getItem('kpeach-lang')
+    if (saved === 'ko') setLang('ko')
   }, [])
 
   const handleLogin = async () => {
     if (!email || !password) {
-      setError('Please enter both email and password.')
+      setError(t.loginError)
       return
     }
 
@@ -60,6 +66,40 @@ export default function AdminLoginPage() {
           transition: 'opacity 0.6s ease, transform 0.6s ease',
         }}
       >
+        {/* Language toggle */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
+          <div
+            style={{
+              display: 'flex',
+              borderRadius: 6,
+              overflow: 'hidden',
+              border: '1px solid var(--sand)',
+            }}
+          >
+            {(['en', 'ko'] as const).map((l) => (
+              <button
+                key={l}
+                onClick={() => { setLang(l); localStorage.setItem('kpeach-lang', l) }}
+                style={{
+                  padding: '4px 10px',
+                  fontSize: 11,
+                  fontWeight: 700,
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  border: 'none',
+                  cursor: 'pointer',
+                  background: lang === l ? 'var(--charcoal)' : 'transparent',
+                  color: lang === l ? 'var(--cream)' : 'var(--muted)',
+                  transition: 'all 0.15s',
+                }}
+              >
+                {l === 'en' ? 'EN' : 'KO'}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Logo */}
         <div className="text-center mb-10">
           <h1
@@ -80,7 +120,7 @@ export default function AdminLoginPage() {
               letterSpacing: '0.15em',
             }}
           >
-            Admin Portal
+            {t.loginPortal}
           </p>
         </div>
 
@@ -114,7 +154,7 @@ export default function AdminLoginPage() {
                 letterSpacing: '0.1em',
               }}
             >
-              Email
+              {t.loginEmail}
             </label>
             <input
               type="email"
@@ -141,14 +181,14 @@ export default function AdminLoginPage() {
                 letterSpacing: '0.1em',
               }}
             >
-              Password
+              {t.loginPassword}
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Enter password"
+              placeholder={t.loginPasswordPh}
               className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors"
               style={{
                 background: '#1e1d1b',
@@ -171,7 +211,7 @@ export default function AdminLoginPage() {
               cursor: loading ? 'not-allowed' : 'pointer',
             }}
           >
-            {loading ? 'Authenticating...' : 'Sign In'}
+            {loading ? t.loginLoading : t.loginSubmit}
           </button>
         </div>
 
@@ -185,7 +225,7 @@ export default function AdminLoginPage() {
               fontFamily: 'var(--font-sans)',
             }}
           >
-            &larr; Back to Site
+            {t.loginBack}
           </Link>
         </div>
 
@@ -198,7 +238,7 @@ export default function AdminLoginPage() {
             opacity: 0.6,
           }}
         >
-          Authorized personnel only. All sessions are logged.
+          {t.loginDisclaimer}
         </p>
       </div>
     </div>

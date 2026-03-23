@@ -1,5 +1,8 @@
 import { createClient } from './client';
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+
 /**
  * Upload an image to Supabase Storage with UUID-based path to prevent collisions.
  * Falls back to signed URL upload if direct upload fails (auth/RLS).
@@ -9,6 +12,15 @@ export async function uploadImage(
   bucket: string,
   folder: string
 ): Promise<string> {
+  // Validate file size
+  if (file.size > MAX_FILE_SIZE) {
+    throw new Error('File exceeds 10MB limit');
+  }
+  // Validate MIME type
+  if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+    throw new Error('Invalid file type. Only JPEG, PNG, WebP, and GIF are allowed.');
+  }
+
   const supabase = createClient();
   const safeName = file.name.replace(/[^a-z0-9.-]/gi, '_');
   const path = `${folder}/${crypto.randomUUID()}-${safeName}`;

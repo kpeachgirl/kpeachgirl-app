@@ -149,4 +149,5 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .cat-heading     { font-size: 22px; }
   .admin-nav-pad   { padding: 12px 16px; }
   .admin-table-row .mob-hide { display: none; }
+  .mob-hide { display: none !important; }
 }

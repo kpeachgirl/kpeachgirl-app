@@ -118,7 +118,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
   if (loading) {
     return (
       <div style={{ color: 'var(--muted)', fontFamily: 'var(--font-sans)', padding: 40, textAlign: 'center' }}>
-        Loading...
+        {t.loading}
       </div>
     )
   }
@@ -126,8 +126,8 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
   return (
     <div style={{ fontFamily: 'var(--font-sans)', color: 'var(--charcoal)' }}>
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-        <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
           <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0, fontFamily: 'var(--font-serif)' }}>
             {t.subTitle}
           </h2>
@@ -298,16 +298,16 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                 <div
                   style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))',
                     gap: 8,
                     marginBottom: 10,
                   }}
                 >
                   {[
-                    { label: 'Age', value: fd.age },
-                    { label: 'Height', value: fd.height },
-                    { label: 'Area', value: fd.region },
-                    { label: 'Experience', value: fd.exp },
+                    { label: t.regAge, value: fd.age },
+                    { label: t.regHeight, value: fd.height },
+                    { label: t.area, value: fd.region },
+                    { label: t.experience, value: fd.exp },
                   ].map(
                     item =>
                       item.value && (
@@ -382,7 +382,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                           fontWeight: 600,
                         }}
                       >
-                        Uploaded
+                        {t.uploaded}
                       </span>
                     </div>
                   )

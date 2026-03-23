@@ -11,8 +11,8 @@ import AreasTab from './AreasTab'
 import SubmissionsTab from './SubmissionsTab'
 import ProfileFieldsTab from './ProfileFieldsTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
-import { DEFAULT_FORM_CONFIG } from '@/lib/constants'
-import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings } from '@/lib/types'
+import { DEFAULT_FORM_CONFIG, DEFAULT_AGE_GATE } from '@/lib/constants'
+import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings, AgeGateConfig } from '@/lib/types'
 
 type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
 
@@ -31,9 +31,10 @@ export default function AdminDashboard() {
   const [areas, setAreas] = useState<string[]>([])
   const [formConfig, setFormConfig] = useState<FormConfig | null>(null)
 
-  // Hero and card settings for ProfileFieldsTab
+  // Hero, card settings, and age gate for ProfileFieldsTab
   const [heroConfig, setHeroConfig] = useState<HeroConfig>({ img: '', imgCrop: null, subtitle: '', titleLine1: '', titleLine2: '', titleAccent: '', searchPlaceholder: '' })
   const [cardSettings, setCardSettings] = useState<CardSettings>({ subtitleFields: ['region', 'types'], showVerifiedBadge: true, showAwayBadge: true, verifiedLabel: 'Verified', awayLabel: 'Away', overlayColor: '#1a1a1a', overlayOpacity: 70 })
+  const [ageGateConfig, setAgeGateConfig] = useState<AgeGateConfig>(DEFAULT_AGE_GATE)
 
   // Profiles list for GroupsTab member selection
   const [allProfiles, setAllProfiles] = useState<Profile[]>([])
@@ -78,7 +79,7 @@ export default function AdminDashboard() {
     supabase
       .from('site_config')
       .select('id, value')
-      .in('id', ['categories', 'pill_groups', 'areas', 'form_config', 'hero', 'card_settings'])
+      .in('id', ['categories', 'pill_groups', 'areas', 'form_config', 'hero', 'card_settings', 'age_gate'])
       .then(({ data }) => {
         if (data) {
           for (const row of data) {
@@ -88,6 +89,7 @@ export default function AdminDashboard() {
             if (row.id === 'form_config') setFormConfig(row.value as FormConfig)
             if (row.id === 'hero') setHeroConfig(row.value as HeroConfig)
             if (row.id === 'card_settings') setCardSettings(row.value as CardSettings)
+            if (row.id === 'age_gate') setAgeGateConfig(row.value as AgeGateConfig)
           }
         }
       })
@@ -126,14 +128,14 @@ export default function AdminDashboard() {
     const supabase = createClient()
     await supabase
       .from('site_config')
-      .update({ value, updated_at: new Date().toISOString() })
-      .eq('id', configId)
+      .upsert({ id: configId, value, updated_at: new Date().toISOString() })
     // Update local state
     if (configId === 'hero') setHeroConfig(value as HeroConfig)
     if (configId === 'card_settings') setCardSettings(value as CardSettings)
     if (configId === 'pill_groups') setPillGroups(value as PillGroup[])
     if (configId === 'form_config') setFormConfig(value as FormConfig)
     if (configId === 'categories') setCategories(value as CategorySection[])
+    if (configId === 'age_gate') setAgeGateConfig(value as AgeGateConfig)
     triggerRevalidation(['/'])
   }, [])
 
@@ -166,7 +168,7 @@ export default function AdminDashboard() {
         style={{
           maxWidth: 1200,
           margin: '0 auto',
-          padding: '32px 24px',
+          padding: '32px 16px',
         }}
       >
         {/* Models tab */}
@@ -213,6 +215,7 @@ export default function AdminDashboard() {
             pillGroups={pillGroups}
             formConfig={formConfig || DEFAULT_FORM_CONFIG}
             categories={categories}
+            ageGateConfig={ageGateConfig}
             onConfigUpdate={handleConfigUpdate}
           />
         )}

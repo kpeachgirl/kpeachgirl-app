@@ -133,4 +133,13 @@ export interface CategorySection {
   fields: CategoryField[];
 }
 
+export interface AgeGateConfig {
+  heading: string;
+  body: string;
+  enterButton: string;
+  leaveButton: string;
+  disclaimer: string;
+  enabled: boolean;
+}
+
 export type AreaConfig = string[];

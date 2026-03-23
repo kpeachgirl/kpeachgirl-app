@@ -84,7 +84,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
   if (loading) {
     return (
       <div style={{ color: 'var(--muted)', fontSize: 14, padding: '40px 0', textAlign: 'center' }}>
-        Loading models...
+        {t.loadingModels}
       </div>
     )
   }

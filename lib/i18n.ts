@@ -220,6 +220,70 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     regBack: '\u2190 Back to Site',
     regRequired: 'Required',
 
+    // Login
+    loginPortal: 'Admin Portal',
+    loginEmail: 'Email',
+    loginPassword: 'Password',
+    loginPasswordPh: 'Enter password',
+    loginSubmit: 'Sign In',
+    loginLoading: 'Authenticating...',
+    loginError: 'Please enter both email and password.',
+    loginBack: '\u2190 Back to Site',
+    loginDisclaimer: 'Authorized personnel only. All sessions are logged.',
+    logout: 'Logout',
+
+    // Loading states
+    loadingModels: 'Loading models...',
+    loadingGroups: 'Loading groups...',
+    loading: 'Loading...',
+    uploading: 'Uploading...',
+    clickToUpload: 'Click to upload',
+    savingText: 'Saving...',
+    uploaded: 'Uploaded',
+
+    // Validation
+    nameRequired: 'Name is required',
+    slugExists: 'A model with this URL already exists',
+    saveGalleryFirst: 'Save the model first to add gallery images',
+    saveGroupFirst: 'Save the group first to upload gallery images.',
+
+    // Members
+    membersCount: 'members',
+
+    // ProfileFieldsTab section titles
+    pfHeroTitle: 'Hero Banner Settings',
+    pfHeroDesc: 'Configure the homepage hero banner image and text.',
+    pfCardTitle: 'Card Display',
+    pfCardDesc: 'Configure how model cards appear on the homepage.',
+    pfSubtitleFields: 'Subtitle Fields',
+    pfBadges: 'Badges',
+    pfCardOverlay: 'Card Overlay',
+    pfColor: 'Color',
+    pfOpacity: 'Opacity',
+    pfTagGroups: 'Tag Groups',
+    pfTagGroupsDesc: 'Manage filter pill groups shown on profiles and homepage.',
+    pfAddGroup: '+ Add Group',
+    pfAddOption: '+ Add',
+    pfFormTitle: 'Membership Form',
+    pfFormDesc: 'Configure the membership application form fields and text.',
+    pfFormFields: 'Form Fields',
+    pfFormFieldPh: 'Placeholder...',
+    pfFormHelperPh: 'Helper text for file upload...',
+    pfAddField: '+ Add Field',
+    pfProfileSections: 'Profile Sections',
+    pfAddSection: '+ Add Section',
+    pfClickHeroUpload: 'Click to upload hero image',
+
+    // Age Gate editor
+    pfAgeGateTitle: 'Age Gate Screen',
+    pfAgeGateDesc: 'Customize the 18+ verification screen shown to visitors. Toggle off to skip it entirely.',
+    pfAgeGateEnabled: 'Enabled',
+    pfAgeGateHeading: 'Heading',
+    pfAgeGateBody: 'Body Text',
+    pfAgeGateEnterBtn: 'Enter Button',
+    pfAgeGateLeaveBtn: 'Leave Button',
+    pfAgeGateDisclaimer: 'Disclaimer',
+
     // Common
     save: 'Save',
     delete: 'Delete',
@@ -466,15 +530,79 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     regBack: '\u2190 \uc0ac\uc774\ud2b8\ub85c \ub3cc\uc544\uac00\uae30',
     regRequired: '\ud544\uc218',
 
+    // Login
+    loginPortal: '관리자 포털',
+    loginEmail: '이메일',
+    loginPassword: '비밀번호',
+    loginPasswordPh: '비밀번호 입력',
+    loginSubmit: '로그인',
+    loginLoading: '인증 중...',
+    loginError: '이메일과 비밀번호를 모두 입력해주세요.',
+    loginBack: '\u2190 사이트로 돌아가기',
+    loginDisclaimer: '인가된 관리자만 접근할 수 있습니다. 모든 세션이 기록됩니다.',
+    logout: '로그아웃',
+
+    // Loading states
+    loadingModels: '모델 로딩 중...',
+    loadingGroups: '그룹 로딩 중...',
+    loading: '로딩 중...',
+    uploading: '업로드 중...',
+    clickToUpload: '클릭하여 업로드',
+    savingText: '저장 중...',
+    uploaded: '업로드됨',
+
+    // Validation
+    nameRequired: '이름은 필수입니다',
+    slugExists: '이 URL을 사용하는 모델이 이미 존재합니다',
+    saveGalleryFirst: '갤러리 이미지를 추가하려면 먼저 모델을 저장하세요',
+    saveGroupFirst: '갤러리 이미지를 업로드하려면 먼저 그룹을 저장하세요.',
+
+    // Members
+    membersCount: '멤버',
+
+    // ProfileFieldsTab section titles
+    pfHeroTitle: '히어로 배너 설정',
+    pfHeroDesc: '홈페이지 메인 배너 이미지와 헤드라인 텍스트를 편집합니다.',
+    pfCardTitle: '카드 표시',
+    pfCardDesc: '홈페이지 모델 카드에 표시되는 내용을 설정합니다.',
+    pfSubtitleFields: '부제목 항목',
+    pfBadges: '배지',
+    pfCardOverlay: '카드 오버레이',
+    pfColor: '색상',
+    pfOpacity: '투명도',
+    pfTagGroups: '태그 그룹',
+    pfTagGroupsDesc: '프로필과 홈페이지에 표시되는 필터 태그 그룹을 관리합니다.',
+    pfAddGroup: '+ 그룹 추가',
+    pfAddOption: '+ 추가',
+    pfFormTitle: '멤버십 양식',
+    pfFormDesc: '멤버십 신청 양식의 항목과 텍스트를 설정합니다.',
+    pfFormFields: '양식 항목',
+    pfFormFieldPh: '플레이스홀더...',
+    pfFormHelperPh: '파일 업로드 도움말...',
+    pfAddField: '+ 항목 추가',
+    pfProfileSections: '프로필 섹션',
+    pfAddSection: '+ 섹션 추가',
+    pfClickHeroUpload: '클릭하여 히어로 이미지 업로드',
+
+    // Age Gate editor
+    pfAgeGateTitle: '연령 확인 화면',
+    pfAgeGateDesc: '방문자에게 표시되는 18+ 인증 화면을 편집합니다. 비활성화하면 건너뜁니다.',
+    pfAgeGateEnabled: '활성화',
+    pfAgeGateHeading: '제목',
+    pfAgeGateBody: '본문',
+    pfAgeGateEnterBtn: '입장 버튼',
+    pfAgeGateLeaveBtn: '나가기 버튼',
+    pfAgeGateDisclaimer: '면책 조항',
+
     // Common
-    save: '\uc800\uc7a5',
-    delete: '\uc0ad\uc81c',
-    confirm: '\ud655\uc778',
-    search: '\uac80\uc0c9',
-    upload: '\uc5c5\ub85c\ub4dc',
-    close: '\ub2eb\uae30',
-    apply: '\uc801\uc6a9',
-    reset: '\ucd08\uae30\ud654',
+    save: '저장',
+    delete: '삭제',
+    confirm: '확인',
+    search: '검색',
+    upload: '업로드',
+    close: '닫기',
+    apply: '적용',
+    reset: '초기화',
 
     // Public-facing
     ageTitle: '\ub098\uc774 \ud655\uc778',

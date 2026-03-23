@@ -1,4 +1,5 @@
 import type {
+  AgeGateConfig,
   AreaConfig,
   CardSettings,
   PillGroup,
@@ -29,30 +30,23 @@ export const DEFAULT_CARD_SETTINGS: CardSettings = {
 export const DEFAULT_PILL_GROUPS: PillGroup[] = [
   {
     id: 'types',
-    title: 'Shoot Types',
+    title: 'Services',
     color: 'var(--charcoal)',
     dataKey: 'types',
     options: [
-      'Portrait',
-      'Fashion',
-      'Commercial',
-      'Glamour',
-      'Fitness',
-      'Editorial',
-      'Artistic',
-      'Swimwear',
-      'Lingerie',
-      'Cosplay',
-      'Lifestyle',
-      'Event',
+      'GFE',
+      'DFK',
+      'BBBJ',
+      'DATY',
+      'CIM',
+      'RIM',
+      'MSOG',
+      'BBFS',
+      'CIP',
+      'NURU',
+      'SHOWER',
+      '69',
     ],
-  },
-  {
-    id: 'compensation',
-    title: 'Compensation',
-    color: 'var(--sage)',
-    dataKey: 'compensation',
-    options: ['Paid Only', 'TFP', 'Negotiable'],
   },
 ];
 
@@ -97,37 +91,38 @@ export const DEFAULT_FORM_CONFIG: FormConfig = {
   ],
 };
 
+export const DEFAULT_AGE_GATE: AgeGateConfig = {
+  heading: 'Age Verification Required',
+  body: 'This website contains content intended for adults. By entering, you confirm you are at least 18 years of age and agree to our Terms of Service.',
+  enterButton: 'I am 18 or older \u2014 Enter',
+  leaveButton: 'Leave Site',
+  disclaimer: 'All models are 18+. Unauthorized use prohibited.',
+  enabled: true,
+};
+
 export const DEFAULT_CATEGORIES: CategorySection[] = [
   {
     id: 'stats',
     title: 'Vitals',
     fields: [
-      { key: 'age', label: 'Age' },
       { key: 'height', label: 'Height' },
       { key: 'weight', label: 'Weight' },
       { key: 'bust', label: 'Bust' },
-      { key: 'waist', label: 'Waist' },
-      { key: 'hips', label: 'Hips' },
     ],
   },
   {
-    id: 'appearance',
-    title: 'Look',
+    id: 'booking',
+    title: 'Booking',
     fields: [
-      { key: 'hair', label: 'Hair' },
-      { key: 'eyes', label: 'Eyes' },
-      { key: 'shoe', label: 'Shoe' },
-      { key: 'dress', label: 'Dress' },
-      { key: 'tattoos', label: 'Tattoos' },
-      { key: 'piercings', label: 'Piercings' },
+      { key: 'hours', label: 'Hours' },
+      { key: 'rates', label: 'Rates' },
     ],
   },
   {
-    id: 'professional',
-    title: 'Work',
+    id: 'links',
+    title: 'Links',
     fields: [
-      { key: 'exp', label: 'Experience' },
-      { key: 'region', label: 'Based In' },
+      { key: 'ter', label: 'TER' },
     ],
   },
 ];

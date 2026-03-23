@@ -287,7 +287,7 @@ export default function ModelEditor({
     setSaveError(null)
 
     if (!form.name?.trim()) {
-      setSaveError('Name is required')
+      setSaveError(t.nameRequired)
       return
     }
 
@@ -341,7 +341,7 @@ export default function ModelEditor({
         .maybeSingle()
 
       if (existing) {
-        setSaveError(`A model with the URL "${slug}" already exists`)
+        setSaveError(t.slugExists)
         setSaving(false)
         return
       }
@@ -480,7 +480,7 @@ export default function ModelEditor({
             />
             <div>
               <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>
-                {form.name || 'New Model'}
+                {form.name || t.newModel.replace('+ ', '')}
               </div>
               <div
                 style={{
@@ -579,7 +579,7 @@ export default function ModelEditor({
             <div className="admin-edit-grid" style={{ gap: 12 }}>
               {/* Profile Photo */}
               <div>
-                <label style={labelStyle}>Profile Photo</label>
+                <label style={labelStyle}>{t.profilePhoto}</label>
                 <div
                   style={{
                     position: 'relative',
@@ -606,8 +606,8 @@ export default function ModelEditor({
                         }}
                       />
                       <div style={{ position: 'absolute', bottom: 6, left: 6, display: 'flex', gap: 4 }}>
-                        <button type="button" onClick={(e) => { e.stopPropagation(); setEditingPhoto({ key: 'profile_image' }) }} style={smallBtnStyle}>Edit</button>
-                        <button type="button" onClick={(e) => { e.stopPropagation(); profileFileRef.current?.click() }} style={smallBtnStyle}>Upload</button>
+                        <button type="button" onClick={(e) => { e.stopPropagation(); setEditingPhoto({ key: 'profile_image' }) }} style={smallBtnStyle}>{t.editBtn}</button>
+                        <button type="button" onClick={(e) => { e.stopPropagation(); profileFileRef.current?.click() }} style={smallBtnStyle}>{t.upload}</button>
                       </div>
                       <button
                         type="button"
@@ -619,7 +619,7 @@ export default function ModelEditor({
                     </>
                   ) : (
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 11, color: 'var(--sand)', fontFamily: 'var(--font-sans)' }}>
-                      {uploading === 'profile_image' ? 'Uploading...' : 'Click to upload'}
+                      {uploading === 'profile_image' ? t.uploading : t.clickToUpload}
                     </div>
                   )}
                 </div>
@@ -638,7 +638,7 @@ export default function ModelEditor({
 
               {/* Cover Photo */}
               <div>
-                <label style={labelStyle}>Cover Photo</label>
+                <label style={labelStyle}>{t.coverPhoto}</label>
                 <div
                   style={{
                     position: 'relative',
@@ -665,8 +665,8 @@ export default function ModelEditor({
                         }}
                       />
                       <div style={{ position: 'absolute', bottom: 6, left: 6, display: 'flex', gap: 4 }}>
-                        <button type="button" onClick={(e) => { e.stopPropagation(); setEditingPhoto({ key: 'cover_image' }) }} style={smallBtnStyle}>Edit</button>
-                        <button type="button" onClick={(e) => { e.stopPropagation(); coverFileRef.current?.click() }} style={smallBtnStyle}>Upload</button>
+                        <button type="button" onClick={(e) => { e.stopPropagation(); setEditingPhoto({ key: 'cover_image' }) }} style={smallBtnStyle}>{t.editBtn}</button>
+                        <button type="button" onClick={(e) => { e.stopPropagation(); coverFileRef.current?.click() }} style={smallBtnStyle}>{t.upload}</button>
                       </div>
                       <button
                         type="button"
@@ -678,7 +678,7 @@ export default function ModelEditor({
                     </>
                   ) : (
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 11, color: 'var(--sand)', fontFamily: 'var(--font-sans)' }}>
-                      {uploading === 'cover_image' ? 'Uploading...' : 'Click to upload'}
+                      {uploading === 'cover_image' ? t.uploading : t.clickToUpload}
                     </div>
                   )}
                 </div>
@@ -698,10 +698,10 @@ export default function ModelEditor({
 
             {/* Gallery section */}
             <div style={{ marginTop: 16 }}>
-              <label style={labelStyle}>Gallery</label>
+              <label style={labelStyle}>{t.galleryPhotos}</label>
               {!model?.id ? (
                 <div style={{ fontSize: 11, color: 'var(--muted)', padding: '12px 0', fontFamily: 'var(--font-sans)' }}>
-                  Save the model first to add gallery images
+                  {t.saveGalleryFirst}
                 </div>
               ) : (
                 <>
@@ -744,7 +744,7 @@ export default function ModelEditor({
                           onClick={() => setEditingPhoto({ key: 'gallery', idx })}
                           style={{ ...smallBtnStyle, position: 'absolute', bottom: 4, left: 4, padding: '2px 6px' }}
                         >
-                          Edit
+                          {t.editBtn}
                         </button>
                       </div>
                     ))}

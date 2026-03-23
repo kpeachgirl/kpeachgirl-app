@@ -5,6 +5,7 @@ import {
   DEFAULT_AREAS,
   DEFAULT_CARD_SETTINGS,
   DEFAULT_PILL_GROUPS,
+  DEFAULT_AGE_GATE,
 } from '@/lib/constants';
 import type {
   Profile,
@@ -13,6 +14,7 @@ import type {
   CardSettings,
   PillGroup,
   AreaConfig,
+  AgeGateConfig,
 } from '@/lib/types';
 import AgeGate from '@/components/AgeGate';
 import Navbar from '@/components/Navbar';
@@ -28,6 +30,7 @@ export default async function HomePage() {
   let areas: AreaConfig = DEFAULT_AREAS;
   let cardSettings: CardSettings = DEFAULT_CARD_SETTINGS;
   let pillGroups: PillGroup[] = DEFAULT_PILL_GROUPS;
+  let ageGate: AgeGateConfig = DEFAULT_AGE_GATE;
 
   try {
     const supabase = createStaticClient();
@@ -53,6 +56,7 @@ export default async function HomePage() {
       if (cfg.areas) areas = cfg.areas as AreaConfig;
       if (cfg.card_settings) cardSettings = cfg.card_settings as CardSettings;
       if (cfg.pill_groups) pillGroups = cfg.pill_groups as PillGroup[];
+      if (cfg.age_gate) ageGate = cfg.age_gate as AgeGateConfig;
     }
   } catch (error) {
     console.error('Homepage data fetch failed:', error);
@@ -60,7 +64,7 @@ export default async function HomePage() {
   }
 
   return (
-    <AgeGate>
+    <AgeGate config={ageGate}>
       <div className="grain min-h-screen bg-cream">
         <Navbar />
         <HomepageClient

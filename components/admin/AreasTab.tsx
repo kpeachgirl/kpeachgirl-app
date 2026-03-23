@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslation } from '@/lib/i18n'
 
 interface AreasTabProps {
   lang: 'en' | 'ko'
@@ -10,6 +11,7 @@ interface AreasTabProps {
 
 export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
   const [newArea, setNewArea] = useState('')
+  const t = useTranslation(lang)
 
   const handleAdd = () => {
     const trimmed = newArea.trim()
@@ -48,7 +50,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           marginBottom: 4,
         }}
       >
-        {lang === 'ko' ? '지역 관리' : 'Geographic Areas'}
+        {t.areasTitle}
       </h2>
       <p
         style={{
@@ -58,9 +60,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           marginBottom: 20,
         }}
       >
-        {lang === 'ko'
-          ? '모델 필터링에 사용할 지역을 관리합니다'
-          : 'Manage the areas available for model filtering'}
+        {t.areasDesc}
       </p>
 
       {/* Area chips */}
@@ -120,7 +120,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           value={newArea}
           onChange={e => setNewArea(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={lang === 'ko' ? '새 지역 이름...' : 'New area name...'}
+          placeholder={t.areasPlaceholder}
           style={{
             flex: 1,
             background: 'var(--input-bg, #1e1d1b)',
@@ -131,6 +131,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
             fontSize: 14,
             fontFamily: 'var(--font-sans)',
             outline: 'none',
+            minWidth: 0,
           }}
         />
         <button
@@ -148,9 +149,10 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
             cursor: newArea.trim() ? 'pointer' : 'default',
+            flexShrink: 0,
           }}
         >
-          {lang === 'ko' ? '추가' : 'Add'}
+          {t.add}
         </button>
       </div>
     </div>

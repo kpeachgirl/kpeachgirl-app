@@ -221,7 +221,7 @@ export default function GroupEditor({
           <input
             value={form.badge_label}
             onChange={e => setForm(p => ({ ...p, badge_label: e.target.value }))}
-            placeholder="DUO / TRIO / custom..."
+            placeholder={t.grpBadgeAuto}
             style={inputStyle}
           />
         </div>
@@ -229,7 +229,7 @@ export default function GroupEditor({
 
       {/* Group Photo */}
       <div style={{ marginBottom: 16 }}>
-        <label style={labelStyle}>Group Photo</label>
+        <label style={labelStyle}>{t.profilePhoto}</label>
         <div
           style={{
             position: 'relative',
@@ -256,7 +256,7 @@ export default function GroupEditor({
                 fontFamily: 'var(--font-sans)',
               }}
             >
-              Click to upload
+              {t.clickToUpload}
             </div>
           )}
           {form.image && (
@@ -497,7 +497,7 @@ export default function GroupEditor({
         </div>
         {!group.id && (
           <p style={{ fontSize: 10, color: 'var(--muted)', marginTop: 4 }}>
-            Save the group first to upload gallery images.
+            {t.saveGroupFirst}
           </p>
         )}
         <input
@@ -529,7 +529,7 @@ export default function GroupEditor({
             opacity: saving ? 0.6 : 1,
           }}
         >
-          {saving ? 'Saving...' : t.savePublish}
+          {saving ? t.savingText : t.savePublish}
         </button>
         <button
           onClick={onCancel}

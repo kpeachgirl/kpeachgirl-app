@@ -44,10 +44,10 @@ export default function AdminNav({
 
   return (
     <nav
+      className="admin-nav-pad"
       style={{
         background: '#181716',
         borderBottom: '1px solid var(--sand)',
-        padding: '0 24px',
       }}
     >
       {/* Top row: logo + user controls */}
@@ -56,7 +56,11 @@ export default function AdminNav({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          height: 56,
+          minHeight: 56,
+          flexWrap: 'wrap',
+          gap: 8,
+          paddingTop: 8,
+          paddingBottom: 8,
         }}
       >
         {/* Left: back link + logo + badge */}
@@ -194,7 +198,7 @@ export default function AdminNav({
               e.currentTarget.style.color = 'var(--muted)'
             }}
           >
-            Logout
+            {t.logout}
           </button>
         </div>
       </div>
