@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import type {
   Profile,
   Group,
@@ -9,7 +9,6 @@ import type {
   PillGroup,
   AreaConfig,
 } from '@/lib/types';
-import { cropStyle } from '@/lib/utils';
 import ModelCard from '@/components/ModelCard';
 import GroupCard from '@/components/GroupCard';
 import FilterBar from '@/components/FilterBar';
@@ -21,10 +20,8 @@ interface HomepageClientProps {
   areas: AreaConfig;
   cardSettings: CardSettings;
   pillGroups: PillGroup[];
+  heroGalleryUrls?: string[];
 }
-
-const HERO_FALLBACK =
-  'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1800&h=800&fit=crop';
 
 export default function HomepageClient({
   profiles,
@@ -32,11 +29,37 @@ export default function HomepageClient({
   hero,
   areas,
   cardSettings,
+  heroGalleryUrls = [],
 }: HomepageClientProps) {
   const [search, setSearch] = useState('');
   const [area, setArea] = useState('All');
   const [verifiedOnly, setVerifiedOnly] = useState(false);
   const [hideVacation, setHideVacation] = useState(true);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  // Use high-res gallery images for hero slideshow
+  const heroImages = useMemo(() => {
+    if (heroGalleryUrls.length > 0) return heroGalleryUrls;
+    // Fallback to profile images if no gallery
+    const imgs: string[] = [];
+    for (const p of profiles) {
+      if (p.profile_image) imgs.push(p.profile_image);
+    }
+    return imgs;
+  }, [heroGalleryUrls, profiles]);
+
+  // Rotate every 5 seconds
+  const nextSlide = useCallback(() => {
+    if (heroImages.length > 1) {
+      setHeroIndex((prev) => (prev + 1) % heroImages.length);
+    }
+  }, [heroImages.length]);
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide, heroImages.length]);
 
   const filtered = useMemo(() => {
     return profiles.filter((p) => {
@@ -59,8 +82,6 @@ export default function HomepageClient({
     });
   }, [profiles, search, area, verifiedOnly, hideVacation]);
 
-  const heroCrop = cropStyle(hero.imgCrop);
-
   return (
     <>
       {/* Hero Section */}
@@ -68,15 +89,27 @@ export default function HomepageClient({
         className="fade-up relative overflow-hidden flex items-end"
         style={{ height: '70vh', minHeight: 380 }}
       >
-        {/* Background image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={hero.img || HERO_FALLBACK}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+        {/* Rotating background images */}
+        {heroImages.map((img, i) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={img}
+            src={img}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              opacity: i === heroIndex ? 1 : 0,
+              transition: 'opacity 1.5s ease-in-out',
+              objectPosition: '50% 15%',
+            }}
+          />
+        ))}
+
+        {/* Dark gradient overlay */}
+        <div
+          className="absolute inset-0"
           style={{
-            ...heroCrop,
-            filter: 'brightness(0.4) contrast(1.05)',
+            background: 'linear-gradient(to top, rgba(14,13,12,0.95) 0%, rgba(14,13,12,0.6) 40%, rgba(14,13,12,0.35) 100%)',
           }}
         />
 

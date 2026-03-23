@@ -10,14 +10,15 @@ import GroupsTab from './GroupsTab'
 import AreasTab from './AreasTab'
 import SubmissionsTab from './SubmissionsTab'
 import ProfileFieldsTab from './ProfileFieldsTab'
+import AnalyticsTab from './AnalyticsTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
 import { DEFAULT_FORM_CONFIG, DEFAULT_AGE_GATE } from '@/lib/constants'
 import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings, AgeGateConfig } from '@/lib/types'
 
-type TabId = 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
+type TabId = 'dashboard' | 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
 
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<TabId>('models')
+  const [activeTab, setActiveTab] = useState<TabId>('dashboard')
   const [lang, setLang] = useState<'en' | 'ko'>('en')
   const [userEmail, setUserEmail] = useState('')
   const [newSubmissionCount, setNewSubmissionCount] = useState(0)
@@ -145,6 +146,7 @@ export default function AdminDashboard() {
   }, [refreshSubmissionCount])
 
   const tabLabels: Record<TabId, string> = {
+    dashboard: t.tabDashboard,
     models: t.tabModels,
     groups: t.tabGroups,
     submissions: t.tabSubmissions,
@@ -171,6 +173,11 @@ export default function AdminDashboard() {
           padding: '32px 16px',
         }}
       >
+        {/* Dashboard tab */}
+        {activeTab === 'dashboard' && (
+          <AnalyticsTab lang={lang} />
+        )}
+
         {/* Models tab */}
         {activeTab === 'models' && (
           <ModelsTab

@@ -31,11 +31,12 @@ export default async function HomePage() {
   let cardSettings: CardSettings = DEFAULT_CARD_SETTINGS;
   let pillGroups: PillGroup[] = DEFAULT_PILL_GROUPS;
   let ageGate: AgeGateConfig = DEFAULT_AGE_GATE;
+  let heroGalleryUrls: string[] = [];
 
   try {
     const supabase = createStaticClient();
 
-    const [profilesRes, groupsRes, configRes] = await Promise.all([
+    const [profilesRes, groupsRes, configRes, galleryRes] = await Promise.all([
       supabase
         .from('profiles')
         .select('*')
@@ -45,10 +46,16 @@ export default async function HomePage() {
         .select('*')
         .order('sort_order', { ascending: true, nullsFirst: false }),
       supabase.from('site_config').select('*'),
+      supabase
+        .from('gallery_images')
+        .select('url')
+        .order('sort_order', { ascending: true })
+        .limit(10),
     ]);
 
     if (profilesRes.data) profiles = profilesRes.data as Profile[];
     if (groupsRes.data) groups = groupsRes.data as Group[];
+    heroGalleryUrls = (galleryRes.data || []).map((r: { url: string }) => r.url);
 
     if (configRes.data) {
       const cfg = parseSiteConfig(configRes.data);
@@ -74,6 +81,7 @@ export default async function HomePage() {
           areas={areas}
           cardSettings={cardSettings}
           pillGroups={pillGroups}
+          heroGalleryUrls={heroGalleryUrls}
         />
         <Footer />
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import './globals.css'
+import PageTracker from '@/components/PageTracker'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`}>
       <body className="bg-cream text-charcoal font-sans grain">
+        <PageTracker />
         {children}
       </body>
     </html>

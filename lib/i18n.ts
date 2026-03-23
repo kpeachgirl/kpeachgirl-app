@@ -7,6 +7,7 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     admin: 'Admin',
 
     // Admin tabs
+    tabDashboard: 'Dashboard',
     tabModels: 'Models',
     tabCategories: 'Profile Fields',
     tabAreas: 'Areas',
@@ -317,6 +318,7 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     admin: '\uad00\ub9ac\uc790',
 
     // Admin tabs
+    tabDashboard: '\ub300\uc2dc\ubcf4\ub4dc',
     tabModels: '\ubaa8\ub378 \uad00\ub9ac',
     tabCategories: '\ud504\ub85c\ud544 \ud56d\ubaa9',
     tabAreas: '\uc9c0\uc5ed \uad00\ub9ac',
