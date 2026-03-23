@@ -1,18 +1,22 @@
 import Link from 'next/link';
 
-const LOGO_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/profile-images/branding/logo.png`;
-
 export default function Navbar() {
   return (
     <nav className="nav-pad sticky top-0 z-[100] flex justify-between items-center bg-[rgba(14,13,12,0.92)] backdrop-blur-[14px] border-b border-white/[0.06]">
       {/* Logo */}
-      <Link href="/" className="no-underline">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={LOGO_URL}
-          alt="Kpeachgirl"
-          style={{ height: 28, width: 'auto', display: 'block' }}
-        />
+      <Link
+        href="/"
+        className="no-underline"
+        style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 22,
+          fontWeight: 300,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          color: 'var(--charcoal)',
+        }}
+      >
+        K<span style={{ color: 'var(--rose)' }}>PEACH</span>GIRL
       </Link>
 
       {/* Desktop nav */}
