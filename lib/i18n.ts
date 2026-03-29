@@ -11,6 +11,7 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     tabModels: 'Models',
     tabCategories: 'Profile Fields',
     tabAreas: 'Areas',
+    tabTelegram: 'Telegram',
     tabGroups: 'Groups',
     tabSubmissions: 'Submissions',
 
@@ -322,6 +323,7 @@ export const translations: Record<'en' | 'ko', Record<string, string>> = {
     tabModels: '\ubaa8\ub378 \uad00\ub9ac',
     tabCategories: '\ud504\ub85c\ud544 \ud56d\ubaa9',
     tabAreas: '\uc9c0\uc5ed \uad00\ub9ac',
+    tabTelegram: '\ud154\ub808\uadf8\ub7a8',
     tabGroups: '\uadf8\ub8f9',
     tabSubmissions: '\uc2e0\uccad\uc11c',
 

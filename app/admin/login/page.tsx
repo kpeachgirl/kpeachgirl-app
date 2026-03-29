@@ -24,18 +24,19 @@ export default function AdminLoginPage() {
     if (saved === 'ko') setLang('ko')
   }, [])
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      setError(t.loginError)
-      return
-    }
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.currentTarget)
+    const emailVal = (formData.get('email') as string || '').trim()
+    const passVal = formData.get('password') as string || ''
 
     setLoading(true)
     setError('')
 
     const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
+      email: emailVal || email,
+      password: passVal || password,
     })
 
     if (authError) {
@@ -46,12 +47,6 @@ export default function AdminLoginPage() {
 
     router.push('/admin')
     router.refresh()
-  }
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      handleLogin()
-    }
   }
 
   return (
@@ -78,6 +73,7 @@ export default function AdminLoginPage() {
           >
             {(['en', 'ko'] as const).map((l) => (
               <button
+                type="button"
                 key={l}
                 onClick={() => { setLang(l); localStorage.setItem('kpeach-lang', l) }}
                 style={{
@@ -128,7 +124,8 @@ export default function AdminLoginPage() {
         </div>
 
         {/* Login Form */}
-        <div
+        <form
+          onSubmit={handleLogin}
           className="rounded-xl p-8"
           style={{
             background: '#181716',
@@ -161,10 +158,11 @@ export default function AdminLoginPage() {
             </label>
             <input
               type="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              onKeyDown={handleKeyDown}
               placeholder="admin@kpeachgirl.com"
+              autoComplete="email"
               className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors"
               style={{
                 background: '#1e1d1b',
@@ -188,10 +186,11 @@ export default function AdminLoginPage() {
             </label>
             <input
               type="password"
+              name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onKeyDown={handleKeyDown}
               placeholder={t.loginPasswordPh}
+              autoComplete="current-password"
               className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors"
               style={{
                 background: '#1e1d1b',
@@ -203,7 +202,7 @@ export default function AdminLoginPage() {
           </div>
 
           <button
-            onClick={handleLogin}
+            type="submit"
             disabled={loading}
             className="w-full py-3 rounded-lg text-sm uppercase tracking-wider transition-all"
             style={{
@@ -216,7 +215,7 @@ export default function AdminLoginPage() {
           >
             {loading ? t.loginLoading : t.loginSubmit}
           </button>
-        </div>
+        </form>
 
         {/* Back to site */}
         <div className="text-center mt-6">

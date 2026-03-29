@@ -55,7 +55,9 @@ export default async function HomePage() {
 
     if (profilesRes.data) profiles = profilesRes.data as Profile[];
     if (groupsRes.data) groups = groupsRes.data as Group[];
-    heroGalleryUrls = (galleryRes.data || []).map((r: { url: string }) => r.url);
+    heroGalleryUrls = (galleryRes.data || [])
+      .map((r: { url: string }) => r.url)
+      .filter((url: string) => url.includes('/gallery-images/'));
 
     if (configRes.data) {
       const cfg = parseSiteConfig(configRes.data);

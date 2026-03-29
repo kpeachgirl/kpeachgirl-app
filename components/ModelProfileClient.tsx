@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import type { Profile, GalleryImage, Group, CategorySection, PillGroup } from '@/lib/types';
 import { cropStyle } from '@/lib/utils';
@@ -32,6 +32,10 @@ export default function ModelProfileClient({
   pillGroups,
 }: ModelProfileClientProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchDeltaX = useRef(0);
 
   const handleNavigate = useCallback((index: number) => {
     setLightboxIndex(index);
@@ -40,6 +44,36 @@ export default function ModelProfileClient({
   const handleClose = useCallback(() => {
     setLightboxIndex(null);
   }, []);
+
+  const scrollToGalleryIndex = useCallback((idx: number) => {
+    if (!galleryRef.current) return;
+    const container = galleryRef.current;
+    const child = container.children[idx] as HTMLElement;
+    if (child) {
+      container.scrollTo({ left: child.offsetLeft - container.offsetLeft, behavior: 'smooth' });
+      setGalleryIndex(idx);
+    }
+  }, []);
+
+  // Sync gallery index on scroll
+  useEffect(() => {
+    const container = galleryRef.current;
+    if (!container) return;
+    const handleScroll = () => {
+      const children = Array.from(container.children) as HTMLElement[];
+      const scrollLeft = container.scrollLeft;
+      const containerLeft = container.offsetLeft;
+      let closest = 0;
+      let minDist = Infinity;
+      children.forEach((child, i) => {
+        const dist = Math.abs(child.offsetLeft - containerLeft - scrollLeft);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      });
+      setGalleryIndex(closest);
+    };
+    container.addEventListener('scroll', handleScroll, { passive: true });
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [gallery.length]);
 
   // Build pill data from profile
   const pillData: Record<string, string[]> = {
@@ -187,40 +221,166 @@ export default function ModelProfileClient({
         />
       </div>
 
-      {/* ─── Gallery Section ─── */}
+      {/* ─── Gallery Carousel ─── */}
       {gallery.length > 0 && (
         <div className="grid-pad" style={{ maxWidth: 1200, margin: '0 auto', paddingTop: 0 }}>
-          <div className="font-serif text-[13px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
-            Portfolio
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+            <div className="font-serif text-[13px] font-semibold tracking-[0.18em] text-rose uppercase">
+              Portfolio
+            </div>
+            <div className="font-sans text-[11px] text-muted" style={{ letterSpacing: '0.05em' }}>
+              {galleryIndex + 1} / {gallery.length}
+            </div>
           </div>
-          <div className="profile-gallery">
-            {gallery.map((img, i) => {
-              // Offset index by number of hero images added before gallery
-              const heroCount = allImages.length - gallery.length;
-              return (
-              <div
-                key={img.id}
-                className="gallery-item"
-                onClick={() => setLightboxIndex(i + heroCount)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setLightboxIndex(i);
-                  }
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={img.url}
-                  alt={`${profile.name} gallery ${i + 1}`}
-                  style={img.crop ? cropStyle(img.crop) : { objectFit: 'cover' }}
+
+          {/* Carousel container */}
+          <div style={{ position: 'relative' }}>
+            {/* Scrollable track */}
+            <div
+              ref={galleryRef}
+              onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+              onTouchMove={(e) => { touchDeltaX.current = e.touches[0].clientX - touchStartX.current; }}
+              onTouchEnd={() => {
+                if (Math.abs(touchDeltaX.current) > 50) {
+                  if (touchDeltaX.current < 0 && galleryIndex < gallery.length - 1) scrollToGalleryIndex(galleryIndex + 1);
+                  else if (touchDeltaX.current > 0 && galleryIndex > 0) scrollToGalleryIndex(galleryIndex - 1);
+                }
+                touchDeltaX.current = 0;
+              }}
+              style={{
+                display: 'flex',
+                gap: 12,
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                scrollBehavior: 'smooth',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+              }}
+              className="gallery-carousel"
+            >
+              {gallery.map((img, i) => {
+                const heroCount = allImages.length - gallery.length;
+                return (
+                  <div
+                    key={img.id}
+                    style={{
+                      flex: '0 0 85%',
+                      maxWidth: 600,
+                      scrollSnapAlign: 'start',
+                      cursor: 'zoom-in',
+                      overflow: 'hidden',
+                      borderRadius: 4,
+                    }}
+                    onClick={() => setLightboxIndex(i + heroCount)}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.url}
+                      alt={`${profile.name} gallery ${i + 1}`}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        maxHeight: '70vh',
+                        objectFit: 'cover',
+                        display: 'block',
+                        transition: 'transform 0.5s ease',
+                        ...(img.crop ? cropStyle(img.crop) : {}),
+                      }}
+                      onMouseEnter={(e) => { (e.target as HTMLElement).style.transform = 'scale(1.02)'; }}
+                      onMouseLeave={(e) => { (e.target as HTMLElement).style.transform = 'scale(1)'; }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Arrow buttons - desktop only */}
+            {gallery.length > 1 && (
+              <>
+                <button
+                  onClick={() => scrollToGalleryIndex(Math.max(0, galleryIndex - 1))}
+                  className="gallery-arrow gallery-arrow-left"
+                  style={{
+                    position: 'absolute',
+                    left: -20,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: 44,
+                    height: 44,
+                    borderRadius: '50%',
+                    border: '1px solid var(--sand)',
+                    background: 'rgba(14,13,12,0.85)',
+                    backdropFilter: 'blur(8px)',
+                    color: 'var(--charcoal)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 18,
+                    opacity: galleryIndex === 0 ? 0.3 : 1,
+                    transition: 'opacity 0.2s, border-color 0.2s',
+                    zIndex: 2,
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--rose)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--sand)'; }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button
+                  onClick={() => scrollToGalleryIndex(Math.min(gallery.length - 1, galleryIndex + 1))}
+                  className="gallery-arrow gallery-arrow-right"
+                  style={{
+                    position: 'absolute',
+                    right: -20,
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    width: 44,
+                    height: 44,
+                    borderRadius: '50%',
+                    border: '1px solid var(--sand)',
+                    background: 'rgba(14,13,12,0.85)',
+                    backdropFilter: 'blur(8px)',
+                    color: 'var(--charcoal)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 18,
+                    opacity: galleryIndex === gallery.length - 1 ? 0.3 : 1,
+                    transition: 'opacity 0.2s, border-color 0.2s',
+                    zIndex: 2,
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--rose)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--sand)'; }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </>
+            )}
+          </div>
+
+          {/* Dot indicators */}
+          {gallery.length > 1 && (
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 16 }}>
+              {gallery.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => scrollToGalleryIndex(i)}
+                  style={{
+                    width: i === galleryIndex ? 20 : 8,
+                    height: 8,
+                    borderRadius: 4,
+                    border: 'none',
+                    background: i === galleryIndex ? 'var(--rose)' : 'var(--sand)',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    padding: 0,
+                  }}
                 />
-              </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 

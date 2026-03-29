@@ -1,7 +1,10 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import './globals.css'
 import PageTracker from '@/components/PageTracker'
+
+const GA_ID = 'G-QBYZJPN8YX'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -30,6 +33,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${manrope.variable}`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body className="bg-cream text-charcoal font-sans grain">
         <PageTracker />
         {children}

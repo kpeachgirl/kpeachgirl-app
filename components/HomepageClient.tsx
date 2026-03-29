@@ -86,59 +86,41 @@ export default function HomepageClient({
     <>
       {/* Hero Section */}
       <div
-        className="fade-up relative overflow-hidden flex items-end"
-        style={{ height: '70vh', minHeight: 380 }}
+        className="fade-up flex flex-col items-center justify-center text-center"
+        style={{ minHeight: 280, padding: '60px 20px 40px' }}
       >
-        {/* Rotating background images */}
-        {heroImages.map((img, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={img}
-            src={img}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              opacity: i === heroIndex ? 1 : 0,
-              transition: 'opacity 1.5s ease-in-out',
-              objectPosition: '50% 15%',
-            }}
-          />
-        ))}
-
-        {/* Dark gradient overlay */}
-        <div
-          className="absolute inset-0"
+        {/* Logo */}
+        <h1
+          className="font-serif font-light tracking-[0.22em] uppercase"
+          style={{ fontSize: 'clamp(32px, 6vw, 52px)', color: 'var(--charcoal)', lineHeight: 1 }}
+        >
+          K<span style={{ color: 'var(--rose)' }}>PEACH</span>GIRL
+        </h1>
+        <div className="w-12 h-0.5 bg-rose mx-auto" style={{ margin: '20px 0' }} />
+        <p className="font-sans text-[10px] font-bold tracking-[0.25em] text-muted uppercase mb-5">
+          {hero.subtitle}
+        </p>
+        {/* Phone */}
+        <a
+          href="tel:+12133176530"
+          className="font-sans text-charcoal no-underline hover:text-rose transition-colors"
+          style={{ fontSize: 'clamp(16px, 3vw, 22px)', fontWeight: 300, letterSpacing: '0.08em' }}
+        >
+          (213) 317-6530
+        </a>
+        {/* Search */}
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={hero.searchPlaceholder}
+          className="font-sans text-charcoal text-[13px] font-medium mt-8 w-full"
           style={{
-            background: 'linear-gradient(to top, rgba(14,13,12,0.95) 0%, rgba(14,13,12,0.6) 40%, rgba(14,13,12,0.35) 100%)',
+            maxWidth: 400,
+            padding: '13px 20px',
+            border: '1px solid var(--sand)',
+            background: 'var(--warm)',
           }}
         />
-
-        {/* Hero content */}
-        <div className="hero-pad relative z-[1]" style={{ maxWidth: 700 }}>
-          <div className="font-sans text-[10px] font-bold tracking-[0.25em] text-white/50 uppercase mb-3">
-            {hero.subtitle}
-          </div>
-          <h1
-            className="font-serif hero-title font-light text-white leading-[0.95] tracking-[-0.03em]"
-          >
-            {hero.titleLine1}
-            <br />
-            {hero.titleLine2}{' '}
-            <em className="italic text-peach">{hero.titleAccent}</em>
-          </h1>
-          <div className="w-12 h-0.5 bg-rose" style={{ margin: '28px 0' }} />
-          <input
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder={hero.searchPlaceholder}
-            className="font-sans hero-search text-white text-[13px] font-medium backdrop-blur-[12px]"
-            style={{
-              padding: '13px 20px',
-              border: '1px solid rgba(255,255,255,0.2)',
-              background: 'rgba(255,255,255,0.08)',
-            }}
-          />
-        </div>
       </div>
 
       {/* Filter Bar */}

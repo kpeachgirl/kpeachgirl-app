@@ -18,6 +18,10 @@ export default function PageTracker() {
       body: JSON.stringify({
         path: pathname,
         referrer: document.referrer || null,
+        screen_width: window.screen.width,
+        screen_height: window.screen.height,
+        language: navigator.language || null,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
       }),
       signal: controller.signal,
     }).catch(() => {});

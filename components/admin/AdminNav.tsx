@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { useTranslation } from '@/lib/i18n'
 
-type TabId = 'dashboard' | 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
+type TabId = 'dashboard' | 'models' | 'groups' | 'submissions' | 'categories' | 'areas' | 'telegram'
 
 interface AdminNavProps {
   activeTab: TabId
@@ -23,6 +23,7 @@ const TAB_IDS: { id: TabId; labelKey: string }[] = [
   { id: 'submissions', labelKey: 'tabSubmissions' },
   { id: 'categories', labelKey: 'tabCategories' },
   { id: 'areas', labelKey: 'tabAreas' },
+  { id: 'telegram', labelKey: 'tabTelegram' },
 ]
 
 export default function AdminNav({

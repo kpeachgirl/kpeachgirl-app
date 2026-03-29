@@ -11,11 +11,12 @@ import AreasTab from './AreasTab'
 import SubmissionsTab from './SubmissionsTab'
 import ProfileFieldsTab from './ProfileFieldsTab'
 import AnalyticsTab from './AnalyticsTab'
+import TelegramTab from './TelegramTab'
 import { triggerRevalidation } from '@/lib/supabase/admin'
 import { DEFAULT_FORM_CONFIG, DEFAULT_AGE_GATE } from '@/lib/constants'
 import type { Profile, CategorySection, PillGroup, FormConfig, HeroConfig, CardSettings, AgeGateConfig } from '@/lib/types'
 
-type TabId = 'dashboard' | 'models' | 'groups' | 'submissions' | 'categories' | 'areas'
+type TabId = 'dashboard' | 'models' | 'groups' | 'submissions' | 'categories' | 'areas' | 'telegram'
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState<TabId>('dashboard')
@@ -152,6 +153,7 @@ export default function AdminDashboard() {
     submissions: t.tabSubmissions,
     categories: t.tabCategories,
     areas: t.tabAreas,
+    telegram: t.tabTelegram,
   }
 
   return (
@@ -211,6 +213,11 @@ export default function AdminDashboard() {
         {/* Areas tab */}
         {activeTab === 'areas' && (
           <AreasTab lang={lang} areas={areas} onUpdate={handleAreasUpdate} />
+        )}
+
+        {/* Telegram tab */}
+        {activeTab === 'telegram' && (
+          <TelegramTab lang={lang} />
         )}
 
         {/* Profile Fields tab */}

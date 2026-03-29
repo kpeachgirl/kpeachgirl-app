@@ -13,6 +13,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/talents',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

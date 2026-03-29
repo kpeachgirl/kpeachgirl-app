@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { triggerRevalidation } from '@/lib/supabase/admin'
 import { useTranslation } from '@/lib/i18n'
@@ -21,6 +21,10 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
   const [groupCount, setGroupCount] = useState(0)
   const [filter, setFilter] = useState<'all' | 'la' | 'oc' | 'verified' | 'vacation'>('all')
   const [loading, setLoading] = useState(true)
+  const [dragIndex, setDragIndex] = useState<number | null>(null)
+  const [overIndex, setOverIndex] = useState<number | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [orderChanged, setOrderChanged] = useState(false)
 
   const t = useTranslation(lang)
 
@@ -58,6 +62,55 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
     }
   }
 
+  const handleDragStart = (idx: number) => {
+    setDragIndex(idx)
+  }
+
+  const handleDragOver = (e: React.DragEvent, idx: number) => {
+    e.preventDefault()
+    setOverIndex(idx)
+  }
+
+  const handleDrop = (idx: number) => {
+    if (dragIndex === null || dragIndex === idx) {
+      setDragIndex(null)
+      setOverIndex(null)
+      return
+    }
+    const updated = [...models]
+    const [moved] = updated.splice(dragIndex, 1)
+    updated.splice(idx, 0, moved)
+    setModels(updated)
+    setDragIndex(null)
+    setOverIndex(null)
+    setOrderChanged(true)
+  }
+
+  const handleDragEnd = () => {
+    setDragIndex(null)
+    setOverIndex(null)
+  }
+
+  const saveOrder = async () => {
+    setSaving(true)
+    try {
+      const order = models.map((m, i) => ({ id: m.id, sort_order: i }))
+      const res = await fetch('/api/reorder-models', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order }),
+      })
+      if (res.ok) {
+        setOrderChanged(false)
+        triggerRevalidation(['/'])
+      }
+    } catch (err) {
+      console.error('Save order failed:', err)
+    } finally {
+      setSaving(false)
+    }
+  }
+
   const filtered = models.filter(m => {
     if (filter === 'la') return m.parent_region === 'LA'
     if (filter === 'oc') return m.parent_region === 'OC'
@@ -91,9 +144,36 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
 
   return (
     <>
-      {/* Header with New Model button */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
-        <div />
+      {/* Header with New Model button + Save Order */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          {orderChanged && (
+            <button
+              onClick={saveOrder}
+              disabled={saving}
+              style={{
+                padding: '10px 24px',
+                background: 'var(--sage)',
+                color: '#0e0d0c',
+                border: 'none',
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                cursor: saving ? 'wait' : 'pointer',
+                fontFamily: 'var(--font-sans)',
+                opacity: saving ? 0.6 : 1,
+              }}
+            >
+              {saving ? 'Saving...' : 'Save Order'}
+            </button>
+          )}
+          {orderChanged && (
+            <span style={{ fontSize: 11, color: 'var(--peach)', fontFamily: 'var(--font-sans)' }}>
+              Drag to reorder, then save
+            </span>
+          )}
+        </div>
         <button
           onClick={() => onEditModel(null)}
           style={{
@@ -174,7 +254,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
       <div style={{ background: '#181716', border: '1px solid var(--sand)', overflow: 'hidden' }}>
         {/* Header row */}
         <div
-          className="admin-table-row"
+          className="admin-table-row-drag"
           style={{
             padding: '12px 16px',
             borderBottom: '2px solid var(--sand)',
@@ -185,6 +265,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             textTransform: 'uppercase',
           }}
         >
+          <span>#</span>
           <span />
           <span>{t.thName}</span>
           <span className="mob-hide">{t.thArea}</span>
@@ -195,26 +276,46 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
         </div>
 
         {/* Model rows */}
-        {filtered.map(m => {
+        {filtered.map((m, idx) => {
           const isEditing = editingId === m.id
+          const globalIdx = models.findIndex(x => x.id === m.id)
+          const isDragging = dragIndex === globalIdx
+          const isOver = overIndex === globalIdx
           return (
             <div
               key={m.id}
-              className="admin-table-row"
+              draggable={filter === 'all'}
+              onDragStart={() => handleDragStart(globalIdx)}
+              onDragOver={(e) => handleDragOver(e, globalIdx)}
+              onDrop={() => handleDrop(globalIdx)}
+              onDragEnd={handleDragEnd}
+              className="admin-table-row-drag"
               style={{
                 padding: '10px 16px',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
                 alignItems: 'center',
-                background: isEditing ? 'var(--rose-soft)' : '#181716',
+                background: isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#181716',
+                borderTop: isOver ? '2px solid var(--rose)' : '2px solid transparent',
                 transition: 'background 0.15s',
+                opacity: isDragging ? 0.5 : 1,
+                cursor: filter === 'all' ? 'grab' : 'default',
               }}
               onMouseEnter={e => {
-                if (!isEditing) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
+                if (!isEditing && !isDragging) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.background = isEditing ? 'var(--rose-soft)' : '#181716'
+                (e.currentTarget as HTMLElement).style.background = isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#181716'
               }}
             >
+              {/* Drag handle + order number */}
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 11, fontFamily: 'var(--font-sans)', minWidth: 30 }}>
+                {filter === 'all' && (
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.5, flexShrink: 0 }}>
+                    <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
+                  </svg>
+                )}
+                {globalIdx + 1}
+              </span>
               {/* Thumbnail */}
               <img
                 src={m.profile_image || placeholderSvg}

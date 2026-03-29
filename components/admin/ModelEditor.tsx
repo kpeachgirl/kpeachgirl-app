@@ -382,6 +382,17 @@ export default function ModelEditor({
           setSaved(true)
           setTimeout(() => setSaved(false), 2000)
           await triggerRevalidation(['/', `/model/${slug}`])
+          // Notify Telegram channel about new model
+          fetch('/api/notify-channel', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: data.name,
+              slug: data.slug,
+              region: data.region,
+              profileImage: data.profile_image,
+            }),
+          }).catch(() => {}) // fire and forget
           onSave(data as Profile)
         }
       }

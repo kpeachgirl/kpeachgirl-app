@@ -63,6 +63,10 @@ html { color-scheme: dark; }
 .gallery-item img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); display: block; width: 100%; }
 .gallery-item:hover img { transform: scale(1.03); }
 
+.gallery-carousel::-webkit-scrollbar { display: none; }
+.gallery-arrow { display: flex; }
+@media (max-width: 640px) { .gallery-arrow { display: none !important; } .gallery-carousel > div { flex: 0 0 92% !important; } }
+
 input:focus, textarea:focus, select:focus { outline: none; border-color: var(--rose) !important; }
 ::selection { background: var(--rose-mid); }
 
@@ -80,6 +84,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
 .admin-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
 .admin-stats     { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
 .admin-table-row { display: grid; grid-template-columns: 44px 1.6fr 0.8fr 0.7fr 70px 70px 56px; }
+.admin-table-row-drag { display: grid; grid-template-columns: 44px 44px 1.6fr 0.8fr 0.7fr 70px 70px 56px; }
 .admin-save-bar  { position: fixed; bottom: 0; right: 0; width: 500px; }
 .admin-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
 .admin-tabs      { display: flex; gap: 2px; }
@@ -127,6 +132,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .member-details-grid { grid-template-columns: 1fr !important; }
   .admin-stats     { grid-template-columns: repeat(2, 1fr); }
   .admin-table-row { grid-template-columns: 36px 1fr 60px; }
+  .admin-table-row-drag { grid-template-columns: 36px 36px 1fr 60px; }
   .admin-slide     { width: 100%; left: 0; }
   .admin-save-bar  { width: 100%; left: 0; }
   .admin-fields-grid { grid-template-columns: 1fr; }
@@ -149,5 +155,6 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .cat-heading     { font-size: 22px; }
   .admin-nav-pad   { padding: 12px 16px; }
   .admin-table-row .mob-hide { display: none; }
+  .admin-table-row-drag .mob-hide { display: none; }
   .mob-hide { display: none !important; }
 }
