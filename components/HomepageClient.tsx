@@ -34,7 +34,7 @@ export default function HomepageClient({
   const [search, setSearch] = useState('');
   const [area, setArea] = useState('All');
   const [verifiedOnly, setVerifiedOnly] = useState(false);
-  const [hideVacation, setHideVacation] = useState(true);
+  const [hideVacation, setHideVacation] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
 
   // Use high-res gallery images for hero slideshow
@@ -67,7 +67,10 @@ export default function HomepageClient({
       if (verifiedOnly && !p.verified) return false;
       if (area !== 'All') {
         if (area === 'LA' || area === 'OC') {
-          if (p.parent_region !== area) return false;
+          // Match on parent_region, or fall back to region if parent_region is missing
+          const parentMatch = p.parent_region === area;
+          const regionFallback = !p.parent_region && p.region === area;
+          if (!parentMatch && !regionFallback) return false;
         } else {
           if (p.region !== area) return false;
         }

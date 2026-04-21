@@ -545,7 +545,16 @@ export default function ModelEditor({
                 <label style={labelStyle}>{t.area}</label>
                 <select
                   value={form.region || ''}
-                  onChange={e => upd('region', e.target.value)}
+                  onChange={e => {
+                    const val = e.target.value;
+                    upd('region', val);
+                    // Auto-set parent_region based on selected area
+                    if (val === 'OC' || val.toLowerCase().includes('oc')) {
+                      upd('parent_region', 'OC');
+                    } else if (val && val !== 'OC') {
+                      upd('parent_region', 'LA');
+                    }
+                  }}
                   style={inputStyle}
                 >
                   <option value="">--</option>

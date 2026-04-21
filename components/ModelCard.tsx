@@ -67,16 +67,20 @@ export default function ModelCard({ profile, cardSettings }: ModelCardProps) {
           }}
         />
 
+        {/* Vacation overlay */}
+        {profile.vacation && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50">
+            <span className="font-serif text-lg tracking-[0.2em] text-white/80 uppercase px-5 py-2 border border-white/30 backdrop-blur-sm">
+              Vacation
+            </span>
+          </div>
+        )}
+
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex gap-1.5">
+        <div className="absolute top-3 left-3 flex gap-1.5 z-20">
           {cardSettings.showVerifiedBadge !== false && profile.verified && (
             <span className="font-sans bg-[rgba(24,23,22,0.92)] backdrop-blur-sm px-2.5 py-[3px] text-[10px] font-bold tracking-[0.08em] text-sage uppercase">
               {cardSettings.verifiedLabel || 'Verified'}
-            </span>
-          )}
-          {cardSettings.showAwayBadge !== false && profile.vacation && (
-            <span className="font-sans bg-[rgba(24,23,22,0.92)] px-2.5 py-[3px] text-[10px] font-bold tracking-[0.08em] text-peach uppercase">
-              {cardSettings.awayLabel || 'Away'}
             </span>
           )}
         </div>
