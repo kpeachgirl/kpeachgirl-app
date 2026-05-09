@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useCallback, useRef } from 'react';
+import Image from 'next/image';
 
 interface LightboxProps {
   images: string[];
@@ -75,14 +76,20 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
       </button>
 
       {/* Image */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={images[currentIndex]}
-        alt=""
+      <div
         onClick={(e) => e.stopPropagation()}
-        className="cursor-default"
-        style={{ maxHeight: '88vh', maxWidth: '88vw', objectFit: 'contain' }}
-      />
+        className="cursor-default relative"
+        style={{ width: '88vw', height: '88vh' }}
+      >
+        <Image
+          src={images[currentIndex]}
+          alt=""
+          fill
+          sizes="88vw"
+          quality={85}
+          style={{ objectFit: 'contain' }}
+        />
+      </div>
 
       {/* Next button */}
       <button

@@ -248,8 +248,15 @@ export default function GroupProfileClient({
                 className="gallery-item cursor-pointer"
                 onClick={() => setLightboxIndex(i)}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.url} alt="" loading="lazy" />
+                <Image
+                  src={img.url}
+                  alt=""
+                  width={600}
+                  height={800}
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                  quality={75}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                />
               </div>
             ))}
           </div>
