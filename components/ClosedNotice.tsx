@@ -7,10 +7,10 @@ export default function ClosedNotice() {
         </span>
         <div className="mt-10 h-px w-16 bg-sand mx-auto" />
         <p className="mt-10 font-serif text-xl text-ink italic">
-          This site is no longer available.
+          This site is under maintenance right now.
         </p>
         <p className="mt-6 text-sm text-muted tracking-wide">
-          Thank you to everyone who was part of this chapter.
+          We&rsquo;ll be back shortly.
         </p>
       </div>
     </div>
