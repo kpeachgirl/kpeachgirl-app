@@ -9,13 +9,16 @@ Admin-managed model directory for LA/OC. Models pay admin to build profiles. Pho
 
 ## TECH STACK
 - **Framework**: Next.js 14 (App Router), TypeScript strict
-- **Database**: Supabase (PostgreSQL + Auth + Storage)
-- **Styling**: Tailwind CSS + custom tokens
+- **Database**: Supabase (PostgreSQL + Auth + Storage), `@supabase/ssr` for SSR/middleware auth
+- **Styling**: Tailwind CSS + custom tokens (`clsx` + `tailwind-merge` via `lib/utils.ts`)
 - **Fonts**: Cormorant Garamond (serif) + Manrope (sans) via next/font
-- **Images**: Supabase Storage + next/image
+- **Images**: Supabase Storage + next/image, `sharp` for processing
 - **Auth**: Supabase Auth (email/password, admin JWT claim)
 - **Deploy**: Vercel
 - **Email**: Resend
+- **AI ID verification**: Anthropic Claude Vision (`@anthropic-ai/sdk`) — `/api/verify-id`
+- **Web analytics**: GA4 (gtag in `app/layout.tsx`, ID `G-QBYZJPN8YX`) + GA Data API (`@google-analytics/data`, `google-auth-library`) + first-party visitor tracking (`page_views` table)
+- **Notifications**: Telegram bot (admin alerts on visits/submissions, public channel auto-posts for new models)
 
 ## DESIGN TOKENS (DARK THEME)
 ```css
@@ -39,10 +42,19 @@ input-bg: #1e1d1b          /* form inputs */
 /model/[slug]        ISR60s  Individual model profile
 /group/[slug]        ISR60s  Group profile (duo/trio/group)
 /membership          CSR     Membership form (direct link only, not in nav)
-/admin               CSR     Admin dashboard (auth-gated)
+/admin               CSR     Admin dashboard (auth-gated, route group (dashboard))
 /admin/login         CSR     Login page
 /api/contact         API     Contact form → Resend
 /api/revalidate      API     On-demand ISR trigger
+/api/verify-id       API     AI ID verification — Claude Vision analyzes submission ID photo,
+                             writes result to submissions.form_data.id_verification (fire-and-forget
+                             from membership form). No-ops if ANTHROPIC_API_KEY unset.
+/api/track           API     Anonymous visitor tracking → page_views table + throttled Telegram alert
+/api/analytics       API     Admin-only. Aggregates page_views (live/today/7d/30d) for AnalyticsTab
+/api/ga              API     Admin-only. Proxies GA4 Data API metrics for AnalyticsTab
+/api/notify-channel  API     Admin-only. Posts a new model card to the public Telegram channel
+/api/telegram-post   API     Admin-only. Posts a message/model to the Telegram channel
+/api/reorder-models  API     Admin-only. Persists drag-and-drop sort_order for the model grid
 ```
 
 ## SUPABASE SCHEMA
@@ -118,12 +130,34 @@ CREATE TABLE group_gallery_images (
 ```sql
 CREATE TABLE submissions (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  form_data jsonb NOT NULL,
-  status text DEFAULT 'new',  -- new/reviewed/approved/dismissed/converted
+  form_data jsonb NOT NULL,    -- form fields + id_verification result (see below)
+  status text DEFAULT 'new',   -- new/reviewed/approved/dismissed/converted
   id_photo_url text,
   created_at timestamptz DEFAULT now()
 );
 ```
+After submit, `/api/verify-id` writes Claude Vision output into `form_data.id_verification`:
+```json
+{
+  "face_detected": true, "id_detected": true, "face_matches_id": "true|false|unclear",
+  "name_on_id": "...", "confidence": "high|medium|low", "issues": ["..."],
+  "summary": "...", "passed": true, "verified_at": "ISO"
+}
+```
+SubmissionsTab renders a pass/fail badge + name-mismatch warning from this.
+
+### page_views
+```sql
+CREATE TABLE page_views (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  visitor_id text,            -- client-generated anonymous id
+  path text,
+  referrer text,
+  browser text, os text, device_type text,  -- parsed from user-agent in /api/track
+  created_at timestamptz DEFAULT now()
+);
+```
+Written by `/api/track` (called from `PageTracker`), read by `/api/analytics` for the admin AnalyticsTab.
 
 ### site_config
 ```sql
@@ -291,4 +325,11 @@ SUPABASE_SERVICE_ROLE_KEY=
 RESEND_API_KEY=
 ADMIN_EMAIL=admin@kpeachgirl.com
 REVALIDATION_SECRET=
+ANTHROPIC_API_KEY=          # AI ID verification; /api/verify-id no-ops if unset
+GA_CLIENT_EMAIL=            # GA4 Data API service account (for /api/ga)
+GA_PRIVATE_KEY=             # GA4 service account key (\n-escaped)
+TELEGRAM_CHANNEL_ID=        # public channel id for new-model auto-posts
 ```
+NOTE: GA4 measurement ID (`G-QBYZJPN8YX`) and GA property id (`529493983`) are hardcoded.
+SECURITY DEBT: the Telegram bot token is currently hardcoded in `/api/track`, `/api/notify-channel`,
+and `/api/telegram-post` — should be moved to an env var (`TELEGRAM_BOT_TOKEN`).

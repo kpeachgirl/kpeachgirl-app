@@ -387,6 +387,52 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                     </div>
                   )
                 })}
+
+                {/* AI ID Verification Result */}
+                {fd.id_verification && (
+                  <div
+                    style={{
+                      marginTop: 10,
+                      padding: '10px 14px',
+                      borderRadius: 8,
+                      border: `1px solid ${fd.id_verification.passed ? 'var(--sage)' : 'var(--rose)'}`,
+                      background: fd.id_verification.passed ? 'rgba(143,173,143,0.08)' : 'rgba(212,117,138,0.08)',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                      <span style={{
+                        fontSize: 11,
+                        fontWeight: 700,
+                        letterSpacing: '0.08em',
+                        textTransform: 'uppercase',
+                        color: fd.id_verification.passed ? 'var(--sage)' : 'var(--rose)',
+                      }}>
+                        {fd.id_verification.passed ? 'ID VERIFIED' : 'VERIFICATION FAILED'}
+                      </span>
+                      <span style={{ fontSize: 10, color: 'var(--muted)' }}>
+                        Confidence: {fd.id_verification.confidence}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 12, color: 'var(--ink)', lineHeight: 1.5 }}>
+                      {fd.id_verification.summary}
+                    </div>
+                    {fd.id_verification.name_on_id && (
+                      <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>
+                        Name on ID: <strong style={{ color: 'var(--charcoal)' }}>{fd.id_verification.name_on_id}</strong>
+                        {fd.name && fd.id_verification.name_on_id.toLowerCase() !== fd.name.toLowerCase() && (
+                          <span style={{ color: 'var(--rose)', marginLeft: 8, fontWeight: 600 }}>
+                            Name mismatch!
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {fd.id_verification.issues?.length > 0 && (
+                      <div style={{ fontSize: 11, color: 'var(--peach)', marginTop: 4 }}>
+                        Issues: {fd.id_verification.issues.join(', ')}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
 
               {/* Action buttons */}

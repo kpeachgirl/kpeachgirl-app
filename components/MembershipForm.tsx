@@ -91,16 +91,30 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
         }
       }
 
-      const { error: insertError } = await supabase
+      const { data: insertData, error: insertError } = await supabase
         .from('submissions')
         .insert({
           form_data: submissionData,
           id_photo_url: idPhotoUrl,
           status: 'new',
-        });
+        })
+        .select('id')
+        .single();
 
       if (insertError) {
         throw new Error(insertError.message);
+      }
+
+      // Trigger AI ID verification in the background
+      if (insertData?.id && idPhotoUrl) {
+        fetch('/api/verify-id', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            submissionId: insertData.id,
+            imageUrl: idPhotoUrl,
+          }),
+        }).catch(() => {}); // fire and forget
       }
 
       setDone(true);
