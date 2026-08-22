@@ -37,18 +37,18 @@ export default function PhotoEditor({ src, crop, aspect, onSave, onCancel, trans
 
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(12px)' }}>
-      <div className="sans" style={{ background: '#181716', maxWidth: 520, width: '90%', maxHeight: '90vh', overflow: 'auto', boxShadow: '0 24px 80px rgba(0,0,0,0.3)' }}>
+      <div className="sans" style={{ background: '#000000', maxWidth: 520, width: '90%', maxHeight: '90vh', overflow: 'auto', boxShadow: '0 24px 80px rgba(0,0,0,0.3)' }}>
         {/* Header */}
         <div style={{ padding: '16px 24px', borderBottom: '1px solid var(--sand)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontWeight: 700, fontSize: 13, color: 'var(--charcoal)' }}>{t.editPhoto || 'Edit Photo'}</div>
-          <button onClick={onCancel} style={{ background: 'none', border: '1px solid var(--sand)', width: 28, height: 28, cursor: 'pointer', fontSize: 14, color: 'var(--muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Manrope,sans-serif' }}>
+          <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>{t.editPhoto || 'Edit Photo'}</div>
+          <button onClick={onCancel} style={{ background: 'none', border: '1px solid var(--sand)', width: 28, height: 28, cursor: 'pointer', fontSize: 15, color: 'var(--muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Manrope,sans-serif' }}>
             &times;
           </button>
         </div>
 
         {/* Preview frame */}
         <div style={{ padding: '20px 24px' }}>
-          <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>
+          <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', color: 'var(--muted)', textTransform: 'uppercase', marginBottom: 8 }}>
             {t.focalPoint || 'Click to set focal point'}
           </p>
           <div
@@ -82,26 +82,26 @@ export default function PhotoEditor({ src, crop, aspect, onSave, onCancel, trans
             {/* Crosshair indicator */}
             <div style={{ position: 'absolute', left: `${pos.x}%`, top: `${pos.y}%`, transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 2 }}>
               <div style={{ width: 24, height: 24, border: '2px solid #fff', borderRadius: '50%', boxShadow: '0 0 0 1px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(0,0,0,0.3)' }} />
-              <div style={{ position: 'absolute', left: 11, top: -8, width: 2, height: 8, background: '#181716', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', left: 11, top: 24, width: 2, height: 8, background: '#181716', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', top: 11, left: -8, width: 8, height: 2, background: '#181716', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', top: 11, left: 24, width: 8, height: 2, background: '#181716', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', left: 11, top: -8, width: 2, height: 8, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', left: 11, top: 24, width: 2, height: 8, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', top: 11, left: -8, width: 8, height: 2, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', top: 11, left: 24, width: 8, height: 2, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
             </div>
           </div>
 
           {/* Zoom slider */}
           <div style={{ marginTop: 16 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'var(--muted)', textTransform: 'uppercase' }}>{t.zoom || 'Zoom'}</span>
-              <span style={{ fontSize: 12, color: 'var(--charcoal)', fontWeight: 600 }}>{zoom}%</span>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', color: 'var(--muted)', textTransform: 'uppercase' }}>{t.zoom || 'Zoom'}</span>
+              <span style={{ fontSize: 13, color: 'var(--charcoal)', fontWeight: 600 }}>{zoom}%</span>
             </div>
             <input type="range" min="100" max="200" value={zoom} onChange={(e) => setZoom(parseInt(e.target.value))} style={{ width: '100%', accentColor: 'var(--rose)' }} />
           </div>
 
           {/* Position readout */}
           <div style={{ display: 'flex', gap: 16, marginTop: 12 }}>
-            <div style={{ fontSize: 11, color: 'var(--muted)' }}>X: <strong style={{ color: 'var(--charcoal)' }}>{Math.round(pos.x)}%</strong></div>
-            <div style={{ fontSize: 11, color: 'var(--muted)' }}>Y: <strong style={{ color: 'var(--charcoal)' }}>{Math.round(pos.y)}%</strong></div>
+            <div style={{ fontSize: 12, color: 'var(--muted)' }}>X: <strong style={{ color: 'var(--charcoal)' }}>{Math.round(pos.x)}%</strong></div>
+            <div style={{ fontSize: 12, color: 'var(--muted)' }}>Y: <strong style={{ color: 'var(--charcoal)' }}>{Math.round(pos.y)}%</strong></div>
           </div>
         </div>
 
@@ -109,19 +109,19 @@ export default function PhotoEditor({ src, crop, aspect, onSave, onCancel, trans
         <div style={{ padding: '12px 24px', borderTop: '1px solid var(--sand)', display: 'flex', gap: 10 }}>
           <button
             onClick={() => onSave({ x: Math.round(pos.x), y: Math.round(pos.y), zoom })}
-            style={{ flex: 1, padding: '10px 0', background: 'var(--charcoal)', color: 'var(--cream)', border: 'none', fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
+            style={{ flex: 1, padding: '10px 0', background: 'var(--charcoal)', color: 'var(--cream)', border: 'none', fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
           >
             {t.applyCrop || 'Apply'}
           </button>
           <button
             onClick={() => { setPos({ x: 50, y: 50 }); setZoom(100); }}
-            style={{ padding: '10px 16px', border: '1px solid var(--sand)', background: 'transparent', color: 'var(--muted)', fontSize: 11, fontWeight: 600, cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
+            style={{ padding: '10px 16px', border: '1px solid var(--sand)', background: 'transparent', color: 'var(--muted)', fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
           >
             {t.resetCrop || 'Reset'}
           </button>
           <button
             onClick={onCancel}
-            style={{ padding: '10px 16px', border: '1px solid var(--sand)', background: 'transparent', color: 'var(--muted)', fontSize: 11, fontWeight: 600, cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
+            style={{ padding: '10px 16px', border: '1px solid var(--sand)', background: 'transparent', color: 'var(--muted)', fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'Manrope,sans-serif' }}
           >
             {t.cancel || 'Cancel'}
           </button>

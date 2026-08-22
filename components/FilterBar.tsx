@@ -32,7 +32,7 @@ export default function FilterBar({
       <div className="font-sans flex justify-between items-center flex-wrap gap-3">
         {/* Area filter chips */}
         <div className="filter-scroll flex gap-2 items-center">
-          <span className="text-[10px] font-bold tracking-[0.14em] text-muted uppercase mr-2 whitespace-nowrap">
+          <span className="text-[11px] font-bold tracking-[0.14em] text-muted uppercase mr-2 whitespace-nowrap">
             Area
           </span>
           {allAreas.map((a) => (
@@ -42,7 +42,7 @@ export default function FilterBar({
               className="font-sans whitespace-nowrap transition-all duration-200"
               style={{
                 padding: '6px 16px',
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.04em',
                 cursor: 'pointer',
@@ -59,7 +59,7 @@ export default function FilterBar({
 
         {/* Toggles */}
         <div className="flex gap-4 items-center">
-          <label className="font-sans flex items-center gap-1.5 text-[11px] font-semibold text-muted cursor-pointer">
+          <label className="font-sans flex items-center gap-1.5 text-[12px] font-semibold text-muted cursor-pointer">
             <input
               type="checkbox"
               checked={verifiedOnly}
@@ -68,7 +68,7 @@ export default function FilterBar({
             />
             Verified
           </label>
-          <label className="font-sans flex items-center gap-1.5 text-[11px] font-semibold text-muted cursor-pointer">
+          <label className="font-sans flex items-center gap-1.5 text-[12px] font-semibold text-muted cursor-pointer">
             <input
               type="checkbox"
               checked={hideVacation}
@@ -81,7 +81,7 @@ export default function FilterBar({
       </div>
 
       {/* Model count */}
-      <div className="font-sans text-[11px] text-sand mt-3 font-semibold tracking-[0.06em]">
+      <div className="font-sans text-[12px] text-charcoal mt-3 font-semibold tracking-[0.06em]">
         {modelCount} model{modelCount !== 1 ? 's' : ''}
       </div>
     </div>

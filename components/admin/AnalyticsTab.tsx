@@ -146,7 +146,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
   }, [autoRefresh, fetchData]);
 
   const cardStyle = {
-    background: '#181716',
+    background: '#000000',
     border: '1px solid var(--sand)',
     borderRadius: 12,
     padding: '24px',
@@ -154,7 +154,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
 
   const labelStyle = {
     fontFamily: 'var(--font-sans)',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 700 as const,
     letterSpacing: '0.1em',
     textTransform: 'uppercase' as const,
@@ -171,7 +171,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
 
   if (loading) {
     return (
-      <div style={{ textAlign: 'center', padding: 60, color: 'var(--muted)', fontFamily: 'var(--font-sans)', fontSize: 14 }}>
+      <div style={{ textAlign: 'center', padding: 60, color: 'var(--muted)', fontFamily: 'var(--font-sans)', fontSize: 15 }}>
         {t.loading}
       </div>
     );
@@ -179,7 +179,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
 
   if (!data) {
     return (
-      <div style={{ textAlign: 'center', padding: 60, color: 'var(--muted)', fontFamily: 'var(--font-sans)', fontSize: 14 }}>
+      <div style={{ textAlign: 'center', padding: 60, color: 'var(--muted)', fontFamily: 'var(--font-sans)', fontSize: 15 }}>
         Failed to load analytics. Make sure the page_views table exists in Supabase.
       </div>
     );
@@ -193,10 +193,10 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
         <div>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, fontWeight: 400, color: 'var(--charcoal)', margin: 0 }}>
+          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 24, fontWeight: 400, color: 'var(--charcoal)', margin: 0 }}>
             {lang === 'ko' ? '대시보드' : 'Dashboard'}
           </h2>
-          <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)', margin: '4px 0 0' }}>
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)', margin: '4px 0 0' }}>
             {lang === 'ko' ? '실시간 사이트 통계' : 'Real-time site analytics'}
           </p>
         </div>
@@ -215,7 +215,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             type="button"
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
@@ -240,7 +240,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: '#4ade80', marginRight: 6, animation: 'pulse 2s infinite' }} />
             {lang === 'ko' ? '실시간 방문자' : 'Live Now'}
           </div>
-          <div style={{ ...bigNumberStyle, fontSize: 42, color: '#4ade80' }}>
+          <div style={{ ...bigNumberStyle, fontSize: 46, color: '#4ade80' }}>
             {data.liveVisitors}
           </div>
         </div>
@@ -248,8 +248,8 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
         {/* Today Views */}
         <div style={cardStyle}>
           <div style={labelStyle}>{lang === 'ko' ? '오늘 조회수' : 'Today Views'}</div>
-          <div style={{ ...bigNumberStyle, fontSize: 42 }}>{data.todayViews}</div>
-          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>
+          <div style={{ ...bigNumberStyle, fontSize: 46 }}>{data.todayViews}</div>
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 4 }}>
             {data.todayUnique} {lang === 'ko' ? '고유 방문자' : 'unique'}
           </div>
         </div>
@@ -257,13 +257,13 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
         {/* 7-Day Views */}
         <div style={cardStyle}>
           <div style={labelStyle}>{lang === 'ko' ? '7일 조회수' : '7-Day Views'}</div>
-          <div style={{ ...bigNumberStyle, fontSize: 42 }}>{data.weekViews}</div>
+          <div style={{ ...bigNumberStyle, fontSize: 46 }}>{data.weekViews}</div>
         </div>
 
         {/* 30-Day Views */}
         <div style={cardStyle}>
           <div style={labelStyle}>{lang === 'ko' ? '30일 조회수' : '30-Day Views'}</div>
-          <div style={{ ...bigNumberStyle, fontSize: 42 }}>{data.monthViews}</div>
+          <div style={{ ...bigNumberStyle, fontSize: 46 }}>{data.monthViews}</div>
         </div>
       </div>
 
@@ -294,17 +294,17 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: 16,
+                  fontSize: 18,
                   flexShrink: 0,
                 }}
               >
                 {v.country ? (COUNTRY_FLAGS[v.country] || '🌍') : '🌍'}
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', fontWeight: 600 }}>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)', fontWeight: 600 }}>
                   {formatLocation(v.city, v.region, v.country)}
                 </div>
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 2 }}>
                   {lang === 'ko' ? '보는 중' : 'Viewing'}: <strong style={{ color: 'var(--peach)' }}>{v.path}</strong>
                   {v.device_type && ` · ${v.device_type}`}
                   {v.browser && ` · ${v.browser}`}
@@ -316,7 +316,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                 borderRadius: 4,
                 background: 'rgba(74, 222, 128, 0.12)',
                 fontFamily: 'var(--font-sans)',
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: 700,
                 color: '#4ade80',
                 textTransform: 'uppercase',
@@ -335,7 +335,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
         <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 140 }}>
           {data.dailyViews.map((day, i) => (
             <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 10, color: 'var(--muted)' }}>
+              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)' }}>
                 {day.views}
               </span>
               <div
@@ -349,7 +349,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                   minHeight: 4,
                 }}
               />
-              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 9, color: 'var(--muted)', textAlign: 'center' }}>
+              <span style={{ fontFamily: 'var(--font-sans)', fontSize: 10, color: 'var(--muted)', textAlign: 'center' }}>
                 {day.date.split(',')[0]}
               </span>
             </div>
@@ -365,7 +365,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '방문자 위치' : 'Visitor Locations'}
           </div>
           {data.topLocations.length === 0 ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '위치 데이터 수집 중...' : 'Collecting location data...'}
             </div>
           ) : (
@@ -378,10 +378,10 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>
                     {formatLocationShort(loc.city, loc.region, loc.country)}
                   </span>
-                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)' }}>
+                  <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)' }}>
                     <strong style={{ color: 'var(--rose)', fontWeight: 600 }}>{loc.visitors}</strong> {lang === 'ko' ? '명' : 'visitors'}
                     {' · '}{loc.views} {lang === 'ko' ? '조회' : 'views'}
                   </span>
@@ -407,7 +407,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '국가별 방문자' : 'Countries'}
           </div>
           {data.topCountries.length === 0 ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '데이터 없음' : 'No data yet'}
             </div>
           ) : (
@@ -425,13 +425,13 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                     borderBottom: i < data.topCountries.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                   }}
                 >
-                  <span style={{ fontSize: 20, width: 28, textAlign: 'center' }}>{flag}</span>
+                  <span style={{ fontSize: 22, width: 28, textAlign: 'center' }}>{flag}</span>
                   <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', fontWeight: 500 }}>
+                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)', fontWeight: 500 }}>
                         {c.country}
                       </span>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--peach)' }}>
+                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--peach)' }}>
                         {c.visitors} {lang === 'ko' ? '명' : 'visitors'}
                       </span>
                     </div>
@@ -455,7 +455,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
       {/* ─── Google Analytics Demographics ─── */}
       {gaData && (
         <div style={{ marginBottom: 24 }}>
-          <div style={{ ...labelStyle, marginBottom: 16, fontSize: 13, letterSpacing: '0.05em' }}>
+          <div style={{ ...labelStyle, marginBottom: 16, fontSize: 14, letterSpacing: '0.05em' }}>
             {lang === 'ko' ? 'Google Analytics 인사이트' : 'Google Analytics Insights'}
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
@@ -463,7 +463,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             <div style={cardStyle}>
               <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '성별' : 'Gender'}</div>
               {gaData.genderData.length === 0 ? (
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
                   {lang === 'ko' ? '데이터 수집 중... (24-48시간 소요)' : 'Collecting data... (takes 24-48hrs)'}
                 </div>
               ) : (
@@ -483,12 +483,12 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                     const pct = total > 0 ? Math.round((g.users / total) * 100) : 0;
                     return (
                       <div key={g.gender} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '6px 0' }}>
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)', display: 'flex', alignItems: 'center', gap: 8 }}>
                           <span style={{ width: 10, height: 10, borderRadius: '50%', background: GENDER_COLORS[g.gender] || 'var(--muted)', display: 'inline-block' }} />
                           {GENDER_LABELS[lang]?.[g.gender] || g.gender}
                         </span>
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: GENDER_COLORS[g.gender] || 'var(--charcoal)' }}>
-                          {pct}% <span style={{ fontWeight: 400, color: 'var(--muted)', fontSize: 11 }}>({g.users})</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 600, color: GENDER_COLORS[g.gender] || 'var(--charcoal)' }}>
+                          {pct}% <span style={{ fontWeight: 400, color: 'var(--muted)', fontSize: 12 }}>({g.users})</span>
                         </span>
                       </div>
                     );
@@ -501,7 +501,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             <div style={cardStyle}>
               <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '연령대' : 'Age Range'}</div>
               {gaData.ageBrackets.length === 0 ? (
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
                   {lang === 'ko' ? '데이터 수집 중... (24-48시간 소요)' : 'Collecting data... (takes 24-48hrs)'}
                 </div>
               ) : (
@@ -511,7 +511,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                     const pct = (bracket.users / maxUsers) * 100;
                     return (
                       <div key={bracket.age} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}>
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 10, color: 'var(--muted)' }}>{bracket.users}</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)' }}>{bracket.users}</span>
                         <div style={{
                           width: '100%',
                           height: `${Math.max(pct, 6)}%`,
@@ -519,7 +519,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                           borderRadius: '4px 4px 0 0',
                           minHeight: 6,
                         }} />
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 9, color: 'var(--muted)', textAlign: 'center' }}>{bracket.age}</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 10, color: 'var(--muted)', textAlign: 'center' }}>{bracket.age}</span>
                       </div>
                     );
                   })}
@@ -531,7 +531,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             <div style={cardStyle}>
               <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '관심사' : 'Interests'}</div>
               {gaData.interests.length === 0 ? (
-                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+                <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
                   {lang === 'ko' ? '데이터 수집 중... (24-48시간 소요)' : 'Collecting data... (takes 24-48hrs)'}
                 </div>
               ) : (
@@ -543,10 +543,10 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                       borderBottom: i < Math.min(gaData.interests.length, 8) - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                     }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--charcoal)', maxWidth: '70%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', maxWidth: '70%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {interest.interest}
                         </span>
-                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 11, fontWeight: 600, color: 'var(--peach)' }}>{interest.users}</span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--peach)' }}>{interest.users}</span>
                       </div>
                       <div style={{ height: 3, borderRadius: 2, background: 'var(--sand)', overflow: 'hidden' }}>
                         <div style={{ height: '100%', borderRadius: 2, background: 'linear-gradient(90deg, var(--rose), var(--peach))', width: `${(interest.users / maxInt) * 100}%` }} />
@@ -558,7 +558,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             </div>
           </div>
           {gaData.error && (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)', marginTop: 8, opacity: 0.6 }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 8, opacity: 0.6 }}>
               GA4 Note: {gaData.error === 'Failed to fetch GA4 data' ? 'Waiting for Google Signals to activate (24-48hrs)' : gaData.error}
             </div>
           )}
@@ -573,7 +573,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '기기 유형' : 'Devices'}
           </div>
           {(!data.devices || data.devices.length === 0) ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '수집 중...' : 'Collecting...'}
             </div>
           ) : (
@@ -584,8 +584,8 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
               return (
                 <div key={d.name} style={{ padding: '8px 0', borderBottom: i < data.devices.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>{icon} {d.name}</span>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--peach)' }}>{pct}%</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>{icon} {d.name}</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--peach)' }}>{pct}%</span>
                   </div>
                   <div style={{ height: 4, borderRadius: 2, background: 'var(--sand)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', borderRadius: 2, background: 'var(--peach)', width: `${pct}%` }} />
@@ -602,7 +602,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '브라우저' : 'Browsers'}
           </div>
           {(!data.browsers || data.browsers.length === 0) ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '수집 중...' : 'Collecting...'}
             </div>
           ) : (
@@ -612,8 +612,8 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
               return (
                 <div key={b.name} style={{ padding: '8px 0', borderBottom: i < Math.min(data.browsers.length, 6) - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>{b.name}</span>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--rose)' }}>{pct}%</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>{b.name}</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--rose)' }}>{pct}%</span>
                   </div>
                   <div style={{ height: 4, borderRadius: 2, background: 'var(--sand)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', borderRadius: 2, background: 'var(--rose)', width: `${pct}%` }} />
@@ -630,7 +630,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '운영체제' : 'Operating Systems'}
           </div>
           {(!data.operatingSystems || data.operatingSystems.length === 0) ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '수집 중...' : 'Collecting...'}
             </div>
           ) : (
@@ -640,8 +640,8 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
               return (
                 <div key={o.name} style={{ padding: '8px 0', borderBottom: i < Math.min(data.operatingSystems.length, 6) - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>{o.name}</span>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--sage)' }}>{pct}%</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>{o.name}</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--sage)' }}>{pct}%</span>
                   </div>
                   <div style={{ height: 4, borderRadius: 2, background: 'var(--sand)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', borderRadius: 2, background: 'var(--sage)', width: `${pct}%` }} />
@@ -658,7 +658,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
             {lang === 'ko' ? '언어' : 'Languages'}
           </div>
           {(!data.languages || data.languages.length === 0) ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '수집 중...' : 'Collecting...'}
             </div>
           ) : (
@@ -668,8 +668,8 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
               return (
                 <div key={l.name} style={{ padding: '8px 0', borderBottom: i < Math.min(data.languages.length, 6) - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>{l.name}</span>
-                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--charcoal)' }}>{pct}%</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>{l.name}</span>
+                    <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--charcoal)' }}>{pct}%</span>
                   </div>
                   <div style={{ height: 4, borderRadius: 2, background: 'var(--sand)', overflow: 'hidden' }}>
                     <div style={{ height: '100%', borderRadius: 2, background: 'linear-gradient(90deg, var(--rose), var(--peach))', width: `${pct}%` }} />
@@ -687,7 +687,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
         <div style={cardStyle}>
           <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '인기 페이지' : 'Top Pages'}</div>
           {data.topPages.length === 0 ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '데이터 없음' : 'No data yet'}
             </div>
           ) : (
@@ -702,10 +702,10 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                   borderBottom: i < data.topPages.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                 }}
               >
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '70%' }}>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '70%' }}>
                   {page.path}
                 </span>
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--rose)' }}>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--rose)' }}>
                   {page.views}
                 </span>
               </div>
@@ -717,7 +717,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
         <div style={cardStyle}>
           <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '유입 경로' : 'Top Referrers'}</div>
           {data.topReferrers.length === 0 ? (
-            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+            <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
               {lang === 'ko' ? '데이터 없음' : 'No data yet'}
             </div>
           ) : (
@@ -732,10 +732,10 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                   borderBottom: i < data.topReferrers.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
                 }}
               >
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)' }}>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)' }}>
                   {ref.source}
                 </span>
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontWeight: 600, color: 'var(--sage)' }}>
+                <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, fontWeight: 600, color: 'var(--sage)' }}>
                   {ref.views}
                 </span>
               </div>
@@ -748,7 +748,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
       <div style={cardStyle}>
         <div style={{ ...labelStyle, marginBottom: 16 }}>{lang === 'ko' ? '최근 활동' : 'Recent Activity'}</div>
         {data.recentActivity.length === 0 ? (
-          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)' }}>
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--muted)' }}>
             {lang === 'ko' ? '활동 없음' : 'No activity yet'}
           </div>
         ) : (
@@ -777,7 +777,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: 14,
+                      fontSize: 15,
                       flexShrink: 0,
                     }}
                   >
@@ -789,12 +789,12 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
                     )}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--charcoal)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: 14, color: 'var(--charcoal)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       <strong style={{ color: 'var(--peach)' }}>{location}</strong>
                       {' '}&rarr;{' '}
                       <span>{entry.path}</span>
                     </div>
-                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>
+                    <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 2 }}>
                       {ago}
                       {entry.device_type && ` · ${entry.device_type}`}
                       {entry.browser && ` · ${entry.browser}`}

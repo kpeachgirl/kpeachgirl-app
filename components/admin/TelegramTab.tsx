@@ -77,7 +77,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
   };
 
   const cardStyle = {
-    background: '#181716',
+    background: '#000000',
     border: '1px solid rgba(255,255,255,0.06)',
     borderRadius: 10,
     padding: 24,
@@ -87,18 +87,18 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
   const inputStyle = {
     width: '100%',
     padding: '12px 16px',
-    background: '#1e1d1b',
+    background: '#000000',
     border: '1px solid var(--sand)',
     borderRadius: 8,
     color: 'var(--charcoal)',
-    fontSize: 14,
+    fontSize: 15,
     fontFamily: 'var(--font-sans)',
     outline: 'none',
   };
 
   const labelStyle = {
     display: 'block',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 700 as const,
     letterSpacing: '0.08em',
     textTransform: 'uppercase' as const,
@@ -111,10 +111,10 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
     <div>
       {/* Header */}
       <div style={{ marginBottom: 24 }}>
-        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 24, fontWeight: 400, color: 'var(--charcoal)', margin: 0 }}>
+        <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 400, color: 'var(--charcoal)', margin: 0 }}>
           Telegram Channel
         </h2>
-        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 4 }}>
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)', marginTop: 4 }}>
           Send posts to Kpeachgirl VIP channel
         </p>
       </div>
@@ -131,7 +131,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
             onClick={() => setPostType(id)}
             style={{
               padding: '8px 18px',
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
@@ -139,7 +139,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
               border: 'none',
               borderRadius: 8,
               cursor: 'pointer',
-              background: postType === id ? 'var(--charcoal)' : '#1e1d1b',
+              background: postType === id ? 'var(--charcoal)' : '#000000',
               color: postType === id ? 'var(--cream)' : 'var(--muted)',
               transition: 'all 0.15s',
             }}
@@ -182,7 +182,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
             const model = profiles.find(p => p.id === selectedModel);
             if (!model) return null;
             return (
-              <div style={{ marginTop: 16, padding: 16, background: '#1e1d1b', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ marginTop: 16, padding: 16, background: '#000000', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 16 }}>
                 {model.profile_image && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -192,9 +192,9 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
                   />
                 )}
                 <div>
-                  <div style={{ fontFamily: 'var(--font-serif)', fontSize: 18, color: 'var(--charcoal)' }}>{model.name}</div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--muted)', marginTop: 2 }}>{model.region}</div>
-                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 11, color: 'var(--rose)', marginTop: 4 }}>kpeachgirl.com/model/{model.slug}</div>
+                  <div style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)' }}>{model.name}</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--muted)', marginTop: 2 }}>{model.region}</div>
+                  <div style={{ fontFamily: 'var(--font-sans)', fontSize: 12, color: 'var(--rose)', marginTop: 4 }}>kpeachgirl.com/model/{model.slug}</div>
                 </div>
               </div>
             );
@@ -251,7 +251,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
         style={{
           width: '100%',
           padding: '14px 24px',
-          fontSize: 13,
+          fontSize: 14,
           fontWeight: 700,
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
@@ -270,7 +270,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
       </button>
 
       {error && (
-        <div style={{ padding: '12px 16px', background: 'rgba(224,85,85,0.1)', border: '1px solid rgba(224,85,85,0.3)', borderRadius: 8, color: '#e05555', fontSize: 13, fontFamily: 'var(--font-sans)', marginBottom: 16 }}>
+        <div style={{ padding: '12px 16px', background: 'rgba(224,85,85,0.1)', border: '1px solid rgba(224,85,85,0.3)', borderRadius: 8, color: '#e05555', fontSize: 14, fontFamily: 'var(--font-sans)', marginBottom: 16 }}>
           {error}
         </div>
       )}
@@ -282,14 +282,14 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
           {history.map((h, i) => (
             <div key={i} style={{ padding: '10px 0', borderBottom: i < history.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: h.type === 'featured' ? 'var(--rose)' : h.type === 'special' ? 'var(--peach)' : 'var(--muted)', fontFamily: 'var(--font-sans)', marginRight: 8 }}>
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: h.type === 'featured' ? 'var(--rose)' : h.type === 'special' ? 'var(--peach)' : 'var(--muted)', fontFamily: 'var(--font-sans)', marginRight: 8 }}>
                   {h.type}
                 </span>
-                <span style={{ fontSize: 13, color: 'var(--charcoal)', fontFamily: 'var(--font-sans)' }}>
+                <span style={{ fontSize: 14, color: 'var(--charcoal)', fontFamily: 'var(--font-sans)' }}>
                   {h.text.length > 50 ? h.text.slice(0, 50) + '...' : h.text}
                 </span>
               </div>
-              <span style={{ fontSize: 11, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>{h.time}</span>
+              <span style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>{h.time}</span>
             </div>
           ))}
         </div>

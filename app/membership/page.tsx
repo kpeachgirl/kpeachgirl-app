@@ -64,7 +64,7 @@ export default function MembershipPage() {
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center grain">
         <div className="text-center">
-          <span className="font-serif text-2xl font-normal text-charcoal">
+          <span className="font-serif text-3xl font-normal text-charcoal">
             K<span className="text-rose">peach</span>girl
           </span>
           <div className="mt-4 w-6 h-6 border-2 border-sand border-t-rose rounded-full animate-spin mx-auto" />

@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
                 onClick={() => { setLang(l); localStorage.setItem('kpeach-lang', l) }}
                 style={{
                   padding: '4px 10px',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 700,
                   fontFamily: 'var(--font-sans)',
                   letterSpacing: '0.05em',
@@ -101,7 +101,7 @@ export default function AdminLoginPage() {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 28,
+              fontSize: 31,
               fontWeight: 300,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
             K<span style={{ color: 'var(--rose)' }}>PEACH</span>GIRL
           </h1>
           <p
-            className="text-sm tracking-wider uppercase"
+            className="text-base tracking-wider uppercase"
             style={{
               fontFamily: 'var(--font-sans)',
               color: 'var(--muted)',
@@ -128,13 +128,13 @@ export default function AdminLoginPage() {
           onSubmit={handleLogin}
           className="rounded-xl p-8"
           style={{
-            background: '#181716',
+            background: '#000000',
             border: '1px solid var(--sand)',
           }}
         >
           {error && (
             <div
-              className="mb-6 p-3 rounded-lg text-sm"
+              className="mb-6 p-3 rounded-lg text-base"
               style={{
                 background: 'rgba(212, 117, 138, 0.12)',
                 color: 'var(--rose)',
@@ -147,7 +147,7 @@ export default function AdminLoginPage() {
 
           <div className="mb-5">
             <label
-              className="block text-xs uppercase tracking-wider mb-2"
+              className="block text-sm uppercase tracking-wider mb-2"
               style={{
                 color: 'var(--muted)',
                 fontFamily: 'var(--font-sans)',
@@ -163,9 +163,9 @@ export default function AdminLoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@kpeachgirl.com"
               autoComplete="email"
-              className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
               style={{
-                background: '#1e1d1b',
+                background: '#000000',
                 border: '1px solid var(--sand)',
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
@@ -175,7 +175,7 @@ export default function AdminLoginPage() {
 
           <div className="mb-6">
             <label
-              className="block text-xs uppercase tracking-wider mb-2"
+              className="block text-sm uppercase tracking-wider mb-2"
               style={{
                 color: 'var(--muted)',
                 fontFamily: 'var(--font-sans)',
@@ -191,9 +191,9 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder={t.loginPasswordPh}
               autoComplete="current-password"
-              className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
               style={{
-                background: '#1e1d1b',
+                background: '#000000',
                 border: '1px solid var(--sand)',
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
@@ -204,7 +204,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg text-sm uppercase tracking-wider transition-all"
+            className="w-full py-3 rounded-lg text-base uppercase tracking-wider transition-all"
             style={{
               background: loading ? 'var(--sand)' : 'var(--rose)',
               color: loading ? 'var(--muted)' : '#fff',
@@ -221,7 +221,7 @@ export default function AdminLoginPage() {
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="text-sm transition-colors hover:opacity-80"
+            className="text-base transition-colors hover:opacity-80"
             style={{
               color: 'var(--muted)',
               fontFamily: 'var(--font-sans)',
@@ -233,11 +233,10 @@ export default function AdminLoginPage() {
 
         {/* Footer text */}
         <p
-          className="text-center mt-8 text-xs"
+          className="text-center mt-8 text-sm"
           style={{
             color: 'var(--muted)',
             fontFamily: 'var(--font-sans)',
-            opacity: 0.6,
           }}
         >
           {t.loginDisclaimer}

@@ -111,14 +111,14 @@ export default async function GroupProfilePage({
     <AgeGate>
       <div className="grain min-h-screen bg-cream">
         {/* Nav bar */}
-        <div className="nav-pad fixed top-0 left-0 right-0 z-[100] flex justify-between items-center bg-[rgba(14,13,12,0.9)] backdrop-blur-[12px] border-b border-white/[0.06]">
+        <div className="nav-pad fixed top-0 left-0 right-0 z-[100] flex justify-between items-center bg-[rgba(0,0,0,0.9)] backdrop-blur-[12px] border-b border-white/[0.06]">
           <Link
             href="/"
-            className="font-sans text-xs font-semibold tracking-[0.1em] text-muted uppercase no-underline hover:text-charcoal transition-colors"
+            className="font-sans text-sm font-semibold tracking-[0.1em] text-muted uppercase no-underline hover:text-charcoal transition-colors"
           >
             &larr; Back
           </Link>
-          <div className="font-serif text-[22px] font-normal tracking-[-0.01em] text-charcoal">
+          <div className="font-serif text-[24px] font-normal tracking-[-0.01em] text-charcoal">
             K<span className="text-rose">peach</span>girl
           </div>
           <div className="w-[60px]" />

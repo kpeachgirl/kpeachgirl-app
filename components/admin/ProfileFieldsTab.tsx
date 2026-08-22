@@ -18,14 +18,14 @@ interface ProfileFieldsTabProps {
 }
 
 const panelStyle: React.CSSProperties = {
-  background: '#181716',
+  background: '#000000',
   border: '1px solid var(--sand)',
   borderRadius: 12,
   padding: 28,
 }
 
 const labelStyle: React.CSSProperties = {
-  fontSize: 11,
+  fontSize: 12,
   fontWeight: 600,
   textTransform: 'uppercase' as const,
   letterSpacing: '0.05em',
@@ -41,7 +41,7 @@ const inputStyle: React.CSSProperties = {
   borderRadius: 8,
   color: 'var(--charcoal)',
   fontFamily: 'var(--font-sans)',
-  fontSize: 14,
+  fontSize: 15,
   outline: 'none',
 }
 
@@ -231,9 +231,9 @@ export default function ProfileFieldsTab({
       {/* ─── AGE GATE SCREEN ───────────────────────────────── */}
       <div style={panelStyle}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4, flexWrap: 'wrap', gap: 8 }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)' }}>{t.pfAgeGateTitle}</h3>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)' }}>{t.pfAgeGateTitle}</h3>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <span style={{ fontSize: 12, color: 'var(--muted)' }}>{t.pfAgeGateEnabled}</span>
+            <span style={{ fontSize: 13, color: 'var(--muted)' }}>{t.pfAgeGateEnabled}</span>
             <button
               onClick={() => updateAgeGate({ enabled: !ageGateConfig.enabled })}
               style={{
@@ -246,7 +246,7 @@ export default function ProfileFieldsTab({
             </button>
           </div>
         </div>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 20 }}>{t.pfAgeGateDesc}</p>
+        <p style={{ color: 'var(--muted)', fontSize: 14, marginBottom: 20 }}>{t.pfAgeGateDesc}</p>
 
         <div className="admin-edit-grid" style={{ marginBottom: 16 }}>
           <div>
@@ -278,8 +278,8 @@ export default function ProfileFieldsTab({
 
       {/* ─── HERO BANNER SETTINGS ──────────────────────────── */}
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfHeroTitle}</h3>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 20 }}>{t.pfHeroDesc}</p>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfHeroTitle}</h3>
+        <p style={{ color: 'var(--muted)', fontSize: 14, marginBottom: 20 }}>{t.pfHeroDesc}</p>
 
         {/* Hero image area */}
         <div style={{ position: 'relative', aspectRatio: '21/9', borderRadius: 10, overflow: 'hidden', marginBottom: 20, border: heroConfig.img ? 'none' : '2px dashed var(--sand)', background: 'var(--warm)', cursor: heroConfig.img ? 'default' : 'pointer' }}
@@ -295,20 +295,20 @@ export default function ProfileFieldsTab({
               />
               {/* Preview text overlay */}
               <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'var(--charcoal)', pointerEvents: 'none' }}>
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 28, fontWeight: 300, textAlign: 'center', padding: '0 16px' }}>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 31, fontWeight: 300, textAlign: 'center', padding: '0 16px' }}>
                   {heroConfig.titleLine1} {heroConfig.titleLine2} <span style={{ color: 'var(--rose)', fontStyle: 'italic' }}>{heroConfig.titleAccent}</span>
                 </div>
-                <div style={{ fontSize: 13, color: 'var(--muted)', marginTop: 4 }}>{heroConfig.subtitle}</div>
+                <div style={{ fontSize: 14, color: 'var(--muted)', marginTop: 4 }}>{heroConfig.subtitle}</div>
               </div>
               {/* Bottom controls */}
               <div style={{ position: 'absolute', bottom: 12, right: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                <button onClick={(e) => { e.stopPropagation(); setEditingHeroPhoto(true) }} style={{ padding: '6px 14px', background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--charcoal)', fontSize: 12, cursor: 'pointer' }}>{t.editBtn}</button>
-                <button onClick={(e) => { e.stopPropagation(); heroFileRef.current?.click() }} style={{ padding: '6px 14px', background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--charcoal)', fontSize: 12, cursor: 'pointer' }}>{t.upload}</button>
-                <button onClick={(e) => { e.stopPropagation(); updateHero({ img: '', imgCrop: null }) }} style={{ width: 28, height: 28, background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', fontSize: 14, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
+                <button onClick={(e) => { e.stopPropagation(); setEditingHeroPhoto(true) }} style={{ padding: '6px 14px', background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--charcoal)', fontSize: 13, cursor: 'pointer' }}>{t.editBtn}</button>
+                <button onClick={(e) => { e.stopPropagation(); heroFileRef.current?.click() }} style={{ padding: '6px 14px', background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--charcoal)', fontSize: 13, cursor: 'pointer' }}>{t.upload}</button>
+                <button onClick={(e) => { e.stopPropagation(); updateHero({ img: '', imgCrop: null }) }} style={{ width: 28, height: 28, background: 'rgba(0,0,0,0.6)', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', fontSize: 15, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
               </div>
             </>
           ) : (
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--muted)', fontSize: 14 }}>{t.pfClickHeroUpload}</div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: 'var(--muted)', fontSize: 15 }}>{t.pfClickHeroUpload}</div>
           )}
         </div>
         <input ref={heroFileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleHeroUpload} />
@@ -358,8 +358,8 @@ export default function ProfileFieldsTab({
 
       {/* ─── CARD DISPLAY SETTINGS ─────────────────────────── */}
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfCardTitle}</h3>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 20 }}>{t.pfCardDesc}</p>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfCardTitle}</h3>
+        <p style={{ color: 'var(--muted)', fontSize: 14, marginBottom: 20 }}>{t.pfCardDesc}</p>
 
         {/* Subtitle Fields */}
         <div style={{ marginBottom: 20 }}>
@@ -375,7 +375,7 @@ export default function ProfileFieldsTab({
                   border: '1px solid var(--sand)',
                   background: cardSettings.subtitleFields.includes(field) ? 'var(--charcoal)' : 'transparent',
                   color: cardSettings.subtitleFields.includes(field) ? 'var(--cream)' : 'var(--charcoal)',
-                  fontSize: 13,
+                  fontSize: 14,
                   cursor: 'pointer',
                   fontFamily: 'var(--font-sans)',
                 }}
@@ -426,11 +426,11 @@ export default function ProfileFieldsTab({
           <div style={labelStyle}>{t.pfCardOverlay}</div>
           <div className="admin-edit-grid" style={{ alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ color: 'var(--muted)', fontSize: 12 }}>{t.pfColor}</span>
+              <span style={{ color: 'var(--muted)', fontSize: 13 }}>{t.pfColor}</span>
               <input type="color" value={cardSettings.overlayColor} onChange={e => updateCards({ overlayColor: e.target.value })} style={{ width: 40, height: 32, border: 'none', borderRadius: 6, cursor: 'pointer', background: 'transparent' }} />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span style={{ color: 'var(--muted)', fontSize: 12, whiteSpace: 'nowrap' }}>{t.pfOpacity} {cardSettings.overlayOpacity}%</span>
+              <span style={{ color: 'var(--muted)', fontSize: 13, whiteSpace: 'nowrap' }}>{t.pfOpacity} {cardSettings.overlayOpacity}%</span>
               <input type="range" min={0} max={100} value={cardSettings.overlayOpacity} onChange={e => updateCards({ overlayOpacity: Number(e.target.value) })} style={{ flex: 1, accentColor: 'var(--rose)' }} />
             </div>
           </div>
@@ -440,10 +440,10 @@ export default function ProfileFieldsTab({
       {/* ─── TAG GROUPS EDITOR ─────────────────────────────── */}
       <div style={panelStyle}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4, flexWrap: 'wrap', gap: 8 }}>
-          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)' }}>{t.pfTagGroups}</h3>
-          <button onClick={addPillGroup} style={{ padding: '6px 14px', background: 'var(--rose-soft)', color: 'var(--rose)', border: 'none', borderRadius: 8, fontSize: 13, cursor: 'pointer', fontFamily: 'var(--font-sans)' }}>{t.pfAddGroup}</button>
+          <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)' }}>{t.pfTagGroups}</h3>
+          <button onClick={addPillGroup} style={{ padding: '6px 14px', background: 'var(--rose-soft)', color: 'var(--rose)', border: 'none', borderRadius: 8, fontSize: 14, cursor: 'pointer', fontFamily: 'var(--font-sans)' }}>{t.pfAddGroup}</button>
         </div>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 20 }}>{t.pfTagGroupsDesc}</p>
+        <p style={{ color: 'var(--muted)', fontSize: 14, marginBottom: 20 }}>{t.pfTagGroupsDesc}</p>
 
         <div style={{ display: 'grid', gap: 16 }}>
           {pillGroups.map((group, gi) => (
@@ -452,11 +452,11 @@ export default function ProfileFieldsTab({
                 <input
                   value={group.title}
                   onChange={e => updatePillGroup(gi, { title: e.target.value })}
-                  style={{ ...inputStyle, flex: 1, minWidth: 120, fontFamily: 'var(--font-serif)', fontSize: 16, borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderRadius: 0, padding: '4px 0', background: 'transparent' }}
+                  style={{ ...inputStyle, flex: 1, minWidth: 120, fontFamily: 'var(--font-serif)', fontSize: 18, borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderRadius: 0, padding: '4px 0', background: 'transparent' }}
                 />
-                <input type="color" value={group.color.startsWith('#') ? group.color : '#f0ebe5'} onChange={e => updatePillGroup(gi, { color: e.target.value })} style={{ width: 32, height: 28, border: 'none', borderRadius: 4, cursor: 'pointer', background: 'transparent' }} />
-                <span className="mob-hide" style={{ fontFamily: 'monospace', fontSize: 11, color: 'var(--muted)', background: 'var(--warm)', padding: '4px 8px', borderRadius: 4 }}>{group.dataKey}</span>
-                <button onClick={() => removePillGroup(gi)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>&times;</button>
+                <input type="color" value={group.color.startsWith('#') ? group.color : '#ffffff'} onChange={e => updatePillGroup(gi, { color: e.target.value })} style={{ width: 32, height: 28, border: 'none', borderRadius: 4, cursor: 'pointer', background: 'transparent' }} />
+                <span className="mob-hide" style={{ fontFamily: 'monospace', fontSize: 12, color: 'var(--muted)', background: 'var(--warm)', padding: '4px 8px', borderRadius: 4 }}>{group.dataKey}</span>
+                <button onClick={() => removePillGroup(gi)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>&times;</button>
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {group.options.map((opt, oi) => (
@@ -464,12 +464,12 @@ export default function ProfileFieldsTab({
                     <input
                       value={opt}
                       onChange={e => updateOption(gi, oi, e.target.value)}
-                      style={{ background: 'transparent', border: 'none', color: 'var(--charcoal)', fontSize: 13, fontFamily: 'var(--font-sans)', outline: 'none', width: Math.max(60, opt.length * 8) }}
+                      style={{ background: 'transparent', border: 'none', color: 'var(--charcoal)', fontSize: 14, fontFamily: 'var(--font-sans)', outline: 'none', width: Math.max(60, opt.length * 8) }}
                     />
-                    <button onClick={() => removeOption(gi, oi)} style={{ background: 'transparent', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontSize: 12, padding: 0 }}>&times;</button>
+                    <button onClick={() => removeOption(gi, oi)} style={{ background: 'transparent', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontSize: 13, padding: 0 }}>&times;</button>
                   </div>
                 ))}
-                <button onClick={() => addOption(gi)} style={{ padding: '4px 12px', border: '1px dashed var(--sand)', borderRadius: 6, background: 'transparent', color: 'var(--muted)', fontSize: 12, cursor: 'pointer' }}>{t.pfAddOption}</button>
+                <button onClick={() => addOption(gi)} style={{ padding: '4px 12px', border: '1px dashed var(--sand)', borderRadius: 6, background: 'transparent', color: 'var(--muted)', fontSize: 13, cursor: 'pointer' }}>{t.pfAddOption}</button>
               </div>
             </div>
           ))}
@@ -478,8 +478,8 @@ export default function ProfileFieldsTab({
 
       {/* ─── MEMBERSHIP FORM EDITOR ────────────────────────── */}
       <div style={panelStyle}>
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfFormTitle}</h3>
-        <p style={{ color: 'var(--muted)', fontSize: 13, marginBottom: 20 }}>{t.pfFormDesc}</p>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)', marginBottom: 4 }}>{t.pfFormTitle}</h3>
+        <p style={{ color: 'var(--muted)', fontSize: 14, marginBottom: 20 }}>{t.pfFormDesc}</p>
 
         {/* Form text settings */}
         <div className="admin-edit-grid" style={{ marginBottom: 20 }}>
@@ -511,37 +511,37 @@ export default function ProfileFieldsTab({
           {formConfig.fields.map((field, fi) => (
             <div key={field.id}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'var(--warm)', borderRadius: 8, padding: '8px 12px', flexWrap: 'wrap' }}>
-                <span className="mob-hide" style={{ fontSize: 8, fontWeight: 700, textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em', width: 60, flexShrink: 0 }}>{field.id}</span>
-                <input value={field.label} onChange={e => updateFormField(fi, { label: e.target.value })} style={{ ...inputStyle, flex: 1, minWidth: 100, padding: '6px 10px', fontSize: 13 }} />
-                <select value={field.type} onChange={e => updateFormField(fi, { type: e.target.value as FormField['type'] })} style={{ ...inputStyle, width: 120, padding: '6px 8px', fontSize: 12 }}>
+                <span className="mob-hide" style={{ fontSize: 9, fontWeight: 700, textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em', width: 60, flexShrink: 0 }}>{field.id}</span>
+                <input value={field.label} onChange={e => updateFormField(fi, { label: e.target.value })} style={{ ...inputStyle, flex: 1, minWidth: 100, padding: '6px 10px', fontSize: 14 }} />
+                <select value={field.type} onChange={e => updateFormField(fi, { type: e.target.value as FormField['type'] })} style={{ ...inputStyle, width: 120, padding: '6px 8px', fontSize: 13 }}>
                   {['text', 'email', 'textarea', 'file_upload', 'area_select', 'exp_select', 'type_pills'].map(tp => (
                     <option key={tp} value={tp}>{fieldTypeLabels[tp] || tp}</option>
                   ))}
                 </select>
-                <select value={field.width} onChange={e => updateFormField(fi, { width: e.target.value as FormField['width'] })} style={{ ...inputStyle, width: 80, padding: '6px 8px', fontSize: 12 }}>
+                <select value={field.width} onChange={e => updateFormField(fi, { width: e.target.value as FormField['width'] })} style={{ ...inputStyle, width: 80, padding: '6px 8px', fontSize: 13 }}>
                   {['full', 'half', 'third'].map(w => (
                     <option key={w} value={w}>{widthLabels[w] || w}</option>
                   ))}
                 </select>
-                <button onClick={() => updateFormField(fi, { required: !field.required })} style={{ width: 28, height: 28, borderRadius: 6, border: 'none', background: field.required ? 'var(--rose)' : 'var(--sand)', color: field.required ? 'white' : 'var(--muted)', fontSize: 14, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>*</button>
-                <input value={field.placeholder || ''} onChange={e => updateFormField(fi, { placeholder: e.target.value })} placeholder={t.pfFormFieldPh} style={{ ...inputStyle, width: 120, minWidth: 80, padding: '6px 10px', fontSize: 12 }} />
-                <button onClick={() => removeFormField(fi)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 14, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
+                <button onClick={() => updateFormField(fi, { required: !field.required })} style={{ width: 28, height: 28, borderRadius: 6, border: 'none', background: field.required ? 'var(--rose)' : 'var(--sand)', color: field.required ? 'white' : 'var(--muted)', fontSize: 15, fontWeight: 700, cursor: 'pointer', flexShrink: 0 }}>*</button>
+                <input value={field.placeholder || ''} onChange={e => updateFormField(fi, { placeholder: e.target.value })} placeholder={t.pfFormFieldPh} style={{ ...inputStyle, width: 120, minWidth: 80, padding: '6px 10px', fontSize: 13 }} />
+                <button onClick={() => removeFormField(fi)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 15, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>&times;</button>
               </div>
               {field.type === 'file_upload' && (
                 <div style={{ marginTop: 4, marginLeft: 0 }}>
-                  <input value={field.helperText || ''} onChange={e => updateFormField(fi, { helperText: e.target.value })} placeholder={t.pfFormHelperPh} style={{ ...inputStyle, fontSize: 12, padding: '6px 10px' }} />
+                  <input value={field.helperText || ''} onChange={e => updateFormField(fi, { helperText: e.target.value })} placeholder={t.pfFormHelperPh} style={{ ...inputStyle, fontSize: 13, padding: '6px 10px' }} />
                 </div>
               )}
             </div>
           ))}
         </div>
-        <button onClick={addFormField} style={{ width: '100%', padding: '10px 0', border: '1px dashed var(--sand)', borderRadius: 8, background: 'transparent', color: 'var(--muted)', fontSize: 13, cursor: 'pointer' }}>{t.pfAddField}</button>
+        <button onClick={addFormField} style={{ width: '100%', padding: '10px 0', border: '1px dashed var(--sand)', borderRadius: 8, background: 'transparent', color: 'var(--muted)', fontSize: 14, cursor: 'pointer' }}>{t.pfAddField}</button>
       </div>
 
       {/* ─── CATEGORY SECTIONS ─────────────────────────────── */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)' }}>{t.pfProfileSections}</h3>
-        <button onClick={addCategory} style={{ padding: '6px 14px', background: 'var(--rose-soft)', color: 'var(--rose)', border: 'none', borderRadius: 8, fontSize: 13, cursor: 'pointer', fontFamily: 'var(--font-sans)' }}>{t.pfAddSection}</button>
+        <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 22, color: 'var(--charcoal)' }}>{t.pfProfileSections}</h3>
+        <button onClick={addCategory} style={{ padding: '6px 14px', background: 'var(--rose-soft)', color: 'var(--rose)', border: 'none', borderRadius: 8, fontSize: 14, cursor: 'pointer', fontFamily: 'var(--font-sans)' }}>{t.pfAddSection}</button>
       </div>
 
       {categories.map((cat, ci) => (
@@ -550,20 +550,20 @@ export default function ProfileFieldsTab({
             <input
               value={cat.title}
               onChange={e => updateCategoryTitle(ci, e.target.value)}
-              style={{ fontFamily: 'var(--font-serif)', fontSize: 18, color: 'var(--charcoal)', background: 'transparent', border: 'none', borderBottom: '2px solid var(--sand)', padding: '4px 0', flex: 1, outline: 'none', minWidth: 0 }}
+              style={{ fontFamily: 'var(--font-serif)', fontSize: 20, color: 'var(--charcoal)', background: 'transparent', border: 'none', borderBottom: '2px solid var(--sand)', padding: '4px 0', flex: 1, outline: 'none', minWidth: 0 }}
             />
-            <button onClick={() => removeCategory(ci)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>&times;</button>
+            <button onClick={() => removeCategory(ci)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>&times;</button>
           </div>
           <div className="admin-edit-grid" style={{ marginBottom: 12 }}>
             {cat.fields.map((field, fi) => (
               <div key={field.key} style={{ display: 'flex', alignItems: 'center', gap: 8, background: 'var(--warm)', borderRadius: 6, padding: '6px 10px' }}>
-                <span className="mob-hide" style={{ fontFamily: 'monospace', fontSize: 11, color: 'var(--muted)', width: 60, flexShrink: 0 }}>{field.key}</span>
-                <input value={field.label} onChange={e => updateCategoryField(ci, fi, e.target.value)} style={{ ...inputStyle, flex: 1, padding: '4px 8px', fontSize: 13, minWidth: 0 }} />
-                <button onClick={() => removeCategoryField(ci, fi)} style={{ background: 'transparent', border: 'none', color: 'var(--rose)', cursor: 'pointer', fontSize: 14, padding: 0, flexShrink: 0 }}>&times;</button>
+                <span className="mob-hide" style={{ fontFamily: 'monospace', fontSize: 12, color: 'var(--muted)', width: 60, flexShrink: 0 }}>{field.key}</span>
+                <input value={field.label} onChange={e => updateCategoryField(ci, fi, e.target.value)} style={{ ...inputStyle, flex: 1, padding: '4px 8px', fontSize: 14, minWidth: 0 }} />
+                <button onClick={() => removeCategoryField(ci, fi)} style={{ background: 'transparent', border: 'none', color: 'var(--rose)', cursor: 'pointer', fontSize: 15, padding: 0, flexShrink: 0 }}>&times;</button>
               </div>
             ))}
           </div>
-          <button onClick={() => addCategoryField(ci)} style={{ padding: '6px 14px', border: '1px dashed var(--sand)', borderRadius: 6, background: 'transparent', color: 'var(--muted)', fontSize: 12, cursor: 'pointer' }}>{t.pfAddField}</button>
+          <button onClick={() => addCategoryField(ci)} style={{ padding: '6px 14px', border: '1px dashed var(--sand)', borderRadius: 6, background: 'transparent', color: 'var(--muted)', fontSize: 13, cursor: 'pointer' }}>{t.pfAddField}</button>
         </div>
       ))}
     </div>

@@ -14,7 +14,7 @@ export default function ProfilePills({ pillGroups, data }: ProfilePillsProps) {
           return (
             <span
               key={`${pg.id}-${v}`}
-              className="font-sans text-[11px] font-semibold tracking-[0.06em]"
+              className="font-sans text-[12px] font-semibold tracking-[0.06em]"
               style={{
                 padding: '5px 14px',
                 border: `1px solid ${isCharcoal ? 'var(--sand)' : pg.color + '33'}`,

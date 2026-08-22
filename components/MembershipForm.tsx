@@ -127,14 +127,14 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
   /* ─── Field Renderer ─── */
   const renderField = (field: FormField) => {
     const inputClass =
-      'w-full px-4 py-3 border border-sand bg-[#181716] text-charcoal text-sm font-sans font-medium focus:outline-none focus:border-rose transition-colors';
+      'w-full px-4 py-3 border border-sand bg-[#000000] text-charcoal text-base font-sans font-medium focus:outline-none focus:border-rose transition-colors';
 
     switch (field.type) {
       case 'file_upload': {
         return (
           <div>
             {field.helperText && (
-              <p className="text-[11px] text-muted leading-relaxed mb-3 px-3.5 py-2.5 bg-white/[0.03] border border-white/[0.06]">
+              <p className="text-[12px] text-muted leading-relaxed mb-3 px-3.5 py-2.5 bg-white/[0.03] border border-white/[0.06]">
                 {field.helperText}
               </p>
             )}
@@ -152,7 +152,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                     className="w-full max-h-[300px] object-contain block"
                   />
                   <div className="absolute bottom-0 left-0 right-0 flex gap-px">
-                    <div className="flex-1 py-2 bg-black/80 text-white text-[10px] font-bold tracking-wider uppercase text-center font-sans">
+                    <div className="flex-1 py-2 bg-black/80 text-white text-[11px] font-bold tracking-wider uppercase text-center font-sans">
                       Uploaded
                     </div>
                     <button
@@ -161,7 +161,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                         e.stopPropagation();
                         handleFileRemove(field);
                       }}
-                      className="px-4 py-2 bg-black/80 text-rose border-none text-[10px] font-bold tracking-wider uppercase cursor-pointer font-sans"
+                      className="px-4 py-2 bg-black/80 text-rose border-none text-[11px] font-bold tracking-wider uppercase cursor-pointer font-sans"
                     >
                       Remove
                     </button>
@@ -169,11 +169,11 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                 </>
               ) : (
                 <div className="text-center">
-                  <div className="text-[32px] text-sand mb-2 leading-none">&#8593;</div>
-                  <div className="text-xs font-semibold text-muted font-sans">
+                  <div className="text-[35px] text-charcoal mb-2 leading-none">&#8593;</div>
+                  <div className="text-sm font-semibold text-muted font-sans">
                     Click to upload photo
                   </div>
-                  <div className="text-[10px] text-sand mt-1 font-sans">JPG, PNG up to 10MB</div>
+                  <div className="text-[11px] text-charcoal mt-1 font-sans">JPG, PNG up to 10MB</div>
                 </div>
               )}
             </div>
@@ -240,7 +240,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                       on ? selected.filter((x) => x !== st) : [...selected, st]
                     )
                   }
-                  className={`px-4 py-1.5 text-[11px] tracking-wide font-sans transition-all duration-150 border ${
+                  className={`px-4 py-1.5 text-[12px] tracking-wide font-sans transition-all duration-150 border ${
                     on
                       ? 'font-bold border-charcoal bg-charcoal text-cream'
                       : 'font-medium border-sand bg-transparent text-muted'
@@ -306,18 +306,18 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
             transition: 'all 0.7s cubic-bezier(0.16,1,0.3,1)',
           }}
         >
-          <div className="w-14 h-14 rounded-full bg-sage flex items-center justify-center mx-auto mb-5 text-2xl text-[#181716]">
+          <div className="w-14 h-14 rounded-full bg-sage flex items-center justify-center mx-auto mb-5 text-3xl text-[#000000]">
             &#10003;
           </div>
-          <div className="font-serif text-[32px] font-light text-charcoal mb-2">
+          <div className="font-serif text-[35px] font-light text-charcoal mb-2">
             {formConfig.successTitle}
           </div>
-          <p className="text-sm text-muted leading-relaxed mb-8">
+          <p className="text-base text-muted leading-relaxed mb-8">
             {formConfig.successMsg}
           </p>
           <Link
             href="/"
-            className="inline-block px-8 py-3 bg-charcoal text-cream border-none text-[11px] font-bold tracking-widest uppercase font-sans hover:bg-rose transition-colors"
+            className="inline-block px-8 py-3 bg-charcoal text-cream border-none text-[12px] font-bold tracking-widest uppercase font-sans hover:bg-rose transition-colors"
           >
             Back to Site
           </Link>
@@ -330,15 +330,15 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
   return (
     <div className="font-sans min-h-screen bg-cream grain">
       {/* Top bar */}
-      <div className="px-8 py-4 border-b border-sand flex justify-between items-center bg-[#181716]">
+      <div className="px-8 py-4 border-b border-sand flex justify-between items-center bg-[#000000]">
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="text-xs font-semibold tracking-wider text-muted uppercase font-sans hover:text-charcoal transition-colors"
+            className="text-sm font-semibold tracking-wider text-muted uppercase font-sans hover:text-charcoal transition-colors"
           >
             &larr; Back
           </Link>
-          <span className="font-serif text-[22px] font-normal text-charcoal">
+          <span className="font-serif text-[24px] font-normal text-charcoal">
             K<span className="text-rose">peach</span>girl
           </span>
         </div>
@@ -355,17 +355,17 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
       >
         {/* Header */}
         <div className="text-center mb-10">
-          <div className="font-serif text-4xl font-light text-charcoal mb-1">
+          <div className="font-serif text-5xl font-light text-charcoal mb-1">
             {formConfig.title}
           </div>
           <div className="w-10 h-px bg-rose mx-auto my-4" />
-          <p className="text-[13px] text-muted leading-relaxed max-w-[440px] mx-auto">
+          <p className="text-[14px] text-muted leading-relaxed max-w-[440px] mx-auto">
             {formConfig.subtitle}
           </p>
         </div>
 
         {/* Form card */}
-        <div className="bg-[#181716] border border-sand p-8">
+        <div className="bg-[#000000] border border-sand p-8">
           {rows.map((row, ri) => {
             const cols = row.map(() => '1fr').join(' ');
             return (
@@ -383,7 +383,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                     key={ff.id}
                     style={ff.width === 'full' ? { gridColumn: '1 / -1' } : {}}
                   >
-                    <label className="block text-[10px] font-bold tracking-[0.12em] text-muted uppercase mb-1.5 font-sans">
+                    <label className="block text-[11px] font-bold tracking-[0.12em] text-muted uppercase mb-1.5 font-sans">
                       {ff.label}
                       {ff.required && <span className="text-rose ml-0.5">*</span>}
                     </label>
@@ -396,7 +396,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
 
           {/* Error message */}
           {error && (
-            <div className="mb-4 p-3 bg-rose/10 border border-rose/30 text-rose text-xs font-sans">
+            <div className="mb-4 p-3 bg-rose/10 border border-rose/30 text-rose text-sm font-sans">
               {error}
             </div>
           )}
@@ -406,11 +406,11 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
             type="button"
             onClick={handleSubmit}
             disabled={submitting || !canSubmit}
-            className={`w-full py-3.5 border-none text-xs font-bold tracking-[0.15em] uppercase font-sans transition-all duration-300 ${
+            className={`w-full py-3.5 border-none text-sm font-bold tracking-[0.15em] uppercase font-sans transition-all duration-300 ${
               submitting
                 ? 'bg-muted text-cream cursor-wait'
                 : !canSubmit
-                ? 'bg-sand text-cream cursor-default'
+                ? 'bg-sand text-charcoal cursor-default'
                 : 'bg-charcoal text-cream cursor-pointer hover:bg-rose'
             }`}
           >
@@ -419,7 +419,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
         </div>
 
         {/* Disclaimer */}
-        <p className="text-[10px] text-sand text-center mt-5 leading-normal">
+        <p className="text-[11px] text-charcoal text-center mt-5 leading-normal">
           By submitting, you confirm you are 18+ and consent to your information being reviewed
           by the Kpeachgirl team. All information is kept confidential.
         </p>

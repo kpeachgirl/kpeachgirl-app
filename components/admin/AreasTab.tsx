@@ -35,7 +35,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
   return (
     <div
       style={{
-        background: '#181716',
+        background: '#000000',
         border: '1px solid var(--sand)',
         borderRadius: 12,
         padding: 28,
@@ -43,7 +43,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
     >
       <h2
         style={{
-          fontSize: 22,
+          fontSize: 24,
           fontWeight: 600,
           color: 'var(--charcoal)',
           fontFamily: 'var(--font-serif)',
@@ -55,7 +55,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
       <p
         style={{
           color: 'var(--muted)',
-          fontSize: 14,
+          fontSize: 15,
           fontFamily: 'var(--font-sans)',
           marginBottom: 20,
         }}
@@ -80,7 +80,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           >
             <span
               style={{
-                fontSize: 13,
+                fontSize: 14,
                 fontWeight: 600,
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
@@ -101,7 +101,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
                 background: 'transparent',
                 color: 'var(--muted)',
                 cursor: 'pointer',
-                fontSize: 14,
+                fontSize: 15,
                 lineHeight: 1,
                 padding: 0,
               }}
@@ -123,12 +123,12 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           placeholder={t.areasPlaceholder}
           style={{
             flex: 1,
-            background: 'var(--input-bg, #1e1d1b)',
+            background: 'var(--input-bg, #000000)',
             border: '1px solid var(--sand)',
             borderRadius: 8,
             padding: '8px 12px',
             color: 'var(--charcoal)',
-            fontSize: 14,
+            fontSize: 15,
             fontFamily: 'var(--font-sans)',
             outline: 'none',
             minWidth: 0,
@@ -143,7 +143,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
             border: 'none',
             borderRadius: 8,
             padding: '8px 16px',
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: 600,
             fontFamily: 'var(--font-sans)',
             textTransform: 'uppercase',

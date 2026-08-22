@@ -4,19 +4,19 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --cream:       #2a2927;
-  --warm:        #161514;
-  --sand:        #2a2622;
-  --charcoal:    #f0ebe5;
-  --ink:         #e0d8ce;
-  --muted:       #8a8078;
+  --cream:       #000000;
+  --warm:        #000000;
+  --sand:        #333131;   /* borders / dividers only — never text */
+  --charcoal:    #ffffff;
+  --ink:         #ffffff;
+  --muted:       #ffffff;
   --rose:        #d4758a;
   --rose-soft:   rgba(212, 117, 138, 0.12);
   --rose-mid:    rgba(212, 117, 138, 0.2);
   --peach:       #e0a08c;
   --sage:        #8fad8f;
-  --card-bg:     #181716;
-  --input-bg:    #1e1d1b;
+  --card-bg:     #000000;
+  --input-bg:    #000000;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,6 +68,9 @@ html { color-scheme: dark; }
 @media (max-width: 640px) { .gallery-arrow { display: none !important; } .gallery-carousel > div { flex: 0 0 92% !important; } }
 
 input:focus, textarea:focus, select:focus { outline: none; border-color: var(--rose) !important; }
+input, textarea, select { color: var(--charcoal); }
+::placeholder { color: rgba(255, 255, 255, 0.6); opacity: 1; }
+option { background: var(--cream); color: var(--charcoal); }
 ::selection { background: var(--rose-mid); }
 
 /* ─── Layout Classes & Responsive Breakpoints ───────────────── */
@@ -78,9 +81,9 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
 .profile-stats   { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .profile-gallery { columns: 3; column-gap: 10px; }
 .admin-slide     { position: fixed; top: 0; right: 0; bottom: 0; width: 500px; }
-.hero-title      { font-size: 72px; }
+.hero-title      { font-size: 79px; }
 .hero-search     { width: 360px; }
-.profile-name    { font-size: 64px; }
+.profile-name    { font-size: 70px; }
 .admin-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
 .admin-stats     { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
 .admin-table-row { display: grid; grid-template-columns: 44px 1.6fr 0.8fr 0.7fr 70px 70px 56px; }
@@ -88,7 +91,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
 .admin-save-bar  { position: fixed; bottom: 0; right: 0; width: 500px; }
 .admin-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
 .admin-tabs      { display: flex; gap: 2px; }
-.cat-heading     { font-size: 28px; }
+.cat-heading     { font-size: 31px; }
 .admin-nav-pad   { padding: 16px 32px; }
 
 /* Spacing / padding classes */
@@ -111,14 +114,14 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .admin-slide     { width: 420px; }
   .admin-save-bar  { width: 420px; }
   .admin-stats     { grid-template-columns: repeat(2, 1fr); }
-  .hero-title      { font-size: 56px; }
+  .hero-title      { font-size: 62px; }
   .hero-search     { width: 100%; max-width: 400px; }
   .hero-pad        { padding: 0 40px 48px; }
   .nav-pad         { padding: 12px 24px; }
   .content-pad     { padding: 20px 24px 0; }
   .grid-pad        { padding: 20px 24px 60px; }
   .footer-pad      { padding: 24px; }
-  .profile-name    { font-size: 48px; }
+  .profile-name    { font-size: 53px; }
   .profile-info-pad { padding: 40px 32px; }
   .admin-fields-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -137,7 +140,7 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .admin-save-bar  { width: 100%; left: 0; }
   .admin-fields-grid { grid-template-columns: 1fr; }
   .admin-edit-grid { grid-template-columns: 1fr; }
-  .hero-title      { font-size: 36px; }
+  .hero-title      { font-size: 40px; }
   .hero-search     { width: 100%; }
   .hero-pad        { padding: 0 20px 36px; }
   .nav-links       { display: none; }
@@ -146,13 +149,13 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--r
   .content-pad     { padding: 16px 16px 0; }
   .grid-pad        { padding: 16px 16px 48px; }
   .footer-pad      { padding: 20px 16px; }
-  .profile-name    { font-size: 36px; }
+  .profile-name    { font-size: 40px; }
   .profile-info-pad { padding: 28px 20px; }
   .filter-scroll   { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
   .filter-scroll::-webkit-scrollbar { display: none; }
   .admin-tabs      { gap: 0; }
-  .admin-tabs button { padding: 6px 10px !important; font-size: 9px !important; }
-  .cat-heading     { font-size: 22px; }
+  .admin-tabs button { padding: 6px 10px !important; font-size: 10px !important; }
+  .cat-heading     { font-size: 24px; }
   .admin-nav-pad   { padding: 12px 16px; }
   .admin-table-row .mob-hide { display: none; }
   .admin-table-row-drag .mob-hide { display: none; }

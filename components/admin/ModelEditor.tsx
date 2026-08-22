@@ -27,7 +27,7 @@ type EditingPhoto = {
 
 const labelStyle: React.CSSProperties = {
   display: 'block',
-  fontSize: 10,
+  fontSize: 11,
   fontWeight: 700,
   letterSpacing: '0.12em',
   color: 'var(--muted)',
@@ -40,14 +40,14 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '8px 12px',
   border: '1px solid var(--sand)',
-  background: '#1e1d1b',
+  background: '#000000',
   color: 'var(--charcoal)',
-  fontSize: 13,
+  fontSize: 14,
   fontFamily: 'var(--font-sans)',
 }
 
 const sectionHeading: React.CSSProperties = {
-  fontSize: 12,
+  fontSize: 13,
   fontWeight: 600,
   letterSpacing: '0.16em',
   color: 'var(--rose)',
@@ -60,7 +60,7 @@ const sectionHeading: React.CSSProperties = {
 
 const smallBtnStyle: React.CSSProperties = {
   padding: '3px 8px',
-  fontSize: 9,
+  fontSize: 10,
   fontWeight: 700,
   letterSpacing: '0.08em',
   textTransform: 'uppercase',
@@ -468,7 +468,7 @@ export default function ModelEditor({
           style={{
             position: 'sticky',
             top: 0,
-            background: '#181716',
+            background: '#000000',
             borderBottom: '1px solid var(--sand)',
             padding: '14px 24px',
             zIndex: 2,
@@ -483,19 +483,19 @@ export default function ModelEditor({
                 form.profile_image ||
                 'data:image/svg+xml,' +
                   encodeURIComponent(
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"><rect width="36" height="36" fill="#d9cfc4"/></svg>'
+                    '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"><rect width="36" height="36" fill="#0a0a0a"/></svg>'
                   )
               }
               alt=""
               style={{ width: 36, height: 36, objectFit: 'cover', borderRadius: 2 }}
             />
             <div>
-              <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>
+              <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--charcoal)' }}>
                 {form.name || t.newModel.replace('+ ', '')}
               </div>
               <div
                 style={{
-                  fontSize: 10,
+                  fontSize: 11,
                   color: 'var(--muted)',
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
@@ -513,7 +513,7 @@ export default function ModelEditor({
               width: 28,
               height: 28,
               cursor: 'pointer',
-              fontSize: 14,
+              fontSize: 15,
               color: 'var(--muted)',
               display: 'flex',
               alignItems: 'center',
@@ -638,7 +638,7 @@ export default function ModelEditor({
                       </button>
                     </>
                   ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 11, color: 'var(--sand)', fontFamily: 'var(--font-sans)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 12, color: 'var(--charcoal)', fontFamily: 'var(--font-sans)' }}>
                       {uploading === 'profile_image' ? t.uploading : t.clickToUpload}
                     </div>
                   )}
@@ -697,7 +697,7 @@ export default function ModelEditor({
                       </button>
                     </>
                   ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 11, color: 'var(--sand)', fontFamily: 'var(--font-sans)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', fontSize: 12, color: 'var(--charcoal)', fontFamily: 'var(--font-sans)' }}>
                       {uploading === 'cover_image' ? t.uploading : t.clickToUpload}
                     </div>
                   )}
@@ -720,7 +720,7 @@ export default function ModelEditor({
             <div style={{ marginTop: 16 }}>
               <label style={labelStyle}>{t.galleryPhotos}</label>
               {!model?.id ? (
-                <div style={{ fontSize: 11, color: 'var(--muted)', padding: '12px 0', fontFamily: 'var(--font-sans)' }}>
+                <div style={{ fontSize: 12, color: 'var(--muted)', padding: '12px 0', fontFamily: 'var(--font-sans)' }}>
                   {t.saveGalleryFirst}
                 </div>
               ) : (
@@ -733,7 +733,7 @@ export default function ModelEditor({
                           position: 'relative',
                           aspectRatio: '3/4',
                           overflow: 'hidden',
-                          background: '#111',
+                          background: '#000',
                         }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -749,7 +749,7 @@ export default function ModelEditor({
                           }}
                         />
                         {/* Index number */}
-                        <span style={{ position: 'absolute', top: 4, left: 6, fontSize: 9, color: 'rgba(255,255,255,0.6)', fontWeight: 700 }}>{idx + 1}</span>
+                        <span style={{ position: 'absolute', top: 4, left: 6, fontSize: 10, color: '#ffffff', fontWeight: 700 }}>{idx + 1}</span>
                         {/* Delete */}
                         <button
                           type="button"
@@ -779,8 +779,8 @@ export default function ModelEditor({
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
-                        fontSize: 24,
-                        color: 'var(--sand)',
+                        fontSize: 26,
+                        color: 'var(--charcoal)',
                         background: 'rgba(255,255,255,0.02)',
                       }}
                     >
@@ -856,13 +856,13 @@ export default function ModelEditor({
                       }
                       style={{
                         padding: '5px 14px',
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: on ? 700 : 500,
                         cursor: 'pointer',
                         border: on
                           ? `1px solid ${pg.color}`
                           : '1px solid var(--sand)',
-                        background: on ? pg.color : '#181716',
+                        background: on ? pg.color : '#000000',
                         color: on ? 'var(--cream)' : 'var(--muted)',
                         letterSpacing: '0.04em',
                         fontFamily: 'var(--font-sans)',
@@ -888,7 +888,7 @@ export default function ModelEditor({
                   background: 'transparent',
                   border: '1px solid rgba(184,92,107,0.3)',
                   color: 'var(--rose)',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 700,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -920,7 +920,7 @@ export default function ModelEditor({
               background: 'rgba(212, 117, 138, 0.12)',
               border: '1px solid rgba(212, 117, 138, 0.3)',
               color: 'var(--rose)',
-              fontSize: 12,
+              fontSize: 13,
               fontFamily: 'var(--font-sans)',
             }}
           >
@@ -932,7 +932,7 @@ export default function ModelEditor({
         <div
           className="admin-save-bar"
           style={{
-            background: '#181716',
+            background: '#000000',
             borderTop: '1px solid var(--sand)',
             padding: '12px 24px',
             display: 'flex',
@@ -949,7 +949,7 @@ export default function ModelEditor({
               background: saved ? 'var(--sage)' : 'var(--charcoal)',
               color: 'var(--cream)',
               border: 'none',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.12em',
               textTransform: 'uppercase',
@@ -967,7 +967,7 @@ export default function ModelEditor({
               border: '1px solid var(--sand)',
               background: 'transparent',
               color: 'var(--muted)',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 600,
               cursor: 'pointer',
               fontFamily: 'var(--font-sans)',

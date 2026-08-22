@@ -128,17 +128,17 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0, fontFamily: 'var(--font-serif)' }}>
+          <h2 style={{ fontSize: 24, fontWeight: 600, margin: 0, fontFamily: 'var(--font-serif)' }}>
             {t.subTitle}
           </h2>
-          <p style={{ color: 'var(--muted)', fontSize: 14, margin: '4px 0 0' }}>{t.subDesc}</p>
+          <p style={{ color: 'var(--muted)', fontSize: 15, margin: '4px 0 0' }}>{t.subDesc}</p>
         </div>
         {newCount > 0 && (
           <span
             style={{
               background: 'var(--rose-soft)',
               color: 'var(--rose)',
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 600,
               padding: '4px 12px',
               borderRadius: 12,
@@ -165,14 +165,14 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
         }}
       >
         <div>
-          <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 2 }}>{t.subShareTitle}</div>
-          <div style={{ color: 'var(--muted)', fontSize: 13 }}>{t.subShareDesc}</div>
+          <div style={{ fontWeight: 600, fontSize: 15, marginBottom: 2 }}>{t.subShareTitle}</div>
+          <div style={{ color: 'var(--muted)', fontSize: 14 }}>{t.subShareDesc}</div>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <div
             style={{
               fontFamily: 'monospace',
-              fontSize: 12,
+              fontSize: 13,
               color: 'var(--ink)',
               background: 'var(--cream)',
               padding: '6px 10px',
@@ -193,7 +193,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
               border: 'none',
               borderRadius: 6,
               padding: '6px 14px',
-              fontSize: 13,
+              fontSize: 14,
               fontWeight: 600,
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -211,11 +211,11 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
             textAlign: 'center',
             padding: '60px 20px',
             color: 'var(--muted)',
-            fontSize: 14,
+            fontSize: 15,
           }}
         >
           <p style={{ marginBottom: 8 }}>{t.subNone}</p>
-          <p style={{ fontSize: 13 }}>{t.subShareDesc}</p>
+          <p style={{ fontSize: 14 }}>{t.subShareDesc}</p>
         </div>
       )}
 
@@ -258,7 +258,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                     justifyContent: 'center',
                     color: '#000',
                     fontWeight: 700,
-                    fontSize: 15,
+                    fontSize: 17,
                     flexShrink: 0,
                   }}
                 >
@@ -266,8 +266,8 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                 </div>
 
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontWeight: 600, fontSize: 15 }}>{fd.name || 'Unknown'}</div>
-                  <div style={{ color: 'var(--muted)', fontSize: 12, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  <div style={{ fontWeight: 600, fontSize: 17 }}>{fd.name || 'Unknown'}</div>
+                  <div style={{ color: 'var(--muted)', fontSize: 13, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                     {fd.email && <span>{fd.email}</span>}
                     {fd.phone && <span>{fd.phone}</span>}
                     <span>
@@ -281,7 +281,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                   style={{
                     color: statusColor,
                     background: `color-mix(in srgb, ${statusColor} 15%, transparent)`,
-                    fontSize: 12,
+                    fontSize: 13,
                     fontWeight: 600,
                     padding: '3px 10px',
                     borderRadius: 8,
@@ -312,8 +312,8 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                     item =>
                       item.value && (
                         <div key={item.label}>
-                          <div style={{ color: 'var(--muted)', fontSize: 11, marginBottom: 2 }}>{item.label}</div>
-                          <div style={{ fontSize: 13, fontWeight: 500 }}>{item.value}</div>
+                          <div style={{ color: 'var(--muted)', fontSize: 12, marginBottom: 2 }}>{item.label}</div>
+                          <div style={{ fontSize: 14, fontWeight: 500 }}>{item.value}</div>
                         </div>
                       )
                   )}
@@ -328,7 +328,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                         style={{
                           border: '1px solid var(--sand)',
                           color: 'var(--muted)',
-                          fontSize: 11,
+                          fontSize: 12,
                           padding: '2px 8px',
                           borderRadius: 6,
                         }}
@@ -341,7 +341,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
 
                 {/* Bio */}
                 {fd.bio && (
-                  <p style={{ color: 'var(--ink)', fontSize: 13, margin: '6px 0', lineHeight: 1.5 }}>
+                  <p style={{ color: 'var(--ink)', fontSize: 14, margin: '6px 0', lineHeight: 1.5 }}>
                     {fd.bio}
                   </p>
                 )}
@@ -352,7 +352,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                     href={fd.social.startsWith('http') ? fd.social : `https://instagram.com/${fd.social.replace('@', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: 'var(--rose)', fontSize: 13, textDecoration: 'none' }}
+                    style={{ color: 'var(--rose)', fontSize: 14, textDecoration: 'none' }}
                   >
                     {fd.social}
                   </a>
@@ -377,7 +377,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                       />
                       <span
                         style={{
-                          fontSize: 11,
+                          fontSize: 12,
                           color: 'var(--sage)',
                           fontWeight: 600,
                         }}
@@ -401,7 +401,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                       <span style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: 700,
                         letterSpacing: '0.08em',
                         textTransform: 'uppercase',
@@ -409,15 +409,15 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                       }}>
                         {fd.id_verification.passed ? 'ID VERIFIED' : 'VERIFICATION FAILED'}
                       </span>
-                      <span style={{ fontSize: 10, color: 'var(--muted)' }}>
+                      <span style={{ fontSize: 11, color: 'var(--muted)' }}>
                         Confidence: {fd.id_verification.confidence}
                       </span>
                     </div>
-                    <div style={{ fontSize: 12, color: 'var(--ink)', lineHeight: 1.5 }}>
+                    <div style={{ fontSize: 13, color: 'var(--ink)', lineHeight: 1.5 }}>
                       {fd.id_verification.summary}
                     </div>
                     {fd.id_verification.name_on_id && (
-                      <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>
+                      <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4 }}>
                         Name on ID: <strong style={{ color: 'var(--charcoal)' }}>{fd.id_verification.name_on_id}</strong>
                         {fd.name && fd.id_verification.name_on_id.toLowerCase() !== fd.name.toLowerCase() && (
                           <span style={{ color: 'var(--rose)', marginLeft: 8, fontWeight: 600 }}>
@@ -427,7 +427,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                       </div>
                     )}
                     {fd.id_verification.issues?.length > 0 && (
-                      <div style={{ fontSize: 11, color: 'var(--peach)', marginTop: 4 }}>
+                      <div style={{ fontSize: 12, color: 'var(--peach)', marginTop: 4 }}>
                         Issues: {fd.id_verification.issues.join(', ')}
                       </div>
                     )}
@@ -456,7 +456,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                           color: 'var(--peach)',
                           borderRadius: 6,
                           padding: '5px 12px',
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -471,7 +471,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                           color: 'var(--sage)',
                           borderRadius: 6,
                           padding: '5px 12px',
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -483,10 +483,10 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                         style={{
                           background: 'none',
                           border: '1px solid var(--sand)',
-                          color: 'var(--sand)',
+                          color: 'var(--charcoal)',
                           borderRadius: 6,
                           padding: '5px 12px',
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -506,7 +506,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                           color: 'var(--sage)',
                           borderRadius: 6,
                           padding: '5px 12px',
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -518,10 +518,10 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                         style={{
                           background: 'none',
                           border: '1px solid var(--sand)',
-                          color: 'var(--sand)',
+                          color: 'var(--charcoal)',
                           borderRadius: 6,
                           padding: '5px 12px',
-                          fontSize: 12,
+                          fontSize: 13,
                           fontWeight: 600,
                           cursor: 'pointer',
                         }}
@@ -540,7 +540,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                         border: 'none',
                         borderRadius: 6,
                         padding: '6px 16px',
-                        fontSize: 13,
+                        fontSize: 14,
                         fontWeight: 700,
                         cursor: 'pointer',
                       }}
@@ -550,7 +550,7 @@ export default function SubmissionsTab({ lang, formConfig, areas, onConverted }:
                   )}
 
                   {sub.status === 'dismissed' && (
-                    <span style={{ color: 'var(--muted)', fontSize: 12, padding: '5px 0' }}>
+                    <span style={{ color: 'var(--muted)', fontSize: 13, padding: '5px 0' }}>
                       {t.subDismissed}
                     </span>
                   )}

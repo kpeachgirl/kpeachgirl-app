@@ -18,7 +18,7 @@ export default function CategoryStats({
       {categories.map((cat, ci) => (
         <div key={cat.id} className={`fade-up stagger-${ci + 1}`}>
           {/* Section title */}
-          <div className="font-serif text-[13px] font-semibold tracking-[0.18em] text-rose uppercase mb-5 pb-2.5 border-b border-sand">
+          <div className="font-serif text-[14px] font-semibold tracking-[0.18em] text-rose uppercase mb-5 pb-2.5 border-b border-sand">
             {cat.title}
           </div>
 
@@ -38,10 +38,10 @@ export default function CategoryStats({
                 key={f.key}
                 className="flex justify-between py-[9px] border-b border-white/[0.06]"
               >
-                <span className="font-sans text-xs font-medium text-muted tracking-[0.03em]">
+                <span className="font-sans text-sm font-medium text-muted tracking-[0.03em]">
                   {f.label}
                 </span>
-                <span className="font-sans text-[13px] font-bold text-charcoal">
+                <span className="font-sans text-[14px] font-bold text-charcoal">
                   {value || '\u2014'}
                 </span>
               </div>

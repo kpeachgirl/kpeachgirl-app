@@ -19,12 +19,12 @@ function getBadgeLabel(group: Group): string {
 
 export default function GroupCard({ group, cardSettings }: GroupCardProps) {
   const badge = getBadgeLabel(group);
-  const oc = cardSettings.overlayColor || '#1a1a1a';
+  const oc = cardSettings.overlayColor || '#000000';
   const oo = (cardSettings.overlayOpacity != null ? cardSettings.overlayOpacity : 70) / 100;
   const overlayHex = Math.round(oo * 255).toString(16).padStart(2, '0');
 
   const placeholderSvg = `data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#2a2622"/><text x="200" y="280" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="300" fill="rgba(138,127,118,0.3)">${badge}</text></svg>`
+    `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="600"><rect width="400" height="600" fill="#0a0a0a"/><text x="200" y="280" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="300" fill="rgba(138,127,118,0.3)">${badge}</text></svg>`
   )}`;
 
   return (
@@ -58,17 +58,17 @@ export default function GroupCard({ group, cardSettings }: GroupCardProps) {
 
         {/* Badge */}
         <div className="absolute top-3 left-3 flex gap-1.5">
-          <span className="font-sans bg-rose px-3 py-[3px] text-[10px] font-extrabold tracking-[0.1em] text-card-bg uppercase">
+          <span className="font-sans bg-rose px-3 py-[3px] text-[11px] font-extrabold tracking-[0.1em] text-card-bg uppercase">
             {badge}
           </span>
         </div>
 
         {/* Name + member count */}
         <div className="absolute bottom-0 left-0 right-0 px-[18px] py-4">
-          <div className="card-name font-serif text-2xl font-medium text-white leading-[1.1] transition-[letter-spacing] duration-[600ms] ease-in-out">
+          <div className="card-name font-serif text-3xl font-medium text-white leading-[1.1] transition-[letter-spacing] duration-[600ms] ease-in-out">
             {group.name}
           </div>
-          <div className="font-sans text-[10px] font-semibold tracking-[0.14em] text-white/60 uppercase mt-1">
+          <div className="font-sans text-[11px] font-semibold tracking-[0.14em] text-white uppercase mt-1">
             {(group.member_ids || []).length} models
           </div>
         </div>

@@ -48,7 +48,7 @@ export default function AdminNav({
     <nav
       className="admin-nav-pad"
       style={{
-        background: '#181716',
+        background: '#000000',
         borderBottom: '1px solid var(--sand)',
       }}
     >
@@ -71,7 +71,7 @@ export default function AdminNav({
             href="/"
             style={{
               color: 'var(--muted)',
-              fontSize: 13,
+              fontSize: 14,
               textDecoration: 'none',
               fontFamily: 'var(--font-sans)',
             }}
@@ -82,7 +82,7 @@ export default function AdminNav({
             style={{
               fontFamily: 'var(--font-serif)',
               color: 'var(--charcoal)',
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: 600,
               letterSpacing: '0.02em',
             }}
@@ -93,7 +93,7 @@ export default function AdminNav({
             style={{
               background: 'var(--rose-soft)',
               color: 'var(--rose)',
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 700,
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -123,7 +123,7 @@ export default function AdminNav({
                 onClick={() => onLangChange(l)}
                 style={{
                   padding: '4px 10px',
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 700,
                   fontFamily: 'var(--font-sans)',
                   letterSpacing: '0.05em',
@@ -155,7 +155,7 @@ export default function AdminNav({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 700,
                 fontFamily: 'var(--font-sans)',
                 textTransform: 'uppercase',
@@ -166,7 +166,7 @@ export default function AdminNav({
             <span
               style={{
                 color: 'var(--muted)',
-                fontSize: 12,
+                fontSize: 13,
                 fontFamily: 'var(--font-sans)',
               }}
             >
@@ -181,7 +181,7 @@ export default function AdminNav({
               border: '1px solid var(--sand)',
               background: 'transparent',
               color: 'var(--muted)',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
@@ -222,7 +222,7 @@ export default function AdminNav({
               onClick={() => onTabChange(id)}
               style={{
                 padding: '6px 14px',
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',
@@ -244,7 +244,7 @@ export default function AdminNav({
                   style={{
                     background: '#e05555',
                     color: '#fff',
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: 700,
                     minWidth: 18,
                     height: 18,

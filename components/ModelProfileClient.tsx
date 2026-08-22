@@ -86,13 +86,13 @@ export default function ModelProfileClient({
   const placeholderCover =
     'data:image/svg+xml,' +
     encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400"><rect width="700" height="400" fill="#d9cfc4"/></svg>'
+      '<svg xmlns="http://www.w3.org/2000/svg" width="700" height="400"><rect width="700" height="400" fill="#0a0a0a"/></svg>'
     );
 
   const placeholderGroup =
     'data:image/svg+xml,' +
     encodeURIComponent(
-      '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" fill="#2a2622"/></svg>'
+      '<svg xmlns="http://www.w3.org/2000/svg" width="56" height="56"><rect width="56" height="56" fill="#0a0a0a"/></svg>'
     );
 
   // All images for lightbox: gallery images (same order as carousel)
@@ -145,7 +145,7 @@ export default function ModelProfileClient({
                     position: 'relative',
                     height: '75vh',
                     minHeight: 400,
-                    background: '#111',
+                    background: '#000',
                   }}
                   onClick={() => setLightboxIndex(i)}
                 >
@@ -171,14 +171,14 @@ export default function ModelProfileClient({
                 position: 'absolute',
                 bottom: 16,
                 right: 16,
-                background: 'rgba(14,13,12,0.7)',
+                background: 'rgba(0,0,0,0.7)',
                 backdropFilter: 'blur(8px)',
                 padding: '6px 14px',
                 borderRadius: 20,
                 zIndex: 2,
               }}
             >
-              <span className="font-sans" style={{ fontSize: 12, fontWeight: 600, color: '#fff', letterSpacing: '0.05em' }}>
+              <span className="font-sans" style={{ fontSize: 13, fontWeight: 600, color: '#fff', letterSpacing: '0.05em' }}>
                 {galleryIndex + 1} / {totalImages}
               </span>
             </div>
@@ -198,7 +198,7 @@ export default function ModelProfileClient({
                     height: 48,
                     borderRadius: '50%',
                     border: '1px solid rgba(255,255,255,0.2)',
-                    background: 'rgba(14,13,12,0.6)',
+                    background: 'rgba(0,0,0,0.6)',
                     backdropFilter: 'blur(8px)',
                     color: '#fff',
                     cursor: 'pointer',
@@ -209,8 +209,8 @@ export default function ModelProfileClient({
                     transition: 'opacity 0.2s, background 0.2s',
                     zIndex: 2,
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(14,13,12,0.85)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(14,13,12,0.6)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.85)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.6)'; }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
@@ -226,7 +226,7 @@ export default function ModelProfileClient({
                     height: 48,
                     borderRadius: '50%',
                     border: '1px solid rgba(255,255,255,0.2)',
-                    background: 'rgba(14,13,12,0.6)',
+                    background: 'rgba(0,0,0,0.6)',
                     backdropFilter: 'blur(8px)',
                     color: '#fff',
                     cursor: 'pointer',
@@ -237,8 +237,8 @@ export default function ModelProfileClient({
                     transition: 'opacity 0.2s, background 0.2s',
                     zIndex: 2,
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(14,13,12,0.85)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(14,13,12,0.6)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.85)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(0,0,0,0.6)'; }}
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
@@ -270,7 +270,7 @@ export default function ModelProfileClient({
         ) : (
           /* Fallback if no gallery images */
           <div
-            style={{ position: 'relative', height: '60vh', minHeight: 400, background: '#111', cursor: 'zoom-in' }}
+            style={{ position: 'relative', height: '60vh', minHeight: 400, background: '#000', cursor: 'zoom-in' }}
             onClick={() => setLightboxIndex(0)}
           >
             {(profile.cover_image || profile.profile_image) ? (
@@ -310,7 +310,7 @@ export default function ModelProfileClient({
       >
         {/* Region + verified badge */}
         <div
-          className="font-sans text-[10px] font-bold tracking-[0.2em] text-rose uppercase mb-3"
+          className="font-sans text-[11px] font-bold tracking-[0.2em] text-rose uppercase mb-3"
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
           {profile.region}
@@ -354,7 +354,7 @@ export default function ModelProfileClient({
               border: '1px solid rgba(212, 144, 124, 0.2)',
               padding: '12px 18px',
               marginBottom: 24,
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 600,
               color: 'var(--peach)',
               letterSpacing: '0.05em',
@@ -369,7 +369,7 @@ export default function ModelProfileClient({
           <p
             className="font-sans"
             style={{
-              fontSize: 15,
+              fontSize: 17,
               lineHeight: 1.85,
               color: 'var(--muted)',
               maxWidth: 600,
@@ -399,7 +399,7 @@ export default function ModelProfileClient({
       {/* ─── Also Available As (Group Links) ─── */}
       {groups.length > 0 && (
         <div className="grid-pad" style={{ maxWidth: 1200, margin: '0 auto', paddingTop: 0 }}>
-          <div className="font-serif text-[13px] font-semibold tracking-[0.18em] text-rose uppercase mb-5">
+          <div className="font-serif text-[14px] font-semibold tracking-[0.18em] text-rose uppercase mb-5">
             Also available as
           </div>
           <div className="flex gap-4 flex-wrap">
@@ -413,7 +413,7 @@ export default function ModelProfileClient({
                   style={{
                     padding: '12px 20px 12px 12px',
                     border: '1px solid var(--sand)',
-                    background: '#181716',
+                    background: '#000000',
                   }}
                 >
                   {g.image ? (
@@ -435,16 +435,16 @@ export default function ModelProfileClient({
                   )}
                   <div>
                     <span
-                      className="font-sans text-[8px] font-extrabold tracking-[0.1em] uppercase mb-1 inline-block"
+                      className="font-sans text-[9px] font-extrabold tracking-[0.1em] uppercase mb-1 inline-block"
                       style={{
                         padding: '2px 8px',
                         background: 'var(--rose)',
-                        color: '#181716',
+                        color: '#000000',
                       }}
                     >
                       {badge}
                     </span>
-                    <div className="font-sans text-sm font-bold text-charcoal mt-0.5">
+                    <div className="font-sans text-base font-bold text-charcoal mt-0.5">
                       {g.name}
                     </div>
                   </div>

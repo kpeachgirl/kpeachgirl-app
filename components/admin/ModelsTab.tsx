@@ -13,7 +13,7 @@ interface ModelsTabProps {
 }
 
 const placeholderSvg = 'data:image/svg+xml,' + encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect width="32" height="32" fill="#d9cfc4"/></svg>'
+  '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><rect width="32" height="32" fill="#0a0a0a"/></svg>'
 )
 
 export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabProps) {
@@ -136,7 +136,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
 
   if (loading) {
     return (
-      <div style={{ color: 'var(--muted)', fontSize: 14, padding: '40px 0', textAlign: 'center' }}>
+      <div style={{ color: 'var(--muted)', fontSize: 15, padding: '40px 0', textAlign: 'center' }}>
         {t.loadingModels}
       </div>
     )
@@ -154,9 +154,9 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
               style={{
                 padding: '10px 24px',
                 background: 'var(--sage)',
-                color: '#0e0d0c',
+                color: '#000000',
                 border: 'none',
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -169,7 +169,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             </button>
           )}
           {orderChanged && (
-            <span style={{ fontSize: 11, color: 'var(--peach)', fontFamily: 'var(--font-sans)' }}>
+            <span style={{ fontSize: 12, color: 'var(--peach)', fontFamily: 'var(--font-sans)' }}>
               Drag to reorder, then save
             </span>
           )}
@@ -179,9 +179,9 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
           style={{
             padding: '10px 24px',
             background: 'var(--rose)',
-            color: '#0e0d0c',
+            color: '#000000',
             border: 'none',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -199,10 +199,10 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
         style={{ marginBottom: 32, background: 'var(--sand)' }}
       >
         {stats.map(s => (
-          <div key={s.l} style={{ background: '#181716', padding: '24px 20px' }}>
+          <div key={s.l} style={{ background: '#000000', padding: '24px 20px' }}>
             <div
               style={{
-                fontSize: 36,
+                fontSize: 40,
                 fontWeight: 300,
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-serif)',
@@ -212,7 +212,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             </div>
             <div
               style={{
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: '0.14em',
                 color: 'var(--muted)',
@@ -235,9 +235,9 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             style={{
               padding: '6px 16px',
               border: filter === k ? '1px solid var(--charcoal)' : '1px solid var(--sand)',
-              background: filter === k ? 'var(--charcoal)' : '#181716',
+              background: filter === k ? 'var(--charcoal)' : '#000000',
               color: filter === k ? 'var(--cream)' : 'var(--muted)',
-              fontSize: 11,
+              fontSize: 12,
               fontWeight: 700,
               letterSpacing: '0.06em',
               cursor: 'pointer',
@@ -251,14 +251,14 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
       </div>
 
       {/* Model table */}
-      <div style={{ background: '#181716', border: '1px solid var(--sand)', overflow: 'hidden' }}>
+      <div style={{ background: '#000000', border: '1px solid var(--sand)', overflow: 'hidden' }}>
         {/* Header row */}
         <div
           className="admin-table-row-drag"
           style={{
             padding: '12px 16px',
             borderBottom: '2px solid var(--sand)',
-            fontSize: 10,
+            fontSize: 11,
             fontWeight: 800,
             letterSpacing: '0.14em',
             color: 'var(--muted)',
@@ -294,7 +294,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 padding: '10px 16px',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
                 alignItems: 'center',
-                background: isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#181716',
+                background: isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#000000',
                 borderTop: isOver ? '2px solid var(--rose)' : '2px solid transparent',
                 transition: 'background 0.15s',
                 opacity: isDragging ? 0.5 : 1,
@@ -304,11 +304,11 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 if (!isEditing && !isDragging) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.background = isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#181716'
+                (e.currentTarget as HTMLElement).style.background = isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#000000'
               }}
             >
               {/* Drag handle + order number */}
-              <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 11, fontFamily: 'var(--font-sans)', minWidth: 30 }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 12, fontFamily: 'var(--font-sans)', minWidth: 30 }}>
                 {filter === 'all' && (
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.5, flexShrink: 0 }}>
                     <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
@@ -323,11 +323,11 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 style={{ width: 32, height: 32, objectFit: 'cover', borderRadius: 2 }}
               />
               {/* Name */}
-              <span style={{ fontWeight: 700, fontSize: 13, color: 'var(--charcoal)' }}>{m.name}</span>
+              <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>{m.name}</span>
               {/* Area */}
-              <span className="mob-hide" style={{ fontSize: 12, color: 'var(--muted)' }}>{m.region}</span>
+              <span className="mob-hide" style={{ fontSize: 13, color: 'var(--muted)' }}>{m.region}</span>
               {/* Level */}
-              <span className="mob-hide" style={{ fontSize: 11, color: 'var(--muted)' }}>{m.experience}</span>
+              <span className="mob-hide" style={{ fontSize: 12, color: 'var(--muted)' }}>{m.experience}</span>
               {/* Verified toggle */}
               <div className="mob-hide" style={{ textAlign: 'center' }}>
                 <button
@@ -351,7 +351,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                       width: 16,
                       height: 16,
                       borderRadius: 8,
-                      background: '#181716',
+                      background: '#000000',
                       transition: 'left 0.2s',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                     }}
@@ -381,7 +381,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                       width: 16,
                       height: 16,
                       borderRadius: 8,
-                      background: '#181716',
+                      background: '#000000',
                       transition: 'left 0.2s',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                     }}
@@ -397,7 +397,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                     border: 'none',
                     color: 'var(--cream)',
                     padding: '4px 12px',
-                    fontSize: 10,
+                    fontSize: 11,
                     fontWeight: 700,
                     letterSpacing: '0.1em',
                     cursor: 'pointer',

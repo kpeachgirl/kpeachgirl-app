@@ -16,7 +16,7 @@ interface GroupsTabProps {
 const placeholderSvg =
   'data:image/svg+xml,' +
   encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="48" height="48" fill="#2a2622"/></svg>'
+    '<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"><rect width="48" height="48" fill="#0a0a0a"/></svg>'
   )
 
 function emptyGroup(): Group {
@@ -114,13 +114,13 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
             style={{
               fontWeight: 300,
               color: 'var(--charcoal)',
-              fontSize: 22,
+              fontSize: 24,
               fontFamily: 'var(--font-serif)',
             }}
           >
             {t.grpTitle}
           </h2>
-          <p style={{ fontSize: 13, color: 'var(--muted)', marginTop: 4, fontFamily: 'var(--font-sans)' }}>
+          <p style={{ fontSize: 14, color: 'var(--muted)', marginTop: 4, fontFamily: 'var(--font-sans)' }}>
             {t.grpDesc}
           </p>
         </div>
@@ -129,9 +129,9 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
           style={{
             padding: '10px 24px',
             background: 'var(--rose)',
-            color: '#0e0d0c',
+            color: '#000000',
             border: 'none',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -147,7 +147,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
       {editingGroupId === '__new__' && (
         <div
           style={{
-            background: '#181716',
+            background: '#000000',
             border: '1px solid var(--rose)',
             overflow: 'hidden',
             marginBottom: 12,
@@ -171,7 +171,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
       {groups.length === 0 && editingGroupId !== '__new__' ? (
         <div
           style={{
-            background: '#181716',
+            background: '#000000',
             border: '1px solid var(--sand)',
             padding: '60px 20px',
             textAlign: 'center',
@@ -180,9 +180,9 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
           <div
             className="serif"
             style={{
-              fontSize: 24,
+              fontSize: 26,
               fontWeight: 300,
-              color: 'var(--sand)',
+              color: 'var(--charcoal)',
               marginBottom: 8,
               fontFamily: 'var(--font-serif)',
             }}
@@ -199,7 +199,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
               <div
                 key={g.id}
                 style={{
-                  background: '#181716',
+                  background: '#000000',
                   border: isEditing ? '1px solid var(--rose)' : '1px solid var(--sand)',
                   overflow: 'hidden',
                 }}
@@ -213,16 +213,16 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                     />
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-                        <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>{g.name}</span>
+                        <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--charcoal)' }}>{g.name}</span>
                         <span
                           className="sans"
                           style={{
                             padding: '2px 8px',
-                            fontSize: 8,
+                            fontSize: 9,
                             fontWeight: 800,
                             letterSpacing: '0.1em',
                             background: 'var(--rose)',
-                            color: '#181716',
+                            color: '#000000',
                             textTransform: 'uppercase',
                             fontFamily: 'var(--font-sans)',
                           }}
@@ -230,7 +230,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                           {badge}
                         </span>
                       </div>
-                      <div style={{ fontSize: 11, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>
+                      <div style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>
                         {(g.member_ids || []).length} {t.membersCount}
                       </div>
                     </div>
@@ -241,7 +241,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                         background: 'var(--charcoal)',
                         color: 'var(--cream)',
                         border: 'none',
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: 700,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',

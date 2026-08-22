@@ -69,7 +69,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
           e.stopPropagation();
           handlePrev();
         }}
-        className="font-sans absolute left-6 bg-transparent border border-white/15 text-white w-11 h-11 cursor-pointer text-lg hover:border-white/30 transition-colors"
+        className="font-sans absolute left-6 bg-transparent border border-white/15 text-white w-11 h-11 cursor-pointer text-xl hover:border-white/30 transition-colors"
         aria-label="Previous image"
       >
         &#8249;
@@ -97,14 +97,14 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
           e.stopPropagation();
           handleNext();
         }}
-        className="font-sans absolute right-6 bg-transparent border border-white/15 text-white w-11 h-11 cursor-pointer text-lg hover:border-white/30 transition-colors"
+        className="font-sans absolute right-6 bg-transparent border border-white/15 text-white w-11 h-11 cursor-pointer text-xl hover:border-white/30 transition-colors"
         aria-label="Next image"
       >
         &#8250;
       </button>
 
       {/* Counter */}
-      <span className="font-sans absolute bottom-7 text-white/30 text-[11px] tracking-[0.15em]">
+      <span className="font-sans absolute bottom-7 text-white text-[12px] tracking-[0.15em]">
         {currentIndex + 1} / {images.length}
       </span>
     </div>

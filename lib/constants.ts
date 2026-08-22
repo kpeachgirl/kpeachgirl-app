@@ -23,7 +23,7 @@ export const DEFAULT_CARD_SETTINGS: CardSettings = {
   showAwayBadge: true,
   verifiedLabel: 'Verified',
   awayLabel: 'Away',
-  overlayColor: '#1a1a1a',
+  overlayColor: '#000000',
   overlayOpacity: 70,
 };
 

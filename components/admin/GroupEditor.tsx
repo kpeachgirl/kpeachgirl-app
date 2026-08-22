@@ -22,7 +22,7 @@ type FormState = Record<string, any>
 
 const labelStyle: React.CSSProperties = {
   display: 'block',
-  fontSize: 10,
+  fontSize: 11,
   fontWeight: 700,
   letterSpacing: '0.12em',
   color: 'var(--muted)',
@@ -35,9 +35,9 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '8px 12px',
   border: '1px solid var(--sand)',
-  background: '#1e1d1b',
+  background: '#000000',
   color: 'var(--charcoal)',
-  fontSize: 13,
+  fontSize: 14,
   fontFamily: 'var(--font-sans)',
 }
 
@@ -214,7 +214,7 @@ export default function GroupEditor({
         <div>
           <label style={labelStyle}>
             {t.grpBadgeLabel}{' '}
-            <span style={{ fontWeight: 400, textTransform: 'none', fontSize: 9, color: 'var(--sand)' }}>
+            <span style={{ fontWeight: 400, textTransform: 'none', fontSize: 10, color: 'var(--charcoal)' }}>
               ({t.grpBadgeAuto})
             </span>
           </label>
@@ -251,8 +251,8 @@ export default function GroupEditor({
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '100%',
-                fontSize: 11,
-                color: 'var(--sand)',
+                fontSize: 12,
+                color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
               }}
             >
@@ -274,7 +274,7 @@ export default function GroupEditor({
                 background: 'rgba(0,0,0,0.6)',
                 color: '#fff',
                 border: 'none',
-                fontSize: 11,
+                fontSize: 12,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -320,11 +320,11 @@ export default function GroupEditor({
                   onClick={() => togglePill(pg.dataKey, opt)}
                   style={{
                     padding: '5px 14px',
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight: on ? 700 : 500,
                     cursor: 'pointer',
                     border: on ? `1px solid ${pg.color}` : '1px solid var(--sand)',
-                    background: on ? pg.color : '#181716',
+                    background: on ? pg.color : '#000000',
                     color: on ? 'var(--cream)' : 'var(--muted)',
                     letterSpacing: '0.04em',
                     fontFamily: 'var(--font-sans)',
@@ -346,7 +346,7 @@ export default function GroupEditor({
           <div className="admin-edit-grid" style={{ marginTop: 4 }}>
             {cat.fields.map(ff => (
               <div key={ff.key}>
-                <label style={{ ...labelStyle, fontSize: 9 }}>{ff.label}</label>
+                <label style={{ ...labelStyle, fontSize: 10 }}>{ff.label}</label>
                 <input
                   value={form.attributes[ff.key] || ''}
                   onChange={e => setAttr(ff.key, e.target.value)}
@@ -376,7 +376,7 @@ export default function GroupEditor({
                   background: 'rgba(255,255,255,0.03)',
                 }}
               >
-                <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--charcoal)' }}>{m.name}</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--charcoal)' }}>{m.name}</span>
                 <button
                   onClick={() =>
                     setForm(p => ({
@@ -390,7 +390,7 @@ export default function GroupEditor({
                     border: '1px solid var(--sand)',
                     background: 'none',
                     color: 'var(--muted)',
-                    fontSize: 12,
+                    fontSize: 13,
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -416,9 +416,9 @@ export default function GroupEditor({
             style={{
               padding: '8px 12px',
               border: '1px solid var(--sand)',
-              background: '#1e1d1b',
+              background: '#000000',
               color: 'var(--charcoal)',
-              fontSize: 12,
+              fontSize: 13,
               fontFamily: 'var(--font-sans)',
             }}
           >
@@ -469,7 +469,7 @@ export default function GroupEditor({
                   background: 'rgba(0,0,0,0.6)',
                   color: '#fff',
                   border: 'none',
-                  fontSize: 10,
+                  fontSize: 11,
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
@@ -492,11 +492,11 @@ export default function GroupEditor({
             }}
             onClick={() => group.id && galleryInputRef.current?.click()}
           >
-            <span style={{ fontSize: 20, color: 'var(--sand)' }}>+</span>
+            <span style={{ fontSize: 22, color: 'var(--charcoal)' }}>+</span>
           </div>
         </div>
         {!group.id && (
-          <p style={{ fontSize: 10, color: 'var(--muted)', marginTop: 4 }}>
+          <p style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4 }}>
             {t.saveGroupFirst}
           </p>
         )}
@@ -520,7 +520,7 @@ export default function GroupEditor({
             background: 'var(--charcoal)',
             color: 'var(--cream)',
             border: 'none',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 700,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -538,7 +538,7 @@ export default function GroupEditor({
             border: '1px solid var(--sand)',
             background: 'transparent',
             color: 'var(--muted)',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 600,
             cursor: 'pointer',
             fontFamily: 'var(--font-sans)',
@@ -554,7 +554,7 @@ export default function GroupEditor({
               border: '1px solid rgba(212,117,138,0.3)',
               background: 'transparent',
               color: 'var(--rose)',
-              fontSize: 10,
+              fontSize: 11,
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',

@@ -35,7 +35,7 @@ export default function AdminDashboard() {
 
   // Hero, card settings, and age gate for ProfileFieldsTab
   const [heroConfig, setHeroConfig] = useState<HeroConfig>({ img: '', imgCrop: null, subtitle: '', titleLine1: '', titleLine2: '', titleAccent: '', searchPlaceholder: '' })
-  const [cardSettings, setCardSettings] = useState<CardSettings>({ subtitleFields: ['region', 'types'], showVerifiedBadge: true, showAwayBadge: true, verifiedLabel: 'Verified', awayLabel: 'Away', overlayColor: '#1a1a1a', overlayOpacity: 70 })
+  const [cardSettings, setCardSettings] = useState<CardSettings>({ subtitleFields: ['region', 'types'], showVerifiedBadge: true, showAwayBadge: true, verifiedLabel: 'Verified', awayLabel: 'Away', overlayColor: '#000000', overlayOpacity: 70 })
   const [ageGateConfig, setAgeGateConfig] = useState<AgeGateConfig>(DEFAULT_AGE_GATE)
 
   // Profiles list for GroupsTab member selection

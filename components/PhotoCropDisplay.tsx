@@ -26,7 +26,7 @@ export default function PhotoCropDisplay({
   if (!src) {
     return (
       <div
-        className={`bg-muted/20 ${className || ''}`}
+        className={`bg-white/10 ${className || ''}`}
         style={fill ? { position: 'relative', width: '100%', height: '100%' } : { width, height }}
       />
     );
