@@ -412,7 +412,7 @@ const ProfilePage = ({ model, categories, pillGroups, groups, onBack, onSelectGr
           <p className="sans" style={{ fontSize:15, lineHeight:1.85, color:'var(--muted)', maxWidth:440, marginBottom:32 }}>{model.bio}</p>
           <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:24 }}>
             {(pillGroups||[]).map(pg=>(model[pg.dataKey]||[]).map(v=>(
-              <span key={pg.id+v} className="sans" style={{ padding:'5px 14px', border:`1px solid ${pg.color==='var(--charcoal)'?'var(--sand)':pg.color+'33'}`, fontSize:11, fontWeight:600, letterSpacing:'0.06em', color:pg.color==='var(--charcoal)'?'var(--ink)':pg.color }}>{v}</span>
+              <span key={pg.id+v} className="sans" style={{ padding:'5px 14px', border:'1px solid var(--sand)', borderColor:pg.color==='var(--charcoal)'?'var(--sand)':`color-mix(in srgb, ${pg.color} 20%, transparent)`, fontSize:11, fontWeight:600, letterSpacing:'0.06em', color:pg.color==='var(--charcoal)'?'var(--ink)':pg.color }}>{v}</span>
             )))}
           </div>
           {!model.vacation && <button className="sans" style={{ alignSelf:'flex-start', padding:'14px 36px', background:'var(--charcoal)', color:'var(--cream)', border:'none', fontSize:11, fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', cursor:'pointer', transition:'background 0.3s' }} onMouseEnter={e=>e.target.style.background='var(--rose)'} onMouseLeave={e=>e.target.style.background='var(--charcoal)'}>Contact {model.name.split(' ')[0]}</button>}
@@ -497,7 +497,7 @@ const GroupProfilePage = ({ group, models, categories, pillGroups, onBack, onSel
           {/* Tag pills */}
           <div style={{ display:'flex', flexWrap:'wrap', gap:6, marginBottom:24 }}>
             {(pillGroups||[]).map(pg=>(group[pg.dataKey]||[]).map(v=>(
-              <span key={pg.id+v} className="sans" style={{ padding:'5px 14px', border:`1px solid ${pg.color==='var(--charcoal)'?'var(--sand)':pg.color+'33'}`, fontSize:11, fontWeight:600, letterSpacing:'0.06em', color:pg.color==='var(--charcoal)'?'var(--ink)':pg.color }}>{v}</span>
+              <span key={pg.id+v} className="sans" style={{ padding:'5px 14px', border:'1px solid var(--sand)', borderColor:pg.color==='var(--charcoal)'?'var(--sand)':`color-mix(in srgb, ${pg.color} 20%, transparent)`, fontSize:11, fontWeight:600, letterSpacing:'0.06em', color:pg.color==='var(--charcoal)'?'var(--ink)':pg.color }}>{v}</span>
             )))}
           </div>
           {/* Members */}
