@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from '@/lib/i18n'
 import { uploadImage } from '@/lib/supabase/admin'
 import PhotoEditor from './PhotoEditor'
@@ -23,6 +23,16 @@ const panelStyle: React.CSSProperties = {
   borderRadius: 12,
   padding: 28,
 }
+
+// Pill group colors are stored as theme tokens so they follow the theme. The
+// custom picker below can only emit hex, so it is opt-in — picking a swatch
+// keeps the token intact.
+const THEME_PILL_COLORS = [
+  { value: 'var(--charcoal)', label: 'Default' },
+  { value: 'var(--rose)', label: 'Rose' },
+  { value: 'var(--peach)', label: 'Peach' },
+  { value: 'var(--sage)', label: 'Sage' },
+]
 
 const labelStyle: React.CSSProperties = {
   fontSize: 12,
@@ -58,6 +68,19 @@ export default function ProfileFieldsTab({
   const t = useTranslation(lang)
   const [editingHeroPhoto, setEditingHeroPhoto] = useState(false)
   const heroFileRef = useRef<HTMLInputElement>(null)
+
+  // Resolve theme tokens to hex so the custom picker shows the real color
+  // instead of defaulting to white when a token is stored.
+  const [tokenHex, setTokenHex] = useState<Record<string, string>>({})
+  useEffect(() => {
+    const cs = getComputedStyle(document.documentElement)
+    const map: Record<string, string> = {}
+    for (const c of THEME_PILL_COLORS) {
+      const v = cs.getPropertyValue(c.value.slice(4, -1)).trim()
+      if (v.startsWith('#')) map[c.value] = v
+    }
+    setTokenHex(map)
+  }, [])
 
   // ─── Hero Banner ──────────────────────────────────────────
   const updateHero = (patch: Partial<HeroConfig>) => {
@@ -454,7 +477,46 @@ export default function ProfileFieldsTab({
                   onChange={e => updatePillGroup(gi, { title: e.target.value })}
                   style={{ ...inputStyle, flex: 1, minWidth: 120, fontFamily: 'var(--font-serif)', fontSize: 18, borderTop: 'none', borderLeft: 'none', borderRight: 'none', borderRadius: 0, padding: '4px 0', background: 'transparent' }}
                 />
-                <input type="color" value={group.color.startsWith('#') ? group.color : '#ffffff'} onChange={e => updatePillGroup(gi, { color: e.target.value })} style={{ width: 32, height: 28, border: 'none', borderRadius: 4, cursor: 'pointer', background: 'transparent' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  {THEME_PILL_COLORS.map(tc => (
+                    <button
+                      key={tc.value}
+                      type="button"
+                      title={tc.label}
+                      onClick={() => updatePillGroup(gi, { color: tc.value })}
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: '50%',
+                        background: tc.value,
+                        cursor: 'pointer',
+                        padding: 0,
+                        border: group.color === tc.value ? '2px solid var(--charcoal)' : '1px solid var(--sand)',
+                      }}
+                    />
+                  ))}
+                  <label
+                    title="Custom color"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 22,
+                      height: 22,
+                      borderRadius: '50%',
+                      overflow: 'hidden',
+                      cursor: 'pointer',
+                      border: group.color.startsWith('#') ? '2px solid var(--charcoal)' : '1px solid var(--sand)',
+                    }}
+                  >
+                    <input
+                      type="color"
+                      value={group.color.startsWith('#') ? group.color : tokenHex[group.color] || '#ffffff'}
+                      onChange={e => updatePillGroup(gi, { color: e.target.value })}
+                      style={{ width: 40, height: 40, border: 'none', padding: 0, background: 'transparent', cursor: 'pointer' }}
+                    />
+                  </label>
+                </div>
                 <span className="mob-hide" style={{ fontFamily: 'monospace', fontSize: 12, color: 'var(--muted)', background: 'var(--warm)', padding: '4px 8px', borderRadius: 4 }}>{group.dataKey}</span>
                 <button onClick={() => removePillGroup(gi)} style={{ width: 28, height: 28, background: 'transparent', border: '1px solid var(--sand)', borderRadius: 6, color: 'var(--rose)', cursor: 'pointer', fontSize: 15, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>&times;</button>
               </div>
