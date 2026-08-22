@@ -127,7 +127,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
   /* ─── Field Renderer ─── */
   const renderField = (field: FormField) => {
     const inputClass =
-      'w-full px-4 py-3 border border-sand bg-[#000000] text-charcoal text-base font-sans font-medium focus:outline-none focus:border-rose transition-colors';
+      'w-full px-4 py-3 border border-sand bg-card-bg text-charcoal text-base font-sans font-medium focus:outline-none focus:border-rose transition-colors';
 
     switch (field.type) {
       case 'file_upload': {
@@ -243,7 +243,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                   className={`px-4 py-1.5 text-[12px] tracking-wide font-sans transition-all duration-150 border ${
                     on
                       ? 'font-bold border-charcoal bg-charcoal text-cream'
-                      : 'font-medium border-sand bg-transparent text-muted'
+                      : 'font-medium border-sand bg-card-bg text-muted'
                   }`}
                 >
                   {st}
@@ -306,7 +306,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
             transition: 'all 0.7s cubic-bezier(0.16,1,0.3,1)',
           }}
         >
-          <div className="w-14 h-14 rounded-full bg-sage flex items-center justify-center mx-auto mb-5 text-3xl text-[#000000]">
+          <div className="w-14 h-14 rounded-full bg-sage flex items-center justify-center mx-auto mb-5 text-3xl text-[#121212]">
             &#10003;
           </div>
           <div className="font-serif text-[35px] font-light text-charcoal mb-2">
@@ -330,7 +330,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
   return (
     <div className="font-sans min-h-screen bg-cream grain">
       {/* Top bar */}
-      <div className="px-8 py-4 border-b border-sand flex justify-between items-center bg-[#000000]">
+      <div className="px-8 py-4 border-b border-sand flex justify-between items-center bg-card-bg">
         <div className="flex items-center gap-4">
           <Link
             href="/"
@@ -365,7 +365,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
         </div>
 
         {/* Form card */}
-        <div className="bg-[#000000] border border-sand p-8">
+        <div className="bg-card-bg border border-sand p-8">
           {rows.map((row, ri) => {
             const cols = row.map(() => '1fr').join(' ');
             return (

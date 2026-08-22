@@ -87,7 +87,7 @@ export default function AgeGate({ children, config }: AgeGateProps) {
         {/* Leave button */}
         <button
           onClick={() => window.history.back()}
-          className="font-sans w-full py-3 mt-2 bg-transparent text-charcoal border border-sand text-[12px] font-semibold tracking-[0.12em] uppercase cursor-pointer"
+          className="font-sans w-full py-3 mt-2 bg-card-bg text-charcoal border border-sand text-[12px] font-semibold tracking-[0.12em] uppercase cursor-pointer"
         >
           {c.leaveButton}
         </button>

@@ -147,7 +147,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
       {editingGroupId === '__new__' && (
         <div
           style={{
-            background: '#000000',
+            background: 'var(--card-bg)',
             border: '1px solid var(--rose)',
             overflow: 'hidden',
             marginBottom: 12,
@@ -171,7 +171,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
       {groups.length === 0 && editingGroupId !== '__new__' ? (
         <div
           style={{
-            background: '#000000',
+            background: 'var(--card-bg)',
             border: '1px solid var(--sand)',
             padding: '60px 20px',
             textAlign: 'center',
@@ -199,7 +199,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
               <div
                 key={g.id}
                 style={{
-                  background: '#000000',
+                  background: 'var(--card-bg)',
                   border: isEditing ? '1px solid var(--rose)' : '1px solid var(--sand)',
                   overflow: 'hidden',
                 }}
@@ -222,7 +222,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                             fontWeight: 800,
                             letterSpacing: '0.1em',
                             background: 'var(--rose)',
-                            color: '#000000',
+                            color: 'var(--card-bg)',
                             textTransform: 'uppercase',
                             fontFamily: 'var(--font-sans)',
                           }}

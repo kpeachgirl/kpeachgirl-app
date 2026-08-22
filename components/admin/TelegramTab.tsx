@@ -77,7 +77,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
   };
 
   const cardStyle = {
-    background: '#000000',
+    background: 'var(--card-bg)',
     border: '1px solid rgba(255,255,255,0.06)',
     borderRadius: 10,
     padding: 24,
@@ -87,7 +87,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
   const inputStyle = {
     width: '100%',
     padding: '12px 16px',
-    background: '#000000',
+    background: 'var(--input-bg)',
     border: '1px solid var(--sand)',
     borderRadius: 8,
     color: 'var(--charcoal)',
@@ -139,7 +139,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
               border: 'none',
               borderRadius: 8,
               cursor: 'pointer',
-              background: postType === id ? 'var(--charcoal)' : '#000000',
+              background: postType === id ? 'var(--charcoal)' : 'var(--input-bg)',
               color: postType === id ? 'var(--cream)' : 'var(--muted)',
               transition: 'all 0.15s',
             }}
@@ -182,7 +182,7 @@ export default function TelegramTab({ lang }: TelegramTabProps) {
             const model = profiles.find(p => p.id === selectedModel);
             if (!model) return null;
             return (
-              <div style={{ marginTop: 16, padding: 16, background: '#000000', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 16 }}>
+              <div style={{ marginTop: 16, padding: 16, background: 'var(--input-bg)', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 16 }}>
                 {model.profile_image && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img

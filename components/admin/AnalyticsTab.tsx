@@ -146,7 +146,7 @@ export default function AnalyticsTab({ lang }: AnalyticsTabProps) {
   }, [autoRefresh, fetchData]);
 
   const cardStyle = {
-    background: '#000000',
+    background: 'var(--card-bg)',
     border: '1px solid var(--sand)',
     borderRadius: 12,
     padding: '24px',

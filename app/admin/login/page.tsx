@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
                   textTransform: 'uppercase',
                   border: 'none',
                   cursor: 'pointer',
-                  background: lang === l ? 'var(--charcoal)' : 'transparent',
+                  background: lang === l ? 'var(--charcoal)' : 'var(--card-bg)',
                   color: lang === l ? 'var(--cream)' : 'var(--muted)',
                   transition: 'all 0.15s',
                 }}
@@ -128,7 +128,7 @@ export default function AdminLoginPage() {
           onSubmit={handleLogin}
           className="rounded-xl p-8"
           style={{
-            background: '#000000',
+            background: 'var(--card-bg)',
             border: '1px solid var(--sand)',
           }}
         >
@@ -165,7 +165,7 @@ export default function AdminLoginPage() {
               autoComplete="email"
               className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
               style={{
-                background: '#000000',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--sand)',
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
@@ -193,7 +193,7 @@ export default function AdminLoginPage() {
               autoComplete="current-password"
               className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
               style={{
-                background: '#000000',
+                background: 'var(--input-bg)',
                 border: '1px solid var(--sand)',
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',

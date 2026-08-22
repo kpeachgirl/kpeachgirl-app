@@ -4,9 +4,13 @@
 
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
-  --cream:       #000000;
-  --warm:        #000000;
-  --sand:        #333131;   /* borders / dividers only — never text */
+  /* Surfaces stack: the page is pure black, anything interactive sits above it
+     so buttons/inputs/cards stay visible without reading as grey. */
+  --cream:       #000000;   /* page background */
+  --warm:        #0b0b0b;   /* secondary page sections */
+  --card-bg:     #121212;   /* cards, panels, slide-outs, unselected chips */
+  --input-bg:    #171717;   /* form inputs */
+  --sand:        #3a3a3a;   /* borders / dividers only — never text */
   --charcoal:    #ffffff;
   --ink:         #ffffff;
   --muted:       #ffffff;
@@ -15,8 +19,6 @@
   --rose-mid:    rgba(212, 117, 138, 0.2);
   --peach:       #e0a08c;
   --sage:        #8fad8f;
-  --card-bg:     #000000;
-  --input-bg:    #000000;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

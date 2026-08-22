@@ -199,7 +199,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
         style={{ marginBottom: 32, background: 'var(--sand)' }}
       >
         {stats.map(s => (
-          <div key={s.l} style={{ background: '#000000', padding: '24px 20px' }}>
+          <div key={s.l} style={{ background: 'var(--card-bg)', padding: '24px 20px' }}>
             <div
               style={{
                 fontSize: 40,
@@ -235,7 +235,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             style={{
               padding: '6px 16px',
               border: filter === k ? '1px solid var(--charcoal)' : '1px solid var(--sand)',
-              background: filter === k ? 'var(--charcoal)' : '#000000',
+              background: filter === k ? 'var(--charcoal)' : 'var(--card-bg)',
               color: filter === k ? 'var(--cream)' : 'var(--muted)',
               fontSize: 12,
               fontWeight: 700,
@@ -251,7 +251,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
       </div>
 
       {/* Model table */}
-      <div style={{ background: '#000000', border: '1px solid var(--sand)', overflow: 'hidden' }}>
+      <div style={{ background: 'var(--card-bg)', border: '1px solid var(--sand)', overflow: 'hidden' }}>
         {/* Header row */}
         <div
           className="admin-table-row-drag"
@@ -294,7 +294,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 padding: '10px 16px',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
                 alignItems: 'center',
-                background: isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#000000',
+                background: isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : 'var(--card-bg)',
                 borderTop: isOver ? '2px solid var(--rose)' : '2px solid transparent',
                 transition: 'background 0.15s',
                 opacity: isDragging ? 0.5 : 1,
@@ -304,7 +304,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 if (!isEditing && !isDragging) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLElement).style.background = isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : '#000000'
+                (e.currentTarget as HTMLElement).style.background = isDragging ? 'rgba(212,117,138,0.08)' : isEditing ? 'var(--rose-soft)' : 'var(--card-bg)'
               }}
             >
               {/* Drag handle + order number */}
@@ -351,7 +351,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                       width: 16,
                       height: 16,
                       borderRadius: 8,
-                      background: '#000000',
+                      background: 'var(--card-bg)',
                       transition: 'left 0.2s',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                     }}
@@ -381,7 +381,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                       width: 16,
                       height: 16,
                       borderRadius: 8,
-                      background: '#000000',
+                      background: 'var(--card-bg)',
                       transition: 'left 0.2s',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                     }}

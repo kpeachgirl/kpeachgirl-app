@@ -47,7 +47,7 @@ export default function FilterBar({
                 letterSpacing: '0.04em',
                 cursor: 'pointer',
                 border: area === a ? '1px solid var(--charcoal)' : '1px solid var(--sand)',
-                background: area === a ? 'var(--charcoal)' : 'transparent',
+                background: area === a ? 'var(--charcoal)' : 'var(--card-bg)',
                 color: area === a ? 'var(--cream)' : 'var(--muted)',
                 textTransform: 'uppercase',
               }}

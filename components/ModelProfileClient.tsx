@@ -145,7 +145,7 @@ export default function ModelProfileClient({
                     position: 'relative',
                     height: '75vh',
                     minHeight: 400,
-                    background: '#000',
+                    background: '#141414',
                   }}
                   onClick={() => setLightboxIndex(i)}
                 >
@@ -413,7 +413,7 @@ export default function ModelProfileClient({
                   style={{
                     padding: '12px 20px 12px 12px',
                     border: '1px solid var(--sand)',
-                    background: '#000000',
+                    background: 'var(--card-bg)',
                   }}
                 >
                   {g.image ? (
@@ -439,7 +439,7 @@ export default function ModelProfileClient({
                       style={{
                         padding: '2px 8px',
                         background: 'var(--rose)',
-                        color: '#000000',
+                        color: 'var(--card-bg)',
                       }}
                     >
                       {badge}

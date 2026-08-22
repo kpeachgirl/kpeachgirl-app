@@ -18,7 +18,7 @@ interface ProfileFieldsTabProps {
 }
 
 const panelStyle: React.CSSProperties = {
-  background: '#000000',
+  background: 'var(--card-bg)',
   border: '1px solid var(--sand)',
   borderRadius: 12,
   padding: 28,
@@ -373,7 +373,7 @@ export default function ProfileFieldsTab({
                   padding: '8px 16px',
                   borderRadius: 8,
                   border: '1px solid var(--sand)',
-                  background: cardSettings.subtitleFields.includes(field) ? 'var(--charcoal)' : 'transparent',
+                  background: cardSettings.subtitleFields.includes(field) ? 'var(--charcoal)' : 'var(--card-bg)',
                   color: cardSettings.subtitleFields.includes(field) ? 'var(--cream)' : 'var(--charcoal)',
                   fontSize: 14,
                   cursor: 'pointer',

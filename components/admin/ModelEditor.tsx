@@ -40,7 +40,7 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '8px 12px',
   border: '1px solid var(--sand)',
-  background: '#000000',
+  background: 'var(--input-bg)',
   color: 'var(--charcoal)',
   fontSize: 14,
   fontFamily: 'var(--font-sans)',
@@ -468,7 +468,7 @@ export default function ModelEditor({
           style={{
             position: 'sticky',
             top: 0,
-            background: '#000000',
+            background: 'var(--card-bg)',
             borderBottom: '1px solid var(--sand)',
             padding: '14px 24px',
             zIndex: 2,
@@ -733,7 +733,7 @@ export default function ModelEditor({
                           position: 'relative',
                           aspectRatio: '3/4',
                           overflow: 'hidden',
-                          background: '#000',
+                          background: '#141414',
                         }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -862,7 +862,7 @@ export default function ModelEditor({
                         border: on
                           ? `1px solid ${pg.color}`
                           : '1px solid var(--sand)',
-                        background: on ? pg.color : '#000000',
+                        background: on ? pg.color : 'var(--card-bg)',
                         color: on ? 'var(--cream)' : 'var(--muted)',
                         letterSpacing: '0.04em',
                         fontFamily: 'var(--font-sans)',
@@ -932,7 +932,7 @@ export default function ModelEditor({
         <div
           className="admin-save-bar"
           style={{
-            background: '#000000',
+            background: 'var(--card-bg)',
             borderTop: '1px solid var(--sand)',
             padding: '12px 24px',
             display: 'flex',

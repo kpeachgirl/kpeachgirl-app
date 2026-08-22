@@ -48,7 +48,7 @@ export default function AdminNav({
     <nav
       className="admin-nav-pad"
       style={{
-        background: '#000000',
+        background: 'var(--card-bg)',
         borderBottom: '1px solid var(--sand)',
       }}
     >
@@ -130,7 +130,7 @@ export default function AdminNav({
                   textTransform: 'uppercase',
                   border: 'none',
                   cursor: 'pointer',
-                  background: lang === l ? 'var(--charcoal)' : 'transparent',
+                  background: lang === l ? 'var(--charcoal)' : 'var(--card-bg)',
                   color: lang === l ? 'var(--cream)' : 'var(--muted)',
                   transition: 'all 0.15s',
                 }}
@@ -230,7 +230,7 @@ export default function AdminNav({
                 border: 'none',
                 borderRadius: 6,
                 cursor: 'pointer',
-                background: isActive ? 'var(--charcoal)' : 'transparent',
+                background: isActive ? 'var(--charcoal)' : 'var(--card-bg)',
                 color: isActive ? 'var(--cream)' : 'var(--muted)',
                 transition: 'all 0.15s',
                 display: 'flex',

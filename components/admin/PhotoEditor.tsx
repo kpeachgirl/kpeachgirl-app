@@ -37,7 +37,7 @@ export default function PhotoEditor({ src, crop, aspect, onSave, onCancel, trans
 
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.88)', backdropFilter: 'blur(12px)' }}>
-      <div className="sans" style={{ background: '#000000', maxWidth: 520, width: '90%', maxHeight: '90vh', overflow: 'auto', boxShadow: '0 24px 80px rgba(0,0,0,0.3)' }}>
+      <div className="sans" style={{ background: 'var(--card-bg)', maxWidth: 520, width: '90%', maxHeight: '90vh', overflow: 'auto', boxShadow: '0 24px 80px rgba(0,0,0,0.3)' }}>
         {/* Header */}
         <div style={{ padding: '16px 24px', borderBottom: '1px solid var(--sand)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>{t.editPhoto || 'Edit Photo'}</div>
@@ -82,10 +82,10 @@ export default function PhotoEditor({ src, crop, aspect, onSave, onCancel, trans
             {/* Crosshair indicator */}
             <div style={{ position: 'absolute', left: `${pos.x}%`, top: `${pos.y}%`, transform: 'translate(-50%,-50%)', pointerEvents: 'none', zIndex: 2 }}>
               <div style={{ width: 24, height: 24, border: '2px solid #fff', borderRadius: '50%', boxShadow: '0 0 0 1px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(0,0,0,0.3)' }} />
-              <div style={{ position: 'absolute', left: 11, top: -8, width: 2, height: 8, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', left: 11, top: 24, width: 2, height: 8, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', top: 11, left: -8, width: 8, height: 2, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
-              <div style={{ position: 'absolute', top: 11, left: 24, width: 8, height: 2, background: '#000000', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', left: 11, top: -8, width: 2, height: 8, background: 'var(--card-bg)', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', left: 11, top: 24, width: 2, height: 8, background: 'var(--card-bg)', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', top: 11, left: -8, width: 8, height: 2, background: 'var(--card-bg)', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
+              <div style={{ position: 'absolute', top: 11, left: 24, width: 8, height: 2, background: 'var(--card-bg)', boxShadow: '0 0 2px rgba(0,0,0,0.5)' }} />
             </div>
           </div>
 

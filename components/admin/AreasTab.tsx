@@ -35,7 +35,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
   return (
     <div
       style={{
-        background: '#000000',
+        background: 'var(--card-bg)',
         border: '1px solid var(--sand)',
         borderRadius: 12,
         padding: 28,
@@ -123,7 +123,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           placeholder={t.areasPlaceholder}
           style={{
             flex: 1,
-            background: 'var(--input-bg, #000000)',
+            background: 'var(--input-bg, #171717)',
             border: '1px solid var(--sand)',
             borderRadius: 8,
             padding: '8px 12px',
