@@ -6,11 +6,11 @@ export default function Footer() {
       </span>
       <a
         href="mailto:kpeachgirl@hotmail.com"
-        className="font-sans text-[12px] font-medium tracking-[0.06em] text-muted no-underline hover:text-rose transition-colors"
+        className="font-sans text-[13px] font-medium tracking-[0.06em] text-muted no-underline hover:text-rose transition-colors"
       >
         kpeachgirl@hotmail.com
       </a>
-      <span className="font-sans text-[11px] font-semibold tracking-[0.12em] text-charcoal uppercase">
+      <span className="font-sans text-[12px] font-semibold tracking-[0.12em] text-charcoal uppercase">
         &copy; 2026 &middot; All models are 18+
       </span>
     </footer>

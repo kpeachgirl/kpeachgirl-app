@@ -59,7 +59,7 @@ export default function AgeGate({ children, config }: AgeGateProps) {
         }}
       >
         {/* Logo */}
-        <div className="font-serif text-[46px] font-light tracking-[-0.02em] text-charcoal leading-none">
+        <div className="font-serif text-[51px] font-light tracking-[-0.02em] text-charcoal leading-none">
           K<span className="text-rose">peach</span>girl
         </div>
 
@@ -67,12 +67,12 @@ export default function AgeGate({ children, config }: AgeGateProps) {
         <div className="w-10 h-px bg-rose mx-auto my-5" />
 
         {/* Heading */}
-        <div className="font-sans text-[12px] font-bold tracking-[0.2em] text-rose mb-2 uppercase">
+        <div className="font-sans text-[13px] font-bold tracking-[0.2em] text-rose mb-2 uppercase">
           {c.heading}
         </div>
 
         {/* Description */}
-        <p className="font-sans text-[14px] text-muted leading-[1.7] mb-8">
+        <p className="font-sans text-[15px] text-muted leading-[1.7] mb-8">
           {c.body}
         </p>
 
@@ -87,13 +87,13 @@ export default function AgeGate({ children, config }: AgeGateProps) {
         {/* Leave button */}
         <button
           onClick={() => window.history.back()}
-          className="font-sans w-full py-3 mt-2 bg-card-bg text-charcoal border border-sand text-[12px] font-semibold tracking-[0.12em] uppercase cursor-pointer"
+          className="font-sans w-full py-3 mt-2 bg-card-bg text-charcoal border border-sand text-[13px] font-semibold tracking-[0.12em] uppercase cursor-pointer"
         >
           {c.leaveButton}
         </button>
 
         {/* Footer */}
-        <p className="font-sans text-[11px] text-charcoal mt-6 leading-[1.5]">
+        <p className="font-sans text-[12px] text-charcoal mt-6 leading-[1.5]">
           {c.disclaimer}
         </p>
       </div>

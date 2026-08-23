@@ -136,7 +136,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
 
   if (loading) {
     return (
-      <div style={{ color: 'var(--muted)', fontSize: 15, padding: '40px 0', textAlign: 'center' }}>
+      <div style={{ color: 'var(--muted)', fontSize: 17, padding: '40px 0', textAlign: 'center' }}>
         {t.loadingModels}
       </div>
     )
@@ -156,7 +156,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 background: 'var(--sage)',
                 color: '#000000',
                 border: 'none',
-                fontSize: 12,
+                fontSize: 13,
                 fontWeight: 700,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
@@ -169,7 +169,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             </button>
           )}
           {orderChanged && (
-            <span style={{ fontSize: 12, color: 'var(--peach)', fontFamily: 'var(--font-sans)' }}>
+            <span style={{ fontSize: 13, color: 'var(--peach)', fontFamily: 'var(--font-sans)' }}>
               Drag to reorder, then save
             </span>
           )}
@@ -181,7 +181,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             background: 'var(--rose)',
             color: '#000000',
             border: 'none',
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -202,7 +202,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
           <div key={s.l} style={{ background: 'var(--card-bg)', padding: '24px 20px' }}>
             <div
               style={{
-                fontSize: 40,
+                fontSize: 44,
                 fontWeight: 300,
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-serif)',
@@ -212,7 +212,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
             </div>
             <div
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: '0.14em',
                 color: 'var(--muted)',
@@ -237,7 +237,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
               border: filter === k ? '1px solid var(--charcoal)' : '1px solid var(--sand)',
               background: filter === k ? 'var(--charcoal)' : 'var(--card-bg)',
               color: filter === k ? 'var(--cream)' : 'var(--muted)',
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: 700,
               letterSpacing: '0.06em',
               cursor: 'pointer',
@@ -258,7 +258,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
           style={{
             padding: '12px 16px',
             borderBottom: '2px solid var(--sand)',
-            fontSize: 11,
+            fontSize: 12,
             fontWeight: 800,
             letterSpacing: '0.14em',
             color: 'var(--muted)',
@@ -308,7 +308,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
               }}
             >
               {/* Drag handle + order number */}
-              <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 12, fontFamily: 'var(--font-sans)', minWidth: 30 }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6, color: 'var(--muted)', fontSize: 13, fontFamily: 'var(--font-sans)', minWidth: 30 }}>
                 {filter === 'all' && (
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ opacity: 0.5, flexShrink: 0 }}>
                     <line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/>
@@ -323,11 +323,11 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                 style={{ width: 32, height: 32, objectFit: 'cover', borderRadius: 2 }}
               />
               {/* Name */}
-              <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--charcoal)' }}>{m.name}</span>
+              <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--charcoal)' }}>{m.name}</span>
               {/* Area */}
-              <span className="mob-hide" style={{ fontSize: 13, color: 'var(--muted)' }}>{m.region}</span>
+              <span className="mob-hide" style={{ fontSize: 14, color: 'var(--muted)' }}>{m.region}</span>
               {/* Level */}
-              <span className="mob-hide" style={{ fontSize: 12, color: 'var(--muted)' }}>{m.experience}</span>
+              <span className="mob-hide" style={{ fontSize: 13, color: 'var(--muted)' }}>{m.experience}</span>
               {/* Verified toggle */}
               <div className="mob-hide" style={{ textAlign: 'center' }}>
                 <button
@@ -397,7 +397,7 @@ export default function ModelsTab({ lang, onEditModel, editingId }: ModelsTabPro
                     border: 'none',
                     color: 'var(--cream)',
                     padding: '4px 12px',
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight: 700,
                     letterSpacing: '0.1em',
                     cursor: 'pointer',

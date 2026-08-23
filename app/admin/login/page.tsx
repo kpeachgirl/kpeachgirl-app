@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
                 onClick={() => { setLang(l); localStorage.setItem('kpeach-lang', l) }}
                 style={{
                   padding: '4px 10px',
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: 700,
                   fontFamily: 'var(--font-sans)',
                   letterSpacing: '0.05em',
@@ -101,7 +101,7 @@ export default function AdminLoginPage() {
           <h1
             style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 31,
+              fontSize: 34,
               fontWeight: 300,
               letterSpacing: '0.2em',
               textTransform: 'uppercase',

@@ -36,7 +36,7 @@ export default function ProfilePills({ pillGroups, data }: ProfilePillsProps) {
         return (data[pg.dataKey] || []).map((v) => (
           <span
             key={`${pg.id}-${v}`}
-            className="font-sans text-[12px] font-semibold tracking-[0.06em]"
+            className="font-sans text-[13px] font-semibold tracking-[0.06em]"
             style={{
               padding: '5px 14px',
               border: '1px solid var(--sand)',

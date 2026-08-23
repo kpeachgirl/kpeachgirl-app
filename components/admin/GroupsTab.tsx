@@ -114,13 +114,13 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
             style={{
               fontWeight: 300,
               color: 'var(--charcoal)',
-              fontSize: 24,
+              fontSize: 26,
               fontFamily: 'var(--font-serif)',
             }}
           >
             {t.grpTitle}
           </h2>
-          <p style={{ fontSize: 14, color: 'var(--muted)', marginTop: 4, fontFamily: 'var(--font-sans)' }}>
+          <p style={{ fontSize: 15, color: 'var(--muted)', marginTop: 4, fontFamily: 'var(--font-sans)' }}>
             {t.grpDesc}
           </p>
         </div>
@@ -131,7 +131,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
             background: 'var(--rose)',
             color: '#000000',
             border: 'none',
-            fontSize: 12,
+            fontSize: 13,
             fontWeight: 700,
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
@@ -180,7 +180,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
           <div
             className="serif"
             style={{
-              fontSize: 26,
+              fontSize: 29,
               fontWeight: 300,
               color: 'var(--charcoal)',
               marginBottom: 8,
@@ -213,12 +213,12 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                     />
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
-                        <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--charcoal)' }}>{g.name}</span>
+                        <span style={{ fontWeight: 700, fontSize: 17, color: 'var(--charcoal)' }}>{g.name}</span>
                         <span
                           className="sans"
                           style={{
                             padding: '2px 8px',
-                            fontSize: 9,
+                            fontSize: 10,
                             fontWeight: 800,
                             letterSpacing: '0.1em',
                             background: 'var(--rose)',
@@ -230,7 +230,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                           {badge}
                         </span>
                       </div>
-                      <div style={{ fontSize: 12, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>
+                      <div style={{ fontSize: 13, color: 'var(--muted)', fontFamily: 'var(--font-sans)' }}>
                         {(g.member_ids || []).length} {t.membersCount}
                       </div>
                     </div>
@@ -241,7 +241,7 @@ export default function GroupsTab({ lang, profiles, pillGroups, categories }: Gr
                         background: 'var(--charcoal)',
                         color: 'var(--cream)',
                         border: 'none',
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: 700,
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',

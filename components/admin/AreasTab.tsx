@@ -43,7 +43,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
     >
       <h2
         style={{
-          fontSize: 24,
+          fontSize: 26,
           fontWeight: 600,
           color: 'var(--charcoal)',
           fontFamily: 'var(--font-serif)',
@@ -55,7 +55,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
       <p
         style={{
           color: 'var(--muted)',
-          fontSize: 15,
+          fontSize: 17,
           fontFamily: 'var(--font-sans)',
           marginBottom: 20,
         }}
@@ -80,7 +80,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
           >
             <span
               style={{
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: 600,
                 color: 'var(--charcoal)',
                 fontFamily: 'var(--font-sans)',
@@ -101,7 +101,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
                 background: 'transparent',
                 color: 'var(--muted)',
                 cursor: 'pointer',
-                fontSize: 15,
+                fontSize: 17,
                 lineHeight: 1,
                 padding: 0,
               }}
@@ -128,7 +128,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
             borderRadius: 8,
             padding: '8px 12px',
             color: 'var(--charcoal)',
-            fontSize: 15,
+            fontSize: 17,
             fontFamily: 'var(--font-sans)',
             outline: 'none',
             minWidth: 0,
@@ -143,7 +143,7 @@ export default function AreasTab({ lang, areas, onUpdate }: AreasTabProps) {
             border: 'none',
             borderRadius: 8,
             padding: '8px 16px',
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: 600,
             fontFamily: 'var(--font-sans)',
             textTransform: 'uppercase',
