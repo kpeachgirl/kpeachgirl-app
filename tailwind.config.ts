@@ -1,8 +1,10 @@
 import type { Config } from 'tailwindcss'
 
 /* Global type scale. Bumping this nudges every named text-* utility together;
-   the raw px sizes in globals.css and inline styles are scaled to match. */
-const TEXT_SCALE = 1.1
+   the raw px sizes in globals.css and inline styles are scaled to match.
+   The public site carries the same 1.265x factor; the admin dashboard uses
+   no named text-* utilities, so it keeps its own smaller px sizes. */
+const TEXT_SCALE = 1.265
 
 const rem = (n: number) => `${+(n * TEXT_SCALE).toFixed(4)}rem`
 const step = (size: number, leading: number): [string, string] => [rem(size), rem(leading)]

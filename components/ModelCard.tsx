@@ -79,7 +79,7 @@ export default function ModelCard({ profile, cardSettings }: ModelCardProps) {
         {/* Badges */}
         <div className="absolute top-3 left-3 flex gap-1.5 z-20">
           {cardSettings.showVerifiedBadge !== false && profile.verified && (
-            <span className="font-sans bg-[rgba(0,0,0,0.9)] backdrop-blur-sm px-2.5 py-[3px] text-[12px] font-bold tracking-[0.08em] text-sage uppercase">
+            <span className="font-sans bg-[rgba(0,0,0,0.9)] backdrop-blur-sm px-2.5 py-[3px] text-[14px] font-bold tracking-[0.08em] text-sage uppercase">
               {cardSettings.verifiedLabel || 'Verified'}
             </span>
           )}
@@ -91,7 +91,7 @@ export default function ModelCard({ profile, cardSettings }: ModelCardProps) {
             {profile.name}
           </div>
           {subtitle && (
-            <div className="font-sans text-[12px] font-semibold tracking-[0.14em] text-white uppercase mt-1">
+            <div className="font-sans text-[14px] font-semibold tracking-[0.14em] text-white uppercase mt-1">
               {subtitle}
             </div>
           )}

@@ -65,7 +65,7 @@ export default function GroupProfileClient({
             <div className="w-full h-full min-h-[350px] bg-sand" />
           )}
           {/* Badge overlay */}
-          <span className="font-sans absolute top-4 left-4 bg-rose py-1 px-3.5 text-[12px] font-extrabold tracking-[0.12em] text-card-bg uppercase">
+          <span className="font-sans absolute top-4 left-4 bg-rose py-1 px-3.5 text-[14px] font-extrabold tracking-[0.12em] text-card-bg uppercase">
             {badgeLabel}
           </span>
         </div>
@@ -73,7 +73,7 @@ export default function GroupProfileClient({
         {/* Right: group info */}
         <div className="profile-info-pad flex flex-col justify-center relative">
           {/* Badge label */}
-          <div className="font-sans text-[12px] font-bold tracking-[0.2em] text-rose uppercase mb-3">
+          <div className="font-sans text-[14px] font-bold tracking-[0.2em] text-rose uppercase mb-3">
             {badgeLabel} Profile
           </div>
 
@@ -84,7 +84,7 @@ export default function GroupProfileClient({
 
           {/* Bio */}
           {group.bio && (
-            <p className="font-sans text-[19px] leading-[1.85] text-muted max-w-[440px] mb-6">
+            <p className="font-sans text-[22px] leading-[1.85] text-muted max-w-[440px] mb-6">
               {group.bio}
             </p>
           )}
@@ -128,7 +128,7 @@ export default function GroupProfileClient({
                   <div className="font-sans text-sm font-bold text-charcoal">
                     {m.name}
                   </div>
-                  <div className="font-sans text-[12px] text-muted">
+                  <div className="font-sans text-[14px] text-muted">
                     {m.region}
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function GroupProfileClient({
       {/* Member Details */}
       {members.length > 0 && (
         <div className="grid-pad max-w-[1200px] mx-auto">
-          <div className="font-serif text-[15px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
+          <div className="font-serif text-[17px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
             Member Details
           </div>
           <div
@@ -185,7 +185,7 @@ export default function GroupProfileClient({
                     <div className="font-sans text-base font-bold text-charcoal group-hover:text-rose transition-colors">
                       {m.name}
                     </div>
-                    <div className="font-sans text-[12px] text-muted tracking-wide uppercase">
+                    <div className="font-sans text-[14px] text-muted tracking-wide uppercase">
                       {m.region} {m.verified && '· Verified'}
                     </div>
                   </div>
@@ -194,7 +194,7 @@ export default function GroupProfileClient({
                 {/* Stats */}
                 {categories.map((cat) => (
                   <div key={cat.id} className="mb-4">
-                    <div className="font-serif text-[13px] font-semibold tracking-[0.14em] text-rose uppercase mb-2 pb-1.5 border-b border-sand">
+                    <div className="font-serif text-[15px] font-semibold tracking-[0.14em] text-rose uppercase mb-2 pb-1.5 border-b border-sand">
                       {cat.title}
                     </div>
                     {cat.fields.map((f) => {
@@ -211,7 +211,7 @@ export default function GroupProfileClient({
                           key={f.key}
                           className="flex justify-between py-[7px] border-b border-white/[0.06]"
                         >
-                          <span className="font-sans text-[13px] font-medium text-muted tracking-[0.03em]">
+                          <span className="font-sans text-[15px] font-medium text-muted tracking-[0.03em]">
                             {f.label}
                           </span>
                           <span className="font-sans text-sm font-bold text-charcoal">
@@ -238,7 +238,7 @@ export default function GroupProfileClient({
       {/* Gallery */}
       {gallery.length > 0 && (
         <div className="grid-pad max-w-[1200px] mx-auto pt-0">
-          <div className="font-serif text-[15px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
+          <div className="font-serif text-[17px] font-semibold tracking-[0.18em] text-rose uppercase mb-7">
             Gallery
           </div>
           <div className="profile-gallery">

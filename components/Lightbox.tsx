@@ -104,7 +104,7 @@ export default function Lightbox({ images, currentIndex, onClose, onNavigate }: 
       </button>
 
       {/* Counter */}
-      <span className="font-sans absolute bottom-7 text-white text-[13px] tracking-[0.15em]">
+      <span className="font-sans absolute bottom-7 text-white text-[15px] tracking-[0.15em]">
         {currentIndex + 1} / {images.length}
       </span>
     </div>

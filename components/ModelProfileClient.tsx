@@ -178,7 +178,7 @@ export default function ModelProfileClient({
                 zIndex: 2,
               }}
             >
-              <span className="font-sans" style={{ fontSize: 14, fontWeight: 600, color: '#fff', letterSpacing: '0.05em' }}>
+              <span className="font-sans" style={{ fontSize: 16, fontWeight: 600, color: '#fff', letterSpacing: '0.05em' }}>
                 {galleryIndex + 1} / {totalImages}
               </span>
             </div>
@@ -310,7 +310,7 @@ export default function ModelProfileClient({
       >
         {/* Region + verified badge */}
         <div
-          className="font-sans text-[12px] font-bold tracking-[0.2em] text-rose uppercase mb-3"
+          className="font-sans text-[14px] font-bold tracking-[0.2em] text-rose uppercase mb-3"
           style={{ display: 'flex', alignItems: 'center', gap: 8 }}
         >
           {profile.region}
@@ -354,7 +354,7 @@ export default function ModelProfileClient({
               border: '1px solid rgba(212, 144, 124, 0.2)',
               padding: '12px 18px',
               marginBottom: 24,
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: 600,
               color: 'var(--peach)',
               letterSpacing: '0.05em',
@@ -369,7 +369,7 @@ export default function ModelProfileClient({
           <p
             className="font-sans"
             style={{
-              fontSize: 19,
+              fontSize: 22,
               lineHeight: 1.85,
               color: 'var(--muted)',
               maxWidth: 600,
@@ -399,7 +399,7 @@ export default function ModelProfileClient({
       {/* ─── Also Available As (Group Links) ─── */}
       {groups.length > 0 && (
         <div className="grid-pad" style={{ maxWidth: 1200, margin: '0 auto', paddingTop: 0 }}>
-          <div className="font-serif text-[15px] font-semibold tracking-[0.18em] text-rose uppercase mb-5">
+          <div className="font-serif text-[17px] font-semibold tracking-[0.18em] text-rose uppercase mb-5">
             Also available as
           </div>
           <div className="flex gap-4 flex-wrap">
@@ -435,7 +435,7 @@ export default function ModelProfileClient({
                   )}
                   <div>
                     <span
-                      className="font-sans text-[10px] font-extrabold tracking-[0.1em] uppercase mb-1 inline-block"
+                      className="font-sans text-[12px] font-extrabold tracking-[0.1em] uppercase mb-1 inline-block"
                       style={{
                         padding: '2px 8px',
                         background: 'var(--rose)',

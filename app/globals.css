@@ -83,9 +83,9 @@ option { background: var(--cream); color: var(--charcoal); }
 .profile-stats   { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 .profile-gallery { columns: 3; column-gap: 10px; }
 .admin-slide     { position: fixed; top: 0; right: 0; bottom: 0; width: 500px; }
-.hero-title      { font-size: 87px; }
+.hero-title      { font-size: 100px; }
 .hero-search     { width: 360px; }
-.profile-name    { font-size: 77px; }
+.profile-name    { font-size: 89px; }
 .admin-fields-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
 .admin-stats     { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
 .admin-table-row { display: grid; grid-template-columns: 44px 1.6fr 0.8fr 0.7fr 70px 70px 56px; }
@@ -93,7 +93,7 @@ option { background: var(--cream); color: var(--charcoal); }
 .admin-save-bar  { position: fixed; bottom: 0; right: 0; width: 500px; }
 .admin-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
 .admin-tabs      { display: flex; gap: 2px; }
-.cat-heading     { font-size: 34px; }
+.cat-heading     { font-size: 39px; }
 .admin-nav-pad   { padding: 16px 32px; }
 
 /* Spacing / padding classes */
@@ -116,14 +116,14 @@ option { background: var(--cream); color: var(--charcoal); }
   .admin-slide     { width: 420px; }
   .admin-save-bar  { width: 420px; }
   .admin-stats     { grid-template-columns: repeat(2, 1fr); }
-  .hero-title      { font-size: 68px; }
+  .hero-title      { font-size: 78px; }
   .hero-search     { width: 100%; max-width: 400px; }
   .hero-pad        { padding: 0 40px 48px; }
   .nav-pad         { padding: 12px 24px; }
   .content-pad     { padding: 20px 24px 0; }
   .grid-pad        { padding: 20px 24px 60px; }
   .footer-pad      { padding: 24px; }
-  .profile-name    { font-size: 58px; }
+  .profile-name    { font-size: 67px; }
   .profile-info-pad { padding: 40px 32px; }
   .admin-fields-grid { grid-template-columns: 1fr 1fr; }
 }
@@ -142,7 +142,7 @@ option { background: var(--cream); color: var(--charcoal); }
   .admin-save-bar  { width: 100%; left: 0; }
   .admin-fields-grid { grid-template-columns: 1fr; }
   .admin-edit-grid { grid-template-columns: 1fr; }
-  .hero-title      { font-size: 44px; }
+  .hero-title      { font-size: 51px; }
   .hero-search     { width: 100%; }
   .hero-pad        { padding: 0 20px 36px; }
   .nav-links       { display: none; }
@@ -151,13 +151,13 @@ option { background: var(--cream); color: var(--charcoal); }
   .content-pad     { padding: 16px 16px 0; }
   .grid-pad        { padding: 16px 16px 48px; }
   .footer-pad      { padding: 20px 16px; }
-  .profile-name    { font-size: 44px; }
+  .profile-name    { font-size: 51px; }
   .profile-info-pad { padding: 28px 20px; }
   .filter-scroll   { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
   .filter-scroll::-webkit-scrollbar { display: none; }
   .admin-tabs      { gap: 0; }
   .admin-tabs button { padding: 6px 10px !important; font-size: 11px !important; }
-  .cat-heading     { font-size: 26px; }
+  .cat-heading     { font-size: 30px; }
   .admin-nav-pad   { padding: 12px 16px; }
   .admin-table-row .mob-hide { display: none; }
   .admin-table-row-drag .mob-hide { display: none; }

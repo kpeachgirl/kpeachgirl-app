@@ -134,7 +134,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
         return (
           <div>
             {field.helperText && (
-              <p className="text-[13px] text-muted leading-relaxed mb-3 px-3.5 py-2.5 bg-white/[0.03] border border-white/[0.06]">
+              <p className="text-[15px] text-muted leading-relaxed mb-3 px-3.5 py-2.5 bg-white/[0.03] border border-white/[0.06]">
                 {field.helperText}
               </p>
             )}
@@ -152,7 +152,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                     className="w-full max-h-[300px] object-contain block"
                   />
                   <div className="absolute bottom-0 left-0 right-0 flex gap-px">
-                    <div className="flex-1 py-2 bg-black/80 text-white text-[12px] font-bold tracking-wider uppercase text-center font-sans">
+                    <div className="flex-1 py-2 bg-black/80 text-white text-[14px] font-bold tracking-wider uppercase text-center font-sans">
                       Uploaded
                     </div>
                     <button
@@ -161,7 +161,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                         e.stopPropagation();
                         handleFileRemove(field);
                       }}
-                      className="px-4 py-2 bg-black/80 text-rose border-none text-[12px] font-bold tracking-wider uppercase cursor-pointer font-sans"
+                      className="px-4 py-2 bg-black/80 text-rose border-none text-[14px] font-bold tracking-wider uppercase cursor-pointer font-sans"
                     >
                       Remove
                     </button>
@@ -169,11 +169,11 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                 </>
               ) : (
                 <div className="text-center">
-                  <div className="text-[39px] text-charcoal mb-2 leading-none">&#8593;</div>
+                  <div className="text-[45px] text-charcoal mb-2 leading-none">&#8593;</div>
                   <div className="text-sm font-semibold text-muted font-sans">
                     Click to upload photo
                   </div>
-                  <div className="text-[12px] text-charcoal mt-1 font-sans">JPG, PNG up to 10MB</div>
+                  <div className="text-[14px] text-charcoal mt-1 font-sans">JPG, PNG up to 10MB</div>
                 </div>
               )}
             </div>
@@ -240,7 +240,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                       on ? selected.filter((x) => x !== st) : [...selected, st]
                     )
                   }
-                  className={`px-4 py-1.5 text-[13px] tracking-wide font-sans transition-all duration-150 border ${
+                  className={`px-4 py-1.5 text-[15px] tracking-wide font-sans transition-all duration-150 border ${
                     on
                       ? 'font-bold border-charcoal bg-charcoal text-cream'
                       : 'font-medium border-sand bg-card-bg text-muted'
@@ -309,7 +309,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
           <div className="w-14 h-14 rounded-full bg-sage flex items-center justify-center mx-auto mb-5 text-3xl text-[#121212]">
             &#10003;
           </div>
-          <div className="font-serif text-[39px] font-light text-charcoal mb-2">
+          <div className="font-serif text-[45px] font-light text-charcoal mb-2">
             {formConfig.successTitle}
           </div>
           <p className="text-base text-muted leading-relaxed mb-8">
@@ -317,7 +317,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
           </p>
           <Link
             href="/"
-            className="inline-block px-8 py-3 bg-charcoal text-cream border-none text-[13px] font-bold tracking-widest uppercase font-sans hover:bg-rose transition-colors"
+            className="inline-block px-8 py-3 bg-charcoal text-cream border-none text-[15px] font-bold tracking-widest uppercase font-sans hover:bg-rose transition-colors"
           >
             Back to Site
           </Link>
@@ -338,7 +338,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
           >
             &larr; Back
           </Link>
-          <span className="font-serif text-[26px] font-normal text-charcoal">
+          <span className="font-serif text-[30px] font-normal text-charcoal">
             K<span className="text-rose">peach</span>girl
           </span>
         </div>
@@ -359,7 +359,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
             {formConfig.title}
           </div>
           <div className="w-10 h-px bg-rose mx-auto my-4" />
-          <p className="text-[15px] text-muted leading-relaxed max-w-[440px] mx-auto">
+          <p className="text-[17px] text-muted leading-relaxed max-w-[440px] mx-auto">
             {formConfig.subtitle}
           </p>
         </div>
@@ -383,7 +383,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
                     key={ff.id}
                     style={ff.width === 'full' ? { gridColumn: '1 / -1' } : {}}
                   >
-                    <label className="block text-[12px] font-bold tracking-[0.12em] text-muted uppercase mb-1.5 font-sans">
+                    <label className="block text-[14px] font-bold tracking-[0.12em] text-muted uppercase mb-1.5 font-sans">
                       {ff.label}
                       {ff.required && <span className="text-rose ml-0.5">*</span>}
                     </label>
@@ -419,7 +419,7 @@ export default function MembershipForm({ formConfig, areas, pillGroups }: Member
         </div>
 
         {/* Disclaimer */}
-        <p className="text-[12px] text-charcoal text-center mt-5 leading-normal">
+        <p className="text-[14px] text-charcoal text-center mt-5 leading-normal">
           By submitting, you confirm you are 18+ and consent to your information being reviewed
           by the Kpeachgirl team. All information is kept confidential.
         </p>

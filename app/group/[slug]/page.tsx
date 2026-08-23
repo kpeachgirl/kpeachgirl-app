@@ -118,7 +118,7 @@ export default async function GroupProfilePage({
           >
             &larr; Back
           </Link>
-          <div className="font-serif text-[26px] font-normal tracking-[-0.01em] text-charcoal">
+          <div className="font-serif text-[30px] font-normal tracking-[-0.01em] text-charcoal">
             K<span className="text-rose">peach</span>girl
           </div>
           <div className="w-[60px]" />

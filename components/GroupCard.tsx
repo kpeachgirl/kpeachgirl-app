@@ -58,7 +58,7 @@ export default function GroupCard({ group, cardSettings }: GroupCardProps) {
 
         {/* Badge */}
         <div className="absolute top-3 left-3 flex gap-1.5">
-          <span className="font-sans bg-rose px-3 py-[3px] text-[12px] font-extrabold tracking-[0.1em] text-card-bg uppercase">
+          <span className="font-sans bg-rose px-3 py-[3px] text-[14px] font-extrabold tracking-[0.1em] text-card-bg uppercase">
             {badge}
           </span>
         </div>
@@ -68,7 +68,7 @@ export default function GroupCard({ group, cardSettings }: GroupCardProps) {
           <div className="card-name font-serif text-3xl font-medium text-white leading-[1.1] transition-[letter-spacing] duration-[600ms] ease-in-out">
             {group.name}
           </div>
-          <div className="font-sans text-[12px] font-semibold tracking-[0.14em] text-white uppercase mt-1">
+          <div className="font-sans text-[14px] font-semibold tracking-[0.14em] text-white uppercase mt-1">
             {(group.member_ids || []).length} models
           </div>
         </div>

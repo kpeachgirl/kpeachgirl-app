@@ -95,19 +95,19 @@ export default function HomepageClient({
         {/* Logo */}
         <h1
           className="font-serif font-light tracking-[0.22em] uppercase"
-          style={{ fontSize: 'clamp(39px, 7.3vw, 63px)', color: 'var(--charcoal)', lineHeight: 1 }}
+          style={{ fontSize: 'clamp(45px, 8.4vw, 72px)', color: 'var(--charcoal)', lineHeight: 1 }}
         >
           K<span style={{ color: 'var(--rose)' }}>PEACH</span>GIRL
         </h1>
         <div className="w-12 h-0.5 bg-rose mx-auto" style={{ margin: '20px 0' }} />
-        <p className="font-sans text-[12px] font-bold tracking-[0.25em] text-muted uppercase mb-5">
+        <p className="font-sans text-[14px] font-bold tracking-[0.25em] text-muted uppercase mb-5">
           {hero.subtitle}
         </p>
         {/* Phone */}
         <a
           href="tel:+12133176530"
           className="font-sans text-charcoal no-underline hover:text-rose transition-colors"
-          style={{ fontSize: 'clamp(20px, 3.6vw, 26px)', fontWeight: 300, letterSpacing: '0.08em' }}
+          style={{ fontSize: 'clamp(30px, 5.4vw, 40px)', fontWeight: 300, letterSpacing: '0.08em' }}
         >
           (213) 317-6530
         </a>
@@ -116,7 +116,7 @@ export default function HomepageClient({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={hero.searchPlaceholder}
-          className="font-sans text-charcoal text-[15px] font-medium mt-8 w-full"
+          className="font-sans text-charcoal text-[17px] font-medium mt-8 w-full"
           style={{
             maxWidth: 400,
             padding: '13px 20px',
@@ -161,7 +161,7 @@ export default function HomepageClient({
         {/* Empty state */}
         {filtered.length === 0 && (
           <div className="text-center" style={{ padding: '80px 0' }}>
-            <div className="font-serif text-[34px] font-light text-charcoal">
+            <div className="font-serif text-[39px] font-light text-charcoal">
               No models match your filters
             </div>
             <div className="font-sans text-sm text-charcoal mt-2">
