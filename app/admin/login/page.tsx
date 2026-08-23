@@ -112,7 +112,7 @@ export default function AdminLoginPage() {
             K<span style={{ color: 'var(--rose)' }}>PEACH</span>GIRL
           </h1>
           <p
-            className="text-base tracking-wider uppercase"
+            className="text-admin-base tracking-wider uppercase"
             style={{
               fontFamily: 'var(--font-sans)',
               color: 'var(--muted)',
@@ -134,7 +134,7 @@ export default function AdminLoginPage() {
         >
           {error && (
             <div
-              className="mb-6 p-3 rounded-lg text-base"
+              className="mb-6 p-3 rounded-lg text-admin-base"
               style={{
                 background: 'rgba(212, 117, 138, 0.12)',
                 color: 'var(--rose)',
@@ -147,7 +147,7 @@ export default function AdminLoginPage() {
 
           <div className="mb-5">
             <label
-              className="block text-sm uppercase tracking-wider mb-2"
+              className="block text-admin-sm uppercase tracking-wider mb-2"
               style={{
                 color: 'var(--muted)',
                 fontFamily: 'var(--font-sans)',
@@ -163,7 +163,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@kpeachgirl.com"
               autoComplete="email"
-              className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg text-admin-base outline-none transition-colors"
               style={{
                 background: 'var(--input-bg)',
                 border: '1px solid var(--sand)',
@@ -175,7 +175,7 @@ export default function AdminLoginPage() {
 
           <div className="mb-6">
             <label
-              className="block text-sm uppercase tracking-wider mb-2"
+              className="block text-admin-sm uppercase tracking-wider mb-2"
               style={{
                 color: 'var(--muted)',
                 fontFamily: 'var(--font-sans)',
@@ -191,7 +191,7 @@ export default function AdminLoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder={t.loginPasswordPh}
               autoComplete="current-password"
-              className="w-full px-4 py-3 rounded-lg text-base outline-none transition-colors"
+              className="w-full px-4 py-3 rounded-lg text-admin-base outline-none transition-colors"
               style={{
                 background: 'var(--input-bg)',
                 border: '1px solid var(--sand)',
@@ -204,7 +204,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 rounded-lg text-base uppercase tracking-wider transition-all"
+            className="w-full py-3 rounded-lg text-admin-base uppercase tracking-wider transition-all"
             style={{
               background: loading ? 'var(--sand)' : 'var(--rose)',
               color: loading ? 'var(--muted)' : '#fff',
@@ -221,7 +221,7 @@ export default function AdminLoginPage() {
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="text-base transition-colors hover:opacity-80"
+            className="text-admin-base transition-colors hover:opacity-80"
             style={{
               color: 'var(--muted)',
               fontFamily: 'var(--font-sans)',
@@ -233,7 +233,7 @@ export default function AdminLoginPage() {
 
         {/* Footer text */}
         <p
-          className="text-center mt-8 text-sm"
+          className="text-center mt-8 text-admin-sm"
           style={{
             color: 'var(--muted)',
             fontFamily: 'var(--font-sans)',

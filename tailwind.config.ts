@@ -48,6 +48,11 @@ const config: Config = {
         '7xl': [rem(4.5),  '1'],
         '8xl': [rem(6),    '1'],
         '9xl': [rem(8),    '1'],
+        /* Pinned to the admin scale (1.1x) so the login page keeps the same
+           size as the rest of the dashboard instead of following TEXT_SCALE.
+           Literal values on purpose — do not derive these from TEXT_SCALE. */
+        'admin-sm':   ['0.9625rem', '1.375rem'],
+        'admin-base': ['1.1rem',    '1.65rem'],
       },
     },
   },
